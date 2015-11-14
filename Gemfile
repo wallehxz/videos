@@ -1,5 +1,5 @@
-source 'https://ruby.taobao.org/'  #淘宝源
-#source 'https://rubygems.org/'  #官方源
+#source 'https://ruby.taobao.org/'  #淘宝源
+source 'https://rubygems.org/'  #官方源
 
 ruby '2.0.0'
 gem 'rails', '4.1.8'
