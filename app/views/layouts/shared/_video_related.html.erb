@@ -1,0 +1,20 @@
+<div class="video">
+  <ul class="video-list">
+    <% related.each do |video| %>
+      <% cache video do %>
+        <li class="video-item">
+          <a class="animated" href="/playing/<%= video.youku_id %>">
+            <div class="video-poster"><img src="<%= video.video_cover %>" alt=""></div>
+            <div class="video-play" title="<%= symbol_truncate video.title %>">
+              <h4><span><img src="<%= image_url('play.png') %>" style="width: 55px;height: 65px;padding-bottom: 10px;"></span></h4>
+            </div>
+            <div class="video-info">
+              <p>「<%= Channel.find(video.channel_id).title %>」<%= symbol_truncate video.title %></p>
+              <p><%= video_time video.youku_json[:duration] %><span class="v-time"><%= video.created_at.strftime('%m/%d %H:%M') %></span></p>
+            </div>
+          </a>
+        </li>
+       <% end %>
+    <% end %>
+  </ul>
+</div>

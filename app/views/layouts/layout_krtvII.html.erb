@@ -1,0 +1,76 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+  <meta name="baidu-site-verification" content="8uZdUwt1Ho" />
+  <title><%= content_for?(:title) ? yield(:title) : '好玩好看的视频 | 暗夜' %></title>
+  <%= content_for?(:meta)? yield(:meta) :'' %>
+  <%= csrf_meta_tags %>
+  <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
+  <%= stylesheet_link_tag  'krtv_II', 'disqus', 'Iva', 'video_js', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+</head>
+<body>
+<!--[if lt IE 10]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<div class="nav-wrapper navbar-fixed-top">
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/" style="padding-top: 0px">
+        <% if current_user %>
+            <img alt="Brand" height="50" src="<%= rank_picture current_user %>" title="<%= rank_name current_user %>">
+        <% else %>
+            <img alt="Brand" height="50" src="<%= image_url('krtv-logo.png') %>">
+        <% end %>
+      </a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">暗夜频道 <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+          <% Channel.order(:id).each do |channel| %>
+              <li><a href="/channel/<%= channel.english %>"><img src="<%= image_url('soap.png')%>" style="width: 20px;height: 21px;"> <%= channel.title %></a></li>
+          <% end %>
+          <% if current_user %>
+            <% if current_user.sign_in_count > 99 || current_user.level > 0 %>
+                  <li><a href="/private/Loving"><img src="<%= image_url('soap.png')%>" style="width: 20px;height: 21px;"> 午夜剧场</a></li>
+            <% end %>
+          <% end %>
+        </ul>
+      </li>
+      <% if current_user %>
+          <% if current_user.user_detail.qq.present? %>
+            <li><a href="http://user.qzone.qq.com/<%= current_user.user_detail.qq %>">个人空间</a></li>
+          <% end %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+              <img src="<%= user_avatar current_user %>" width="28px" height="28px" class="img-circle">
+              <%= user_name current_user %> <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <% if current_user.level ==1%>
+                  <li><a href="<%= admin_dashboard_path %>"><img src="<%= image_url('yinyang.png')%>" style="height: 20px;width: 20px;"> 数据管理</a></li>
+              <% end %>
+              <li><a href="<%= avatar_user_details_path %>"><img src="<%= image_url('face.png')%>" style="height: 20px;width: 20px;"> 上传头像</a></li>
+              <li><a href="<%= profile_user_details_path %>"><img src="<%= image_url('asterpods.png')%>" style="height: 20px;width: 23px;"> 个人中心</a></li>
+              <li><a href="<%= sign_out_path %>"><img src="<%= image_url('down.png')%>" style="height: 20px;width: 20px;"> 隐退江湖</a></li>
+            </ul>
+          </li>
+      <% else %>
+          <li><a href="<%= sign_up_path %>">注册</a></li>
+          <li><a href="<%= sign_in_path %>">登录</a></li>
+      <% end %>
+    </ul>
+  </nav>
+</div>
+
+<div>
+  <%= yield %>
+</div>
+<footer class="footer">
+ <%= render :partial => 'layouts/footer' %>
+</footer>
+</body>
+</html>

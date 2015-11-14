@@ -1,0 +1,90 @@
+<%= content_for(:title,  '摇杆驱动 | 暗夜小站') %>
+<section class="content-header">
+  <h1>
+    摇杆驱动 <small>预览</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> 暗夜小站</a></li>
+    <li class="active"><i class="fa fa-info-circle"></i> 摇杆驱动</li>
+  </ol>
+</section>
+
+<%= render partial: 'layouts/notice' %>
+
+<section class="content">
+  <div class="box box-primary">
+    <div class="box-header">
+      <a href="<%= new_admin_av_lib_path%>" class="btn btn-primary"><i class="ion-plus"></i> 添加视频</a>
+    </div>
+    <div class="box-body">
+      <div class="row">
+        <div class="col-sm-12">
+          <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+            <thead>
+            <tr>
+              <th tabindex="0" aria-controls="example1" style="text-align: center">封面</th>
+              <th tabindex="0" aria-controls="example1" style="text-align: center">标题</th>
+              <th tabindex="0" aria-controls="example1" style="text-align: center">类别</th>
+              <th tabindex="0" aria-controls="example1" style="text-align: center">时间</th>
+              <th tabindex="0" aria-controls="example1" style="text-align: center">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @av_libs.each do |av| %>
+                <tr style="text-align: center">
+                  <td>
+                    <a href="<%= fucking_path(av)%>" target="_blank">
+                      <img src="<%= av.av_poster %>" style="width: 225px;height: 120px">
+                    </a>
+                  </td>
+                  <td>
+                    <br><br>
+                    <label class="label label-primary" style="font-size: 16px">
+                      <i class="glyphicon glyphicon-bookmark"></i>
+                      <%= av.av_title%>
+                    </label>
+                  </td>
+                  <td>
+                    <br><br>
+                    <label class="label label-waring" style="font-size: 16px">
+                      <i class="glyphicon glyphicon-paperclip"></i>
+                      <%= av.av_type%>
+                    </label>
+                  </td>
+                  <td style="text-align: left">
+                    <br><br><label class="label label-default" style="font-size: 16px" title="创建于「<%= distance_of_time_in_words_to_now av.created_at %>」">
+                      <i class="glyphicon glyphicon-calendar"></i>
+                      <%= av.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
+                    </label>
+                    <br><br>
+                  </td>
+                  <td>
+                    <br><a href="<%= edit_admin_av_lib_path(av) %>" class="btn btn-default">
+                      <i class="glyphicon glyphicon-edit"></i>
+                      编辑
+                    </a><br><br>
+                    <a href="<%= admin_av_lib_path(av) %>" class="btn btn-default" data-method="delete" data-confirm="确定要删除么?">
+                      <i class="glyphicon glyphicon-trash"></i>
+                      删除
+                    </a>
+                  </td>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-5">
+          <div class="dataTables_info" id="example1_info" role="status" aria-live="polite"><h5>总计：「<%= AvLib.all.count %>」视频</h5></div>
+        </div>
+        <div class="col-sm-7">
+          <div class="dataTables_paginate paging_simple_numbers">
+            <%= will_paginate @av_libs, :class=>'apple_pagination', :previous_label => '上一页', :next_label => '下一页' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

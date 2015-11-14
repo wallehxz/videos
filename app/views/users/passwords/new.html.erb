@@ -1,0 +1,26 @@
+<%= content_for(:title,  '暗夜TV | 确认邮件') %>
+<div class="main">
+  <div class="main-login">
+    <form accept-charset="UTF-8" action="/users/password" class="simple_form new_user" id="new_user" method="post">
+      <div class="form-group">
+        <input autofocus="autofocus" aria-required="true" autocomplete="off"  id="email" name="user[email]" placeholder="请键入登陆邮箱" required="required" type="text" />
+        <input class="btn input-submit" name="commit" type="submit" value="给我发送认证邮件" />
+      </div>
+    </form>
+  </div>
+</div>
+
+<%= render "users/shared/links" %>
+<script>
+    $('#email').change(function(){
+        var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+        if(!reg.test($.trim($('#email').val())))
+        {
+            $("#tip").html('键入的帐号格式不匹配');
+            $('#email').val('');
+            return false;
+        }else{
+            $("#tip").html('');
+        }
+    })
+</script>

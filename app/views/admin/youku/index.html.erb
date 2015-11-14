@@ -1,0 +1,130 @@
+<%= content_for(:title,  '暗夜小站 | 优酷视频列表') %>
+<section class="content-header">
+  <h1>
+    优酷视频
+    <small>视频信息预览</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> 暗夜小站</a></li>
+    <li class="active"><i class="glyphicon glyphicon-film"></i> 优酷视频</li>
+  </ol>
+</section>
+<%= render partial: 'layouts/notice' %>
+<section class="content">
+  <div class="box box-primary">
+    <div class="box-header">
+      <a href="<%= upload_admin_youku_index_path %>" class="btn btn-primary"><i class="glyphicon glyphicon-chevron-up"></i> 上传视频文件</a>
+    </div>
+    <div class="box-body">
+      <div class="row">
+        <div class="col-sm-12">
+          <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+            <thead>
+            <tr>
+              <th tabindex="0" aria-controls="example1" style="text-align: center">预览</th>
+              <th tabindex="0" aria-controls="example1" style="text-align: center">标题</th>
+              <th tabindex="0" aria-controls="example1" style="text-align: center">属性</th>
+              <th tabindex="0" aria-controls="example1" style="text-align: center">时间</th>
+              <th tabindex="0" aria-controls="example1" style="text-align: center">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% number = 0 %>
+            <% @videos.each do |video| %>
+                <% tr = number += 1 %>
+                <tr>
+                  <% cache video['id'] do %>
+                  <td style="width:190px;"><a href="/show/<%= video['id'] %>" target="_blank"><img src="<%= video['thumbnail'] %>" style="width: 180px;height: 120px"></a></td>
+                  <td style="width: 300px">
+                    <br><br>
+                    <a href="<%= video['link'] %>">
+                      <%= video['title'] %>
+                    </a>
+                  </td>
+                  <td style="text-align: center">
+                    <br><br>
+                    <label class="badge badge-info" style="font-size: 16px">
+                      <i class="icon-time"></i>
+                      <%= video['duration'] %>
+                    </label>
+                  </td>
+                  <td style="text-align: center">
+                    <br><br>
+                    <label class="badge badge-inverse" style="font-size: 16px">
+                      <i class="icon-calendar"></i>
+                      <%= time_ago_in_words(video['published']) %>
+                    </label>
+                  </td>
+                  <% end %>
+                  <td style="width: 180px;text-align: center">
+                    <% if ChannelVideo.find_by_youku_id(video['id']) %>
+                        <br><a href="#" class="btn btn-success">已发布到<br>「<%= Channel.find(ChannelVideo.find_by_youku_id(video['id']).channel_id).title %> 」</a>
+                    <% else %>
+                        <br>
+                        <div id="<%= tr %>_div">
+                          <select id="<%= tr %>_select" class="form-control">
+                            <option value="0">请选择频道</option>
+                            <% Channel.order(:id).each do |item| %>
+                                <option value="<%= item.id %>"><%= item.title %></option>
+                            <% end %>
+                          </select>
+                        </div>
+                        <br>
+                        <a id="<%= tr %>_link" href="javascript:void(0)" onclick="release_video('<%= tr %>','<%= video['id'] %>','<%= video['title'] %>','<%= video['description']%>');" class="btn btn-warning" style="width: 80px">发布</a>
+                    <% end %>
+                  </td>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-5">
+          <div class="dataTables_info" id="example1_info" role="status" aria-live="polite"><h5>总计：「 <%= @count %> 」视频</h5></div>
+        </div>
+        <div class="col-sm-7">
+          <% if params[:page].nil? %>
+              <% params[:page] =1 %>
+          <% end %>
+          <div class="dataTables_paginate paging_simple_numbers">
+            <a href="/admin/youku"class="btn btn-default bg-olive <% if params[:page]==1  %>disabled <% end %> ">首页</a>
+            <a href="/admin/youku?page=<%= params[:page].to_i - 1 %>" class="btn btn-default bg-olive <% if params[:page]==1  %>disabled <% end %>">上一页</a>
+            <span>
+              <% if params[:page].to_i < @total_pages && params[:page].to_i > 1 %>
+                  <a href="/admin/youku?page=<%= params[:page].to_i - 1%>"class="btn btn-default bg-olive" ><%= params[:page].to_i - 1 %></a>
+                  <a class="btn btn-default bg-navy disabled"><%= params[:page] %></a>
+                  <a tabindex="0" href="/admin/youku?page=<%= params[:page].to_i + 1%>"class="btn btn-default bg-olive" ><%= params[:page].to_i + 1 %></a>
+              <% end %>
+            </span>
+            <a tabindex="0" href="/admin/youku?page=<%= params[:page].to_i + 1%>"class="btn btn-default bg-olive <% if params[:page].to_i >=@total_pages  %> disabled <% end %>">下一页</a>
+            <a tabindex="0" href="/admin/youku?page=<%= @total_pages %>" class="btn btn-default bg-olive <% if params[:page].to_i==@total_pages  %> disabled <% end %>">末页</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script type="text/javascript">
+    function release_video(channel,youku_id,title,content){
+        if($('#' +channel+ '_select').val()=="0"){
+            alert("请选择视频发布的频道！");
+            return false;
+        }
+        else{
+            var select_id = $('#' +channel+ '_select').val();
+            var channel_name = $('#' +channel+ '_select').find('option:selected').text();
+            $.post("<%= release_video_admin_youku_index_path %>",
+                    {
+                        channel_id:parseInt(select_id),
+                        youku_id:youku_id,
+                        title:title,
+                        content:content
+                    }
+            );
+            $("#" + channel + '_div').attr('style','display:none');
+            $("#" + channel +'_link').html('已发布到<br>「'+ channel_name+'」').removeAttr('onclick').attr('class','btn btn-success').removeAttr('style');
+        }
+    }
+</script>

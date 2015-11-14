@@ -1,0 +1,116 @@
+<%= form_for(['admin',@channel,@channel_video]) do |f| %>
+    <div class="box-body" style="padding-left: 100px">
+
+      <div class="form-group has-feedback">
+        <label>频道归属</label>
+        <div class="input-group" style="width: 300px">
+          <div class="input-group-addon">
+            <i class="glyphicon glyphicon-lock"></i>
+          </div>
+          <input type="text" value="<%= @channel.title %>" class="form-control" readonly>
+        </div>
+      </div>
+
+      <div class="form-group has-success">
+        <label>封面文件</label>
+        <div class="input-group" style="width: 300px">
+          <div class="input-group-addon">
+            <i class="fa fa-image"></i>
+          </div>
+          <%= f.file_field :photo_file, class:'form-control', accept:'.jpg,.png,.jpeg' %>
+        </div>
+        <div id="imgdiv" style="display: none">
+          <img id="imgblah" style="max-width: 300px;padding-top: 10px"/>
+        </div>
+        <% if action_name =='edit' %>
+            <img id="imgedit" src="<%= @channel_video.video_cover %>" style="max-width: 300px;padding-top: 10px"/>
+        <% end %>
+      </div>
+
+      <div class="form-group has-error">
+        <label>视频推荐</label>
+        <div class="input-group" style="width: 300px">
+          <div class="input-group-addon">
+            <i class="glyphicon glyphicon-fire"></i>
+          </div>
+          <%= f.select(:is_recommend, [['默认否',0],['选择是',1]], {},{:class => 'form-control'}) %>
+        </div>
+      </div>
+      <div class="form-group has-error">
+        <label>类别属性</label>
+        <div class="input-group" style="width: 300px">
+          <div class="input-group-addon">
+            <i class="glyphicon glyphicon-heart-empty"></i>
+          </div>
+          <%= f.select(:video_type, [['youKu 优酷',0],['iQiyi 爱奇艺',1]], {},{:class => 'form-control'}) %>
+        </div>
+      </div>
+      <div class="form-group has-warning">
+        <label>视频编号</label>
+        <div class="input-group" style="width: 300px">
+          <div class="input-group-addon">
+            <i class="glyphicon glyphicon-info-sign"></i>
+          </div>
+          <%= f.text_field :youku_id, :class => 'form-control', placeholder:'(必填)* 优酷视频的 ID' %>
+        </div>
+      </div>
+      <div class="form-group has-warning">
+        <label>视频标题</label>
+        <div class="input-group" style="width: 500px">
+          <div class="input-group-addon">
+            <i class="glyphicon glyphicon-bookmark"></i>
+          </div>
+          <%= f.text_field :title, class:'form-control', placeholder:'（必填*）' %>
+        </div>
+      </div>
+      <div class="form-group has-success">
+        <label>封面链接</label>
+        <div class="input-group" style="width: 500px">
+          <div class="input-group-addon">
+            <i class="glyphicon glyphicon-link"></i>
+          </div>
+          <%= f.text_field :video_cover, class:'form-control', placeholder:'http://www.anye.com/photo.png' %>
+        </div>
+      </div>
+      <div class="form-group has-feedback">
+        <label>视频简介</label>
+        <div class="input-group"style="width: 600px">
+          <%= f.text_area :content, class:'textarea', placeholder:'Place some text here', style:'width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;' %>
+        </div>
+      </div>
+      <hr>
+      <div>
+        <button type="submit" class="btn btn-primary" style="width: 120px">提交</button>
+        <a href="<%= admin_channel_path(@channel) %>" class="btn btn-warning" style="width: 120px">取消</a>
+      </div>
+    </div>
+<% end %>
+
+<script type="text/javascript">
+    $(function () {
+        $(".textarea").wysihtml5();
+    });
+
+    $("#channel_video_photo_file").change(function(){
+        readimgURL(this);
+        $('#imgdiv').removeAttr('style');
+        $('#imgedit').attr('style','display: none');
+    });
+    function readimgURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#imgblah').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    };
+</script>
+<script>
+    window.onbeforeunload = function(e)//绑定刷新等事件
+    {
+        var message = '^_^因为您无心操作，会导致数据丢失！'//设定提示消息
+        if ('Netscape' == navigator.appName) return e.preventDefault(),message//针对Netscape内核的提示方式,阻止默认动作 後返回提示消息即可
+        window.event.returnValue = message//针对IE等的提示方式
+    }
+</script>

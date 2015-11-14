@@ -1,0 +1,28 @@
+common: &default_settings
+  # https://rpm.newrelic.com/accounts/1121963/applications/setup
+  license_key: f2a7af80a67d0e86006c1af312ebfaa529583bb2
+  app_name: '一支红杏出墙'
+  log_level: info
+
+# Environment-specific settings are in this section.
+# RAILS_ENV or RACK_ENV (as appropriate) is used to determine the environment.
+# If your application has other named environments, configure them here.
+development:
+  <<: *default_settings
+  app_name: justingXX
+
+  # NOTE: There is substantial overhead when running in developer mode.
+  # Do not use for production or load testing.
+  developer_mode: true
+
+test:
+  <<: *default_settings
+  # It doesn't make sense to report to New Relic from automated test runs.
+  monitor_mode: false
+
+staging:
+  <<: *default_settings
+  app_name: My Application (Staging)
+
+production:
+  <<: *default_settings

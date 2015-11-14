@@ -1,0 +1,38 @@
+<%= content_for(:title,  '登录账户 | 暗夜TV') %>
+<div class="main">
+  <div class="main-login">
+    <% if request.url.include?('users') %>
+        <p style="color: #dd3c5a;float: left;padding-left: 20px">⊙_⊙！邮箱不存在或密码不匹配</p>
+    <% end %>
+    <form accept-charset="UTF-8" action="/users/sign_in" class="simple_form new_user" id="new_user" method="post">
+      <div class="form-group">
+        <input aria-required="true" autocomplete="off"  id="email" name="user[email]" required="required" type="text" placeholder="请建入注册邮箱"/>
+        <input aria-required="true" autocomplete="off"  id="password" name="user[password]" placeholder="请键入登陆密码" required="required" type="password" />
+        <input class="btn input-submit" name="commit" type="submit" value="登录账户" />
+      </div>
+    </form>
+  </div>
+</div>
+<%= render "users/shared/links" %>
+<script>
+    $('#email').change(function(){
+        var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+        if(!reg.test($.trim($('#email').val())))
+        {
+            $('#tip').html("键入的帐号格式不匹配");
+            $('#email').val('');
+            return false;
+        }else{
+            $('#tip').html("");
+        }
+    })
+    $('#password').change(function(){
+        if($('#password').val().length < 6){
+            $('#tip').html('键入的密码非安全长度');
+            $('#password').val('');
+            return false;
+        }else{
+            $('#tip').html('');
+        }
+    })
+</script>

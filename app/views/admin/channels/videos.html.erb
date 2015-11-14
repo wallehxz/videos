@@ -1,0 +1,106 @@
+<%= content_for(:title,  '发布视频 | 暗夜小站') %>
+<section class="content-header">
+  <h1>
+    发布视频
+    <small>视频信息预览</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> 暗夜小站</a></li>
+    <li class="active"><i class="fa fa-info-circle"></i> 视频信息</li>
+  </ol>
+</section>
+<%= render partial: 'layouts/notice' %>
+<section class="content">
+  <div class="box box-primary">
+    <div class="box-header">
+    </div>
+    <div class="box-body">
+      <div class="row">
+        <div class="col-sm-12">
+          <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+            <thead>
+            <tr>
+              <th tabindex="0" aria-controls="example1" style="text-align: center">封面</th>
+              <th tabindex="0" aria-controls="example1" style="text-align: center">栏目</th>
+              <th tabindex="0" aria-controls="example1" style="text-align: center">标题</th>
+              <th tabindex="0" aria-controls="example1" style="text-align: center">属性</th>
+              <th tabindex="0" aria-controls="example1" style="text-align: center">时间</th>
+              <th tabindex="0" aria-controls="example1" style="text-align: center">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @all_videos.each do |video| %>
+                <% cache video do %>
+                    <tr style="text-align: center">
+                      <td>
+                        <a href="<%= playing_path(video.youku_id)%>" target="_blank">
+                          <img src="<%= video.video_cover %>" style="width: 225px;height: 120px">
+                        </a>
+                      </td>
+                      <td>
+                        <br><br>
+                        <label class="label label-default" style="font-size: 16px">
+                          <i class="glyphicon glyphicon-paperclip"></i>
+                          <%= Channel.find_by_id(video.channel_id).title if video.channel_id > 0 %>
+                        </label>
+                      </td>
+                      <td style="text-align: left"><br><br>
+                        <label class="label label-primary" style="font-size: 16px" title="「<%= video.title %>」">
+                          <i class="glyphicon glyphicon-bookmark"></i>
+                          <%= truncate(ChannelVideo.truncate_title(video.title), :length=>10) %>
+                        </label>
+                      </td>
+                      <% youku_json = ChannelVideo.video_info(video.youku_id)%>
+                      <td>
+                        <% if video.is_recommend == 1%>
+                            <label class="label label-danger" style="color: white;font-size:14px"><i class="glyphicon glyphicon-thumbs-up"></i> 推荐</label>
+                        <% else %>
+                            <label class="label label-info" style="color: white;font-size:14px"><i class="glyphicon glyphicon-play"></i> 普通</label>
+                        <% end %><br>
+                        <br><label class="badge" style="color: white;font-size:14px">评论:<%= youku_json['comment_count']%></label>
+                        <br><label class="badge" style="color: white;font-size:14px">时长:<%= youku_json['duration']%>秒</label>
+                        <br><label class="badge" style="color: white;font-size:14px">播放量:<%= youku_json['view_count']%></label>
+                      </td>
+                      <td style="text-align: left">
+                        <br>
+                        <label class="label label-success" style="font-size: 16px" title="创建于「<%= video.created_at.strftime('%Y-%m-%d %H:%M:%S') %>」">
+                          <i class="glyphicon glyphicon-calendar"></i>
+                          <%= distance_of_time_in_words_to_now video.created_at %>
+                        </label>
+                        <br><br>
+                        <label class="label label-warning" style="font-size: 16px" title="更新于「<%= video.updated_at.strftime('%Y-%m-%d %H:%M:%S') %>」">
+                          <i class="glyphicon glyphicon-calendar"></i>
+                          <%= distance_of_time_in_words_to_now video.updated_at %>
+                        </label>
+                      </td>
+                      <td><br>
+                        <a href="<%= edit_admin_channel_channel_video_path(video.channel_id,video) %>" class="btn btn-default">
+                          <i class="glyphicon glyphicon-edit"></i>
+                          编辑
+                        </a>
+                        <br><br>
+                        <a href="<%= admin_channel_channel_video_path(video.channel_id,video) %>" class="btn btn-default" data-method="delete" data-confirm="确定要删除么?">
+                          <i class="glyphicon glyphicon-trash"></i>
+                          删除
+                        </a>
+                      </td>
+                    </tr>
+                <% end %>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-5">
+          <div class="dataTables_info" id="example1_info" role="status" aria-live="polite"><h5>总计：「<%= @all_videos.total_entries%>」视频</h5></div>
+        </div>
+        <div class="col-sm-7">
+          <div class="dataTables_paginate paging_simple_numbers">
+            <%= will_paginate @all_videos, :class=>'apple_pagination', :previous_label => '上一页', :next_label => '下一页' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

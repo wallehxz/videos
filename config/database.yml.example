@@ -1,0 +1,10 @@
+default: &default
+  adapter: postgresql
+  pool: 5
+  timeout: 5000
+  username: postgres
+  password: 520677
+
+development:
+  <<: *default
+  database: anye

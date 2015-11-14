@@ -1,0 +1,23 @@
+<%= content_for(:title,  '暗夜小站 | 添加视频') %>
+<section class="content-header">
+  <h1>
+    添加视频
+    <small>「午夜激情」</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> 暗夜小站</a></li>
+    <li class="active"><i class="glyphicon glyphicon-facetime-video"></i> 午夜激情</li>
+    <li class="active"><i class="glyphicon glyphicon-plus"></i> 新增视频</li>
+  </ol>
+</section>
+<section class="content">
+  <div style="padding-top: 10px">
+    <%= render partial: 'layouts/notice' %>
+    <div class="box box-success">
+      <div class="box-header">
+        <h3 class="box-title">视频新增表单</h3>
+      </div>
+      <%= render 'form' %>
+    </div>
+  </div>
+</section>
