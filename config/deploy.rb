@@ -1,7 +1,7 @@
 set :application, 'AnyeTV'
 set :scm, :git
 set :repo_url, 'git@github.com:lonely21475/JustingXX.git'
-set :deploy_to, '/var/www/apps/JustingXX'
+set :deploy_to, '/var/apps/justingXX'
 set :rails_env, 'production'
 set :ssh_options, { keys: %w{~/.ssh/id_rsa}, forward_agent: true, auth_methods: %w(publickey) }
 
