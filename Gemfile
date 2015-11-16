@@ -25,6 +25,7 @@ gem 'newrelic_rpm', '3.14.0.305' #网站性能监测
 gem 'therubyracer', '0.12.2', :platform => :ruby  # Call Ruby code and manipulate Ruby objects from JavaScript.
 gem 'guard-livereload', '2.4.0' #automatically reloads your browser when 'view' files are modified
 group :development, :test do
+  # annotate --exclude tests,fixtures,factories,serializers
   gem 'annotate', '2.6.5' #注释 https://github.com/ctran/annotate_models
   gem 'byebug', '3.5.1'        # anywhere in the code to stop execution and get a debugger console  调试
   gem 'web-console', '2.0.0' # A set of debugging tools for your Rails application.
