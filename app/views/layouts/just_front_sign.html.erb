@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= content_for?(:title) ? yield(:title) : '用户中心 | 轩 ' %></title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <%= stylesheet_link_tag 'just_user', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'just_user', 'particles','wxLogin', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
+  <style type='text/css' id='hot_style_patch'>
+      .main-wechat{ padding-top: 45px !important}
+      .done, .alert { position: static !important}
+
+  </style>
+</head>
+<body class="sessions-new ">
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<div id="particles-js"></div>
+
+<section class="wrapper">
+  <div class="card">
+    <div class="front">
+      <header class="header">
+        <div class="header-logo">
+          <a href="/"><h1 class="header--logo__36kr"></h1></a>
+          <p class="header--logo__slogan">只需要一个邮箱，即可享受尊贵体验</p>
+        </div>
+        <div class="header-help">
+          <a href="/" class="header-help__btn">帮助</a>
+        </div>
+      </header>
+      <div>
+        <%= yield %>
+      </div>
+      <footer class="footer">
+      </footer>
+    </div>
+  </div>
+</section>
+</body>
+</html>

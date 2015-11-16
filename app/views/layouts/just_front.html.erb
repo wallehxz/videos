@@ -1,0 +1,67 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+  <title><%= content_for?(:title) ? yield(:title) : '好玩好看的视频 | 轩' %></title>
+  <%= content_for?(:meta)? yield(:meta) :'' %>
+  <%= csrf_meta_tags %>
+  <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
+  <%= stylesheet_link_tag  'just_front', 'slider','disqus', 'Iva', 'video_js', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+</head>
+<body>
+<!--[if lt IE 10]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<div class="nav-wrapper navbar-fixed-top">
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/" style="padding-top: 0px">
+        <% if current_user %>
+            <img alt="Brand" height="50" src="<%= image_url('toutu/just_logo.png') %>">
+        <% else %>
+            <img alt="Brand" height="50" src="<%= image_url('toutu/just_logo.png') %>">
+        <% end %>
+      </a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+          <span>栏目</span>
+          <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="/channel"><img src="<%= image_url('toutu/column.png') %>" style="width: 25px;height: 26px;"> 电子竞技</a></li>
+        </ul>
+      </li>
+      <% if current_user %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+              <img src="<%= current_user.avatar.present?? current_user.avatar : image_url('toutu/just_logo.png') %>" height="18px" class="img-circle">
+              <%= current_user.email %>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="<%#= admin_dashboard_path %>"><img src="<%= image_url('toutu/yinyang.png')%>" style="height: 20px;width: 20px;"> 数据管理</a></li>
+              <li><a href="<%#= avatar_user_details_path %>"><img src="<%= image_url('toutu/face.png')%>" style="height: 20px;width: 20px;"> 上传头像</a></li>
+              <li><a href="<%#= profile_user_details_path %>"><img src="<%= image_url('toutu/asterpods.png')%>" style="height: 20px;width: 23px;"> 个人中心</a></li>
+              <li><a href="<%= sign_out_path %>"><img src="<%= image_url('toutu/down.png')%>" style="height: 20px;width: 20px;"> 隐退江湖</a></li>
+            </ul>
+          </li>
+      <% else %>
+          <li><a href="<%= sign_in_path %>">登录</a></li>
+          <li><a href="<%= sign_up_path %>">注册</a></li>
+      <% end %>
+    </ul>
+  </nav>
+</div>
+
+<div>
+  <%= yield %>
+</div>
+<footer class="footer">
+ <%= render :partial => 'layouts/footer' %>
+</footer>
+</body>
+</html>

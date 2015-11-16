@@ -1,0 +1,96 @@
+<% comments.each do |user| %>
+<li class="post">
+  <div data-role="post-content" class="post-content authored-by-session-user">
+    <div class="avatar hovercard">
+      <% if user.user_id > 0 %>
+          <img src="<%= user_avatar User.find_by_id(user.user_id) %>" alt="Avatar">
+      <% else %>
+          <img src="/images/avatar/haizei/<%= rand(33) %>.jpg" alt="Avatar">
+      <% end %>
+    </div>
+    <div class="post-body">
+      <header>
+        <span class="post-byline">
+          <span class="author publisher-anchor-color">
+            <% if user.user_id > 0 %>
+                <a href="#"><%= user_name User.find_by_id(user.user_id) %></a>
+            <% else %>
+                <a><%= VideoComment::Anonymous[rand(108)] %></a>
+            <% end %>
+          </span>
+          <% if user.user_id > 0 %>
+              <span class="bullet time-ago-bullet" aria-hidden="true">•</span>
+              <span title="<%= rank_name User.find_by_id(user.user_id) %>"><img src="<%= rank_picture User.find_by_id(user.user_id) %>" style="height: 24px"></span>
+          <% else %>
+              <span class="bullet time-ago-bullet" aria-hidden="true">•</span>
+              <% anonymous = rand(120) %>
+              <span title="<%= rand_rank_name anonymous %>"><img src="<%= rand_rank_picture anonymous %>" style="height: 24px"></span>
+          <% end %>
+        </span>
+        <span class="post-meta">
+          <span class="bullet time-ago-bullet" aria-hidden="true">•</span>
+          <span title="<%= user.created_at.strftime('%Y年%m月%d日 %H:%M') %>"><%= time_ago_in_words(user.created_at) %></span>
+        </span>
+      </header>
+      <div class="post-body-inner" style="font-size: 16px;color: #000000;padding-left: 10px">
+        <%= user.content.html_safe %>
+      </div>
+      <footer>
+        <menu>
+          <% if current_user %>
+            <% if user.user_id == current_user.id %>
+              <li class="voting" data-role="voting">
+                <a class="vote-up  count-0"  data-action="upvote">
+                  <span class="control" style="padding-left: 10px">已获赞 「<%= user.vote_count %>」</span>
+                </a>
+              </li>
+            <% else %>
+              <li class="voting" data-role="voting">
+                <a id="vote_<%= user.id %>" href="javascript:void(0)" class="vote-up  count-0" onclick="vote_comment(<%= user.id %>,<%= user.vote_count %>)" data-action="upvote" title="已获赞 「<%= user.vote_count %>」">
+                  <span class="control"><img src="/images/avatar/vote.png" style="width: 32px;padding-bottom: 5px;"></span>
+                </a>
+              </li>
+            <% end %>
+            <% if user.user_id > 0 && user.user_id != current_user.id %>
+              <li class="bullet" aria-hidden="true">•</li>
+              <li class="voting" data-role="reply-link">
+                <a href="javascript:void(0)" data-action="reply" onclick="reply(<%= user.user_id %>,'<%= user_name User.find(user.user_id) %>')">
+                      <span class="control"><img src="/images/avatar/msgs.png" style="width: 32px;padding-bottom: 5px;"></span>
+                    </a>
+              </li>
+            <% end %>
+          <% else %>
+            <li class="voting" data-role="voting">
+              <a id="vote_<%= user.id %>" href="javascript:void(0)" class="vote-up  count-0" onclick="vote_comment(<%= user.id %>,<%= user.vote_count %>)" data-action="upvote" title="已获赞 「<%= user.vote_count %>」">
+                  <span class="control"><img src="/images/avatar/vote.png" style="width: 32px;padding-bottom: 5px;"></span>
+              </a>
+              </li>
+              <% if user.user_id > 0 %>
+                <li class="bullet" aria-hidden="true">•</li>
+                <li class="voting" data-role="reply-link">
+                  <a href="javascript:void(0)" data-action="reply" onclick="reply('','')">
+                    <span class="control"><img src="/images/avatar/msgs.png" style="width: 32px;padding-bottom: 5px;"></span>
+                  </a>
+                </li>
+              <% end %>
+          <% end %>
+        </menu>
+      </footer>
+    </div>
+  </div>
+</li>
+<% end %>
+<script type="text/javascript">
+ function reply(reply_id,reply_name){
+   <% if current_user %>
+    $('#user').attr('style','display: none');
+    $('#no-user').attr('style','display: none');
+    $('comment-btn').removeAttr('style');
+    $('#reply-user').removeAttr('style').attr('style','background-color: #2A92DD');
+    $('#reply-user').attr('onclick','comment('+ <%= current_user.id %>+',' +reply_id +')' ).html('<span>回复「'+ reply_name +'」评论</span>');
+    $("#comment-content").html('<a style="color: blue">@'+ reply_name + '：</a>&nbsp;');
+   <% else %>
+    $.blockUI({ message: $('#login_form') });
+   <% end %>
+ };
+</script>

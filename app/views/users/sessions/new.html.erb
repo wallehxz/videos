@@ -1,0 +1,40 @@
+<%= content_for(:title,  '登录账户 | 轩') %>
+<div class="main">
+  <div class="main-login">
+    <% if request.url.include?('users') %>
+        <p style="color: #dd3c5a;float: left;padding-left: 20px">⊙_⊙！邮箱不存在或密码不匹配</p>
+    <% end %>
+    <form accept-charset="UTF-8" action="/sign_login" class="simple_form new_user" id="new_user" method="post">
+      <div class="form-group">
+        <span id="tip_email"></span>
+        <input aria-required="true" autocomplete="off"  id="email" name="user[email]" required="required" type="text" placeholder="请建入注册邮箱"/>
+        <p id="tip_pass"></p>
+        <input aria-required="true" autocomplete="off"  id="password" name="user[password]" placeholder="请键入登陆密码" required="required" type="password" />
+        <input class="btn input-submit" name="commit" type="submit" value="登录账户" />
+      </div>
+    </form>
+  </div>
+</div>
+<%= render 'users/shared/links' %>
+<script>
+    $('#email').change(function(){
+        var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+        if(!reg.test($.trim($('#email').val())))
+        {
+            $('#tip_email').html('输账号时请别手抖');
+            $('#email').val('');
+            return false;
+        }else{
+            $('#tip_email').html('');
+        }
+    })
+    $('#password').change(function(){
+        if($('#password').val().length < 6){
+            $('#tip_pass').html('密码弱爆了！');
+            $('#password').val('');
+            return false;
+        }else{
+            $('#tip_pass').html('');
+        }
+    })
+</script>

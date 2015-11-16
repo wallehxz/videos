@@ -1,0 +1,54 @@
+<li class="dropdown user user-menu">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    <% if session[:admin].present? %>
+        <img src="<%= image_url('face.png') %>" class="user-image" alt="User Image"/>
+        <span class="hidden-xs">然而并没有什么卵用</span>
+    <% else %>
+        <img src="<%= user_avatar current_user %>" class="user-image" alt="User Image"/>
+        <span class="hidden-xs"><%= user_name current_user %></span>
+    <% end%>
+  </a>
+  <ul class="dropdown-menu">
+    <li class="user-header">
+      <% if session[:admin].present? %>
+          <img src="<%= image_url('face.png')%>" class="img-circle" alt="User Image" />
+          <p>
+            开发者<br>
+            developer@anye.com
+            <small><%= Time.now.strftime('%Y，%m月')%></small>
+          </p>
+      <% else %>
+          <img src="<%= user_avatar current_user %>" class="img-circle" alt="User Image" />
+          <p>
+            管理员<br>
+            <%= current_user.email %>
+            <small><%= current_user.updated_at.strftime('%Y，%m月')%></small>
+          </p>
+      <% end %>
+    </li>
+    <li class="user-body">
+      <div class="col-xs-4 text-center">
+        <a href="<%= admin_released_path %>">视频</a>
+      </div>
+      <div class="col-xs-4 text-center">
+        <a href="<%= admin_dashboard_path %>">栏目</a>
+      </div>
+      <div class="col-xs-4 text-center">
+        <a href="<%= admin_users_path %>">成员</a>
+      </div>
+    </li>
+    <!-- Menu Footer-->
+    <li class="user-footer">
+      <div class="pull-left">
+        <a href="#" class="btn btn-default btn-flat">简介</a>
+      </div>
+      <div class="pull-right">
+        <% if session[:admin].present? %>
+            <a href="<%= logout_admin_sessions_path%>" class="btn btn-default btn-flat">登出</a>
+        <% else %>
+            <a href="<%= sign_out_path %>" class="btn btn-default btn-flat">登出</a>
+        <% end %>
+      </div>
+    </li>
+  </ul>
+</li>

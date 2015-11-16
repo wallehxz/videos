@@ -1,0 +1,43 @@
+<%= content_for(:title,  '修改密码 | 轩') %>
+<div class="main">
+  <div class="main-login">
+    <% if devise_error_messages!.present? %>
+        <% if devise_error_messages!.include?('token是无效的') %>
+            <p>邮件已经失效，请<a href="/pass_forgot">重新发送</a></p>
+        <% end %>
+    <% end %>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+        <div class="form-group">
+          <%= f.hidden_field :reset_password_token %>
+          <span id="tip_pass"></span>
+          <%= f.password_field :password, autofocus: true, autocomplete: 'off',placeholder:'请键入登录密码', required:'required' %>
+          <p id="tip_con"></p>
+          <%= f.password_field :password_confirmation, autocomplete: 'off', placeholder:'请确认登录密码', required:'required' %>
+          <input id="commit" class="btn input-submit" name="commit" type="submit" value="修改密码" />
+        </div>
+    <% end %>
+  </div>
+</div>
+<%= render 'users/shared/links' %>
+<script>
+    $('#user_password').change(function(){
+        if($('#user_password').val().length < 6){
+            $('#tip_pass').html('密码弱爆了！');
+            $('#user_password').val('');
+            return false;
+        }else{
+            $('#tip_pass').html('');
+        }
+    })
+    $('#user_password_confirmation').change(function(){
+        if($('#user_password_confirmation').val() != $('#user_password').val()){
+            $('#tip_con').html('输入密码时请勿手抖！');
+            $('#user_password_confirmation').val('');
+            $('#user_password').val('');
+            return false;
+        }else{
+            $('#tip_con').html('');
+        }
+    })
+</script>
+
