@@ -4,7 +4,7 @@ set :rvm_type, :user
 set :rvm_custom_path, '/usr/local/rvm'
 set :rvm_roles, [:app, :web]
 
-server 'root@45.78.50.104', port: 27180, roles: %w[web app db], primary: true
+server 'root@45.78.50.104', port: 29321, roles: %w[web app db], primary: true
 # # Simple Role Syntax
 # # ==================
 # # Supports bulk-adding hosts to roles, the primary server in each group
