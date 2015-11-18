@@ -1,41 +1,8 @@
 <ul class="sidebar-menu">
-  <li class="header">功能导航</li>
-  <li class="treeview <% if controller_name=='channels' && action_name=='index' %>active<% end %>">
-    <a href="<%= admin_dashboard_path %>">
-      <i class="fa fa-home"></i> <span>栏目列表</span>
+  <li class="header">管理模块</li>
+  <li class="treeview <% if controller_name=='columns'%>active<% end %>">
+    <a href="<%= dashboard_path %>">
+      <i class="fa fa-home"></i> <span>栏目管理</span>
     </a>
   </li>
-  <li class="treeview <% if controller_name=='channels' && action_name=='videos' %>active<% end %>">
-    <a href="<%= admin_released_path %>">
-      <i class="glyphicon glyphicon-facetime-video"></i> <span>视频列表</span>
-    </a>
-  </li>
-  <li class="treeview <% if controller_name=='channels' && action_name=='users' %>active<% end %>">
-    <a href="<%= admin_users_path %>">
-      <i class="glyphicon glyphicon-user"></i> <span>用户列表</span>
-    </a>
-  </li>
-  <li class="treeview <% if controller_name=='qiniu' %>active<% end %>">
-    <a href="<%= admin_qiniu_path %>">
-      <i class="glyphicon glyphicon-cloud"></i><span>七牛存储</span>
-    </a>
-  </li>
-  <!--<li class="treeview <#% if controller_name=='youku' %>active<%# end %>">-->
-    <!--<a href="<%#= admin_youku_path %>">-->
-      <!--<i class="glyphicon glyphicon-film"></i><span>优酷视频</span>-->
-    <!--</a>-->
-  <!--</li>-->
-  <li class="treeview <% if controller_name=='av_libs' %>active<% end %>">
-    <a href="<%= admin_av_libs_path %>">
-      <i class="glyphicon glyphicon-heart"></i><span>摇杆驱动</span>
-    </a>
-  </li>
-  <% Channel.all.order(:id).each do |channel| %>
-      <li class="treeview <% if params[:id] == channel.id.to_s || params[:channel_id] == channel.id.to_s %>active<% end %>">
-        <a href="<%= admin_channel_path(channel) %>">
-          <i class="glyphicon glyphicon-tower"></i>
-          <span><%= channel.title %></span>
-        </a>
-      </li>
-  <% end %>
 </ul>

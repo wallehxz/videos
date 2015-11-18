@@ -1,0 +1,24 @@
+
+<%= content_for(:title,  '编辑栏目「' + @column.name + '」| 轩') %>
+<section class="content-header">
+  <h1>
+    编辑栏目
+    <small>「<%= @column.name %>」</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> 栏目管理</a></li>
+    <li><i class="glyphicon glyphicon-edit"></i> 编辑栏目</li>
+    <li class="active"><i class="glyphicon glyphicon-send"></i> <%= @column.name %></li>
+  </ol>
+</section>
+<section class="content">
+  <div style="padding-top: 10px">
+    <%= render partial: 'layouts/notice' %>
+    <div class="box box-warning">
+      <div class="box-header">
+        <h3 class="box-title">编辑表单</h3>
+      </div>
+      <%= render 'form' %>
+    </div>
+  </div>
+</section>

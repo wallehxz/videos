@@ -1,0 +1,21 @@
+<%= content_for(:title,  '添加栏目 | 轩') %>
+<section class="content-header">
+  <h1>
+    添加栏目
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> 栏目管理</a></li>
+    <li class="active"><i class="glyphicon glyphicon-plus"></i> 新增栏目</li>
+  </ol>
+</section>
+<section class="content">
+  <div style="padding-top: 10px">
+    <%= render partial: 'layouts/notice' %>
+    <div class="box box-success">
+      <div class="box-header">
+        <h3 class="box-title">新增表单</h3>
+      </div>
+      <%= render 'form' %>
+    </div>
+  </div>
+</section>
