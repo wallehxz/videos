@@ -15,7 +15,7 @@ gem 'coffee-rails', '4.1.0' # CoffeeScript adapter for the Rails asset pipeline.
 gem 'jquery-rails', '4.0.5' # provides jQuery and the jQuery-ujs driver 驱动
 gem 'turbolinks', '2.5.3'  # makes following links in your web application faster
 gem 'jbuilder', '2.3.2' # Build JSON APIs
-gem 'rails_12factor', group: :production
+# gem 'rails_12factor', group: :production
 gem 'sdoc', '~> 0.4.0', group: :doc # bundle exec rake doc:rails generates the API under doc/api.
 gem 'qiniu', '6.4.2'  #七牛云存储服务
 gem 'unicorn', '4.9.0' # Rails Server
