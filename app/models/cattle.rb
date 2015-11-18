@@ -58,8 +58,10 @@ class Cattle < ActiveRecord::Base
 
   #本地文件上传至七牛服务器
   def self.cache_to_yun(file)
+    Logger.info('文件准备上传至七牛云服务器！')
     name,path = local_cache_file(file)
     file_url = upload_yun(name,path)
+    Logger.info('文件成功上传至七牛云服务器！')
     delete_local_cache name
     return file_url
   end
