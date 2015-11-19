@@ -23,9 +23,8 @@
             <thead>
             <tr>
               <th tabindex="0" aria-controls="example1" style="text-align: center">封面</th>
-              <th tabindex="0" aria-controls="example1" style="text-align: center">标题</th>
+              <th tabindex="0" aria-controls="example1" style="text-align: center">属性</th>
               <th tabindex="0" aria-controls="example1" style="text-align: center">描述</th>
-              <th tabindex="0" aria-controls="example1" style="text-align: center">时间</th>
               <th tabindex="0" aria-controls="example1" style="text-align: center">操作</th>
             </tr>
             </thead>
@@ -36,6 +35,10 @@
                     <img src="<%= channel.cover %>" style="width: 280px">
                   </td>
                   <td style="text-align: left"><br><br>
+                    <label class="label label-info" style="font-size: 16px" title="更新于「<%= channel.updated_at.strftime('%Y-%m-%d %H:%M:%S') %>」">
+                      <i class="glyphicon glyphicon-calendar"></i>
+                      <%= distance_of_time_in_words_to_now channel.updated_at %>
+                    </label><br><br>
                     <label class="label label-danger" style="font-size: 16px">
                       <i class="glyphicon glyphicon-link"></i>
                       <%= channel.english %>
@@ -46,17 +49,6 @@
                     </label>
                   </td>
                   <td style="text-align: left;max-width: 400px"><%= channel.summary.html_safe %></td>
-                  <td style="text-align: left"><br><br>
-                    <label class="label label-success" style="font-size: 16px" title="创建于「<%= channel.created_at.strftime('%Y-%m-%d %H:%M:%S') %>」">
-                      <i class="glyphicon glyphicon-calendar"></i>
-                      <%= distance_of_time_in_words_to_now channel.created_at %>
-                    </label>
-                    <br><br>
-                    <label class="label label-warning" style="font-size: 16px" title="更新于「<%= channel.updated_at.strftime('%Y-%m-%d %H:%M:%S') %>」">
-                      <i class="glyphicon glyphicon-calendar"></i>
-                      <%= distance_of_time_in_words_to_now channel.updated_at %>
-                    </label>
-                  </td>
                   <td><br>
                     <a href="<%= edit_administer_column_path(channel) %>" class="btn btn-default">
                       <i class="glyphicon glyphicon-edit"></i>
