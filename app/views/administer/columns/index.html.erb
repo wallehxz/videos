@@ -34,18 +34,18 @@
                   <td>
                     <img src="<%= channel.cover %>" style="width: 280px">
                   </td>
-                  <td style="text-align: left"><br><br>
-                    <label class="label label-info" style="font-size: 16px" title="更新于「<%= channel.updated_at.strftime('%Y-%m-%d %H:%M:%S') %>」">
-                      <i class="glyphicon glyphicon-calendar"></i>
-                      <%= distance_of_time_in_words_to_now channel.updated_at %>
-                    </label><br><br>
-                    <label class="label label-danger" style="font-size: 16px">
+                  <td style="text-align: left"><br>
+                    <label class="label label-primary" style="font-size: 16px">
                       <i class="glyphicon glyphicon-link"></i>
                       <%= channel.english %>
                     </label><br><br>
                     <label class="label label-primary" style="font-size: 16px">
                       <i class="glyphicon glyphicon-pushpin"></i>
                       <%= channel.name %>
+                    </label><br><br>
+                    <label class="label label-default" style="font-size: 16px" title="更新于「<%= channel.updated_at.strftime('%Y-%m-%d %H:%M:%S') %>」">
+                      <i class="glyphicon glyphicon-time"></i>
+                      <%= distance_of_time_in_words_to_now channel.updated_at %>
                     </label>
                   </td>
                   <td style="text-align: left;max-width: 400px"><%= channel.summary.html_safe %></td>

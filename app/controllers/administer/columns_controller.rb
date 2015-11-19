@@ -21,7 +21,7 @@ class Administer::ColumnsController < ApplicationController
     params[:column][:cover] = Column.picture_url(params[:column][:photo_file])
     @column = Column.new(column_params)
     if @column.save
-      redirect_to dashboard_path
+      redirect_to columns_path
     else
       render :new
     end
@@ -33,7 +33,7 @@ class Administer::ColumnsController < ApplicationController
         params[:column][:cover] = Column.picture_url(params[:column][:photo_file])
       end
       if @column.update(column_params)
-        redirect_to dashboard_path
+        redirect_to columns_path
       else
         render :edit
       end
@@ -41,7 +41,7 @@ class Administer::ColumnsController < ApplicationController
 
   def destroy
     @column.destroy
-    redirect_to dashboard_path
+    redirect_to columns_path
   end
 
   private

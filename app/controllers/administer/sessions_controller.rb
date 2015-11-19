@@ -1,7 +1,7 @@
 class Administer::SessionsController < ApplicationController
   layout 'just_admin_sign'
-  def admin_sign_in
 
+  def admin_sign_in
   end
 
   def admin_sign_login

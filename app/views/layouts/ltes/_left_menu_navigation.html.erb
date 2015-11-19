@@ -1,8 +1,13 @@
 <ul class="sidebar-menu">
   <li class="header">管理模块</li>
-  <li class="treeview <% if controller_name=='columns'%>active<% end %>">
+  <li class="treeview <% if controller_name=='dashboard'%>active<% end %>">
     <a href="<%= dashboard_path %>">
-      <i class="fa fa-home"></i> <span>栏目管理</span>
+      <i class="fa fa-dashboard"></i> <span>数据中心</span>
+    </a>
+  </li>
+  <li class="treeview <% if controller_name=='columns'%>active<% end %>">
+    <a href="<%= columns_path %>">
+      <i class="fa fa-columns"></i> <span>栏目管理</span>
     </a>
   </li>
 </ul>
