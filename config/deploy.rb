@@ -15,9 +15,10 @@ set :linked_files, %w{
   config/database.yml
   config/secrets.yml
   config/settings.rb
+
 }
 
-set :linked_dirs, %w{tmp/cache public/uploads public/logger}
+set :linked_dirs, %w{tmp/cache public/uploads public/logger log}
 
 set :keep_releases, 5
 

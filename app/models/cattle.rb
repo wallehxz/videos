@@ -13,7 +13,7 @@ class Cattle < ActiveRecord::Base
 
   #将文件缓存到本地磁盘，生成新的名称和地址
   def self.local_cache_file(file)
-    dir_path = "#{Rails.root}/public/cache_file"
+    dir_path = "#{Rails.root}/public/uploads" #软链文件 授权 chmod -R 777 uploads
     FileUtils.mkdir(dir_path) unless File.exist?(dir_path) #如果目录不存在,创建目录
     ext = File.extname(file.original_filename).to_s #文件扩展名.xxx
     file_name = rename_ext_file(ext)
@@ -43,7 +43,7 @@ class Cattle < ActiveRecord::Base
 
   #删除本地缓存文件
   def self.delete_local_cache(file)
-    file_path = "#{Rails.root}/public/cache_file/#{file}"
+    file_path = "#{Rails.root}/public/uploads/#{file}"
     if File.exist?(file_path)
       File.delete(file_path)
     end
@@ -60,7 +60,7 @@ class Cattle < ActiveRecord::Base
   def self.cache_to_yun(file)
     name,path = local_cache_file(file)
     file_url = upload_yun(name,path)
-    delete_local_cache name
+    #delete_local_cache name 删除缓存的文件
     return file_url
   end
 
