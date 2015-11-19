@@ -3,6 +3,7 @@ class CreateColumns < ActiveRecord::Migration
     create_table :columns do |t|
       t.string :name
       t.string :english
+      t.string :icon
       t.string :cover
       t.text :summary
 

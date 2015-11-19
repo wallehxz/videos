@@ -12,7 +12,7 @@
 #
 
 class Column < ActiveRecord::Base
-  validates_presence_of :name, :english
+  validates_presence_of :name, :english, :icon
   validates_uniqueness_of :name, :english
   scope :latest, -> { order(updated_at: :desc) }
 

@@ -50,6 +50,6 @@ class Administer::ColumnsController < ApplicationController
     end
 
     def column_params
-      params.require(:column).permit(:name, :english, :cover, :summary)
+      params.require(:column).permit(:name, :english, :icon, :cover, :summary)
     end
 end

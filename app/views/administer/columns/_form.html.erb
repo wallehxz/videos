@@ -16,7 +16,18 @@
             <img id="imgedit" src="<%= @column.cover %>" style="max-width: 300px;padding-top: 10px"/>
         <% end %>
       </div>
-
+      <div class="form-group has-feedback">
+        <label>栏目图标</label>
+        <div class="input-group" style="width: 300px">
+          <div class="input-group-addon">
+            <i class="fa fa-connectdevelop"></i>
+          </div>
+          <%= f.text_field :icon, class:'form-control', placeholder:'（必填*）' %>
+        </div>
+        <p id="english_tip" style="display: none" >
+          <span style="color: #d33724">添加 fa-xx 格式的图标</span>
+        </p>
+      </div>
       <div class="form-group has-error">
         <label>标题英译</label>
         <div class="input-group" style="width: 300px">
@@ -29,6 +40,7 @@
           <span style="color: #d33724">请填写相应的英文词组</span>
         </p>
       </div>
+
       <div class="form-group has-warning">
         <label>栏目名称</label>
         <div class="input-group" style="width: 600px">
