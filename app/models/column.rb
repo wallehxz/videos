@@ -14,6 +14,7 @@
 class Column < ActiveRecord::Base
   validates_presence_of :name, :english, :icon
   validates_uniqueness_of :name, :english
+  has_many :videos, :dependent => :destroy
   scope :latest, -> { order(updated_at: :desc) }
 
   def self.picture_url(file)

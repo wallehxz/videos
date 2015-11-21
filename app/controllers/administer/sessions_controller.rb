@@ -12,7 +12,7 @@ class Administer::SessionsController < ApplicationController
       if params[:account] == Settings.account
         if params[:password] == Settings.password
           session[:admin] = 1
-          flash[:success] = '登录成功！可以继续~~~'
+          flash[:success] = '欢迎回来、数据管理员'
           redirect_to dashboard_path
         else
           flash[:error] = '管理员密码有误'

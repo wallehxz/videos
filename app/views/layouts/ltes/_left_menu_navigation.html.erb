@@ -1,6 +1,6 @@
 <ul class="sidebar-menu">
-  <li class="header">管理模块</li>
-  <li class="treeview <% if controller_name=='dashboard'%>active<% end %>">
+  <li class="header">功能管理</li>
+  <li class="treeview <% if controller_name=='dashboard' && action_name=='index' %>active<% end %>">
     <a href="<%= dashboard_path %>">
       <i class="fa fa-dashboard"></i> <span>数据中心</span>
     </a>
@@ -10,4 +10,12 @@
       <i class="fa fa-columns"></i> <span>栏目管理</span>
     </a>
   </li>
+  <li class="header">视频管理</li>
+  <% Column.latest.each do |item| %>
+      <li class="treeview <% if params[:english] == item.english || params[:column_id] == item.id.to_s %>active<% end %>">
+        <a href="<%= channel_path(item.english) %>">
+          <i class="<%= item.icon %>"></i> <span><%= item.name %></span>
+        </a>
+      </li>
+  <% end %>
 </ul>

@@ -1,0 +1,134 @@
+<%= form_for(['administer',@column, @video]) do |f| %>
+    <div class="box-body" style="padding-left: 100px;background: url(<%= image_path('avatar/form_background.png')%>)">
+
+      <div class="form-group has-feedback">
+        <label>频道归属</label>
+        <div class="input-group" style="width: 300px">
+          <div class="input-group-addon">
+            <i class="<%= @column.icon%>"></i>
+          </div>
+          <input type="text" value="<%= @column.name %>" class="form-control" readonly>
+        </div>
+      </div>
+
+      <div class="form-group has-success">
+        <label>封面文件</label>
+        <div class="input-group" style="width: 300px">
+          <div class="input-group-addon">
+            <i class="fa fa-image"></i>
+          </div>
+          <%= f.file_field :photo_file, class:'form-control', accept:'.jpg,.png,.jpeg' %>
+        </div>
+        <div id="imgdiv" style="display: none">
+          <img id="imgblah" style="max-width: 300px;padding-top: 10px"/>
+        </div>
+        <% if action_name =='edit' %>
+            <img id="imgedit" src="<%= @video.cover %>" style="max-width: 300px;padding-top: 10px"/>
+        <% end %>
+      </div>
+
+      <div class="form-group has-warning">
+        <label>视频推荐</label>
+        <div class="input-group" style="width: 300px">
+          <div class="input-group-addon">
+            <i class="glyphicon glyphicon-fire"></i>
+          </div>
+          <%= f.select(:recommend, [['默认否',0],['选择是',1]], {},{:class => 'form-control'}) %>
+        </div>
+      </div>
+
+      <div class="form-group has-error">
+        <label>类别属性</label>
+        <div class="input-group" style="width: 300px">
+          <div class="input-group-addon">
+            <i class="glyphicon glyphicon-heart-empty"></i>
+          </div>
+          <% if @column.english == 'Fucking' %>
+              <%= f.select(:video_type, [['快播视频',3]], {prompt:'请选择类型'},{:class => 'form-control'}) %>
+          <% else %>
+              <%= f.select(:video_type, [['优酷视频',0],['腾讯视频',1],['爱奇艺视频',2]], {prompt:'请选择类型'},{:class => 'form-control'}) %>
+          <% end %>
+
+        </div>
+      </div>
+      <div class="form-group has-warning">
+        <label>视频标题</label>
+        <div class="input-group" style="width: 600px">
+          <div class="input-group-addon">
+            <i class="glyphicon glyphicon-bookmark"></i>
+          </div>
+          <%= f.text_field :title, class:'form-control', placeholder:'(必填*)' %>
+        </div>
+      </div>
+      <% if @column.english == 'Fucking' %>
+          <div class="form-group has-success">
+            <label>电影时长</label>
+            <div class="input-group" style="width: 600px">
+              <div class="input-group-addon">
+                <i class="glyphicon glyphicon-time"></i>
+              </div>
+              <%= f.text_field :duration, :class => 'form-control', placeholder:'(必填)* ' %>
+            </div>
+          </div>
+          <div class="form-group has-error">
+            <label>资源链接</label>
+            <div class="input-group" style="width: 600px">
+              <div class="input-group-addon">
+                <i class="glyphicon glyphicon-info-sign"></i>
+              </div>
+              <%= f.text_field :tv_code, :class => 'form-control', placeholder:'(必填)* ' %>
+            </div>
+          </div>
+      <% else %>
+          <div class="form-group has-error">
+            <label>视频编号</label>
+            <div class="input-group" style="width: 600px">
+              <div class="input-group-addon">
+                <i class="glyphicon glyphicon-info-sign"></i>
+              </div>
+              <%= f.text_field :tv_code, :class => 'form-control', placeholder:'(必填)* ' %>
+            </div>
+          </div>
+      <% end %>
+      <div class="form-group has-warning">
+        <label>封面链接</label>
+        <div class="input-group" style="width: 600px">
+          <div class="input-group-addon">
+            <i class="glyphicon glyphicon-link"></i>
+          </div>
+          <%= f.text_field :cover, class:'form-control', placeholder:'(选填)*' %>
+        </div>
+      </div>
+      <div class="form-group has-feedback">
+        <label>视频简介</label>
+        <div class="input-group"style="width: 600px">
+          <%= f.text_area :summary, class:'textarea', placeholder:'Place some text here', style:'width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;' %>
+        </div>
+      </div>
+      <hr>
+      <div>
+        <button type="submit" class="btn btn-primary" style="width: 120px">提交</button>
+        <a href="<%= channel_path(@column.english) %>" class="btn btn-warning" style="width: 120px">取消</a>
+      </div>
+    </div>
+<% end %>
+
+<script type="text/javascript">
+    $(function () {
+        $(".textarea").wysihtml5();
+    });
+    $("#video_photo_file").change(function(){
+        readimgURL(this);
+        $('#imgdiv').removeAttr('style');
+        $('#imgedit').attr('style','display: none');
+    });
+    function readimgURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#imgblah').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    };
+</script>

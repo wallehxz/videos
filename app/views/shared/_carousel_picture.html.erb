@@ -1,0 +1,44 @@
+<div class="c-860 c-demoslider">
+  <div id="cuteslider_3_wrapper" class="cs-circleslight">
+    <div id="cuteslider_3" class="cute-slider" data-width="960" data-height="420" data-overpause="true">
+      <ul data-type="slides">
+        <% cache [:carousel, columns.max.updated_at]  do %>
+            <% columns.each do |column|%>
+                <% if column.updated_at == columns.first.updated_at%>
+                    <li data-delay="5" data-src="5" data-trans3d="tr6,tr17,tr22,tr23,tr29,tr27,tr32,tr34,tr35,tr53,tr54,tr62,tr63,tr4,tr13,tr45" data-trans2d="tr3,tr8,tr12,tr19,tr22,tr25,tr27,tr29,tr31,tr34,tr35,tr38,tr39,tr41">
+                      <img src="<%= image_path('slider/blank.png') %>" data-src="<%= column.cover %>" data-thumb="<%= image_path('toutu/just_logo.png') %>"/>
+                      <a data-type="link" href="" target="_blank"></a>
+                    </li>
+                <% else %>
+                    <li data-delay="5" data-src="5" data-trans3d="tr6,tr17,tr22,tr23,tr29,tr27,tr32,tr34,tr35,tr53,tr54,tr62,tr63,tr4,tr13,tr45" data-trans2d="tr3,tr8,tr12,tr19,tr22,tr25,tr27,tr29,tr31,tr34,tr35,tr38,tr39,tr41">
+                      <img src="<%= image_path('slider/blank.png') %>" data-src="<%= column.cover %>" data-thumb="<%= image_path('toutu/just_logo.png') %>"/>
+                      <a data-type="link" href="" target="_blank"></a>
+                    </li>
+                <% end %>
+            <% end %>
+        <% end %>
+      </ul>
+      <ul data-type="controls">
+        <li data-type="captions"></li>
+        <li data-type="link"></li>
+        <li data-type="video"></li>
+        <li data-type="slideinfo"></li>
+        <li data-type="circletimer"></li>
+        <li data-type="previous"></li>
+        <li data-type="next"> </li>
+        <li data-type="bartimer"></li>
+        <li data-type="slidecontrol" data-thumb="true" data-thumbalign="up"></li>
+      </ul>
+    </div>
+    <div class="cute-shadow"><img src="<%= image_url ('slider/shadow.png') %>" alt="shadow" /></div>
+  </div>
+</div>
+<script type="text/javascript">
+    var cuteslider3 = new Cute.Slider();
+    cuteslider3.setup("cuteslider_3" , "cuteslider_3_wrapper", "<%= stylesheet_path 'slider' %>");
+    cuteslider3.api.addEventListener(Cute.SliderEvent.CHANGE_START, function(event){});
+    cuteslider3.api.addEventListener(Cute.SliderEvent.CHANGE_END, function(event){});
+    cuteslider3.api.addEventListener(Cute.SliderEvent.WATING, function(event){});
+    cuteslider3.api.addEventListener(Cute.SliderEvent.CHANGE_NEXT_SLIDE, function(event){});
+    cuteslider3.api.addEventListener(Cute.SliderEvent.WATING_FOR_NEXT, function(event){});
+</script>

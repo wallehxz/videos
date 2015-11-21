@@ -1,0 +1,31 @@
+<%= content_for(:title,  ' 添加' + @column.name + '视频 | 轩') %>
+<section class="content-header">
+  <h1>
+    添加视频
+    <small>「<%= @column.name %>」</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="glyphicon glyphicon-cog"></i> 视频管理</a></li>
+    <li class="active"><i class="<%= @column.icon %>"></i> <%= @column.name %></li>
+    <li class="active"><i class="glyphicon glyphicon-plus"></i> 新增视频</li>
+  </ol>
+</section>
+<section class="content">
+  <div style="padding-top: 10px">
+    <%= render partial: 'layouts/notice' %>
+    <div class="box box-success">
+      <div class="box-header">
+        <h3 class="box-title">添加表单</h3>
+      </div>
+      <%= render 'form' %>
+    </div>
+  </div>
+</section>
+<script>
+    window.onbeforeunload = function(e)//绑定刷新等事件
+    {
+        var message = '^_^因为您无心操作，会导致数据丢失！'//设定提示消息
+        if ('Netscape' == navigator.appName) return e.preventDefault(),message//针对Netscape内核的提示方式,阻止默认动作 後返回提示消息即可
+        window.event.returnValue = message//针对IE等的提示方式
+    }
+</script>

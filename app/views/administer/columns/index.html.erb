@@ -1,4 +1,4 @@
-<%= content_for(:title,  '栏目列表 | 暗夜小站') %>
+<%= content_for(:title,  '栏目列表 | 轩') %>
 <section class="content-header">
   <h1>
     视频栏目 <small>栏目信息预览</small>
@@ -32,7 +32,7 @@
             <% @columns.each do |channel| %>
                 <tr style="text-align: center">
                   <td>
-                    <img src="<%= channel.cover %>" style="width: 280px">
+                    <img src="<%= channel.cover %>" style="height: 140px">
                   </td>
                   <td style="text-align: left"><br>
                     <label class="label label-primary" style="font-size: 16px">
@@ -40,7 +40,7 @@
                       <%= channel.english %>
                     </label><br><br>
                     <label class="label label-primary" style="font-size: 16px">
-                      <i class="fa <%= channel.icon %>"></i>
+                      <i class="<%= channel.icon %>"></i>
                       <%= channel.name %>
                     </label><br><br>
                     <label class="label label-default" style="font-size: 16px" title="更新于「<%= channel.updated_at.strftime('%Y-%m-%d %H:%M:%S') %>」">
@@ -50,12 +50,12 @@
                   </td>
                   <td style="text-align: left;max-width: 400px"><%= channel.summary.html_safe %></td>
                   <td><br>
-                    <a href="<%= edit_administer_column_path(channel) %>" class="btn btn-default">
+                    <a href="<%= edit_administer_column_path(channel) %>" class="btn btn-warning">
                       <i class="glyphicon glyphicon-edit"></i>
                       编辑
                     </a>
                     <br><br>
-                    <a href="<%= administer_column_path(channel) %>" class="btn btn-default" data-method="delete" data-confirm="确定要删除么?">
+                    <a href="<%= administer_column_path(channel) %>" class="btn btn-danger" data-method="delete" data-confirm="确定删除「<%= channel.name %>」?">
                       <i class="glyphicon glyphicon-trash"></i>
                       删除
                     </a>

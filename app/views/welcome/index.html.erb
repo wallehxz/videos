@@ -1,2 +1,2 @@
 <%= content_for(:title, '好看好玩的视频 | 轩') %>
-<%= render partial: 'layouts/shared/carousel_picture' %>
+<%= render :partial=> 'shared/carousel_picture', locals: { columns: @column }%>

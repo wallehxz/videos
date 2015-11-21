@@ -15,4 +15,5 @@ class ApplicationController < ActionController::Base
   def current_admin
     return session[:admin]
   end
+
 end
