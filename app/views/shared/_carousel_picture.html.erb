@@ -2,7 +2,7 @@
   <div id="cuteslider_3_wrapper" class="cs-circleslight">
     <div id="cuteslider_3" class="cute-slider" data-width="960" data-height="420" data-overpause="true">
       <ul data-type="slides">
-        <% cache [:carousel, columns.max.updated_at]  do %>
+        <% cache [:carousel, columns.first.updated_at]  do %>
             <% columns.each do |column|%>
                 <% if column.updated_at == columns.first.updated_at%>
                     <li data-delay="5" data-src="5" data-trans3d="tr6,tr17,tr22,tr23,tr29,tr27,tr32,tr34,tr35,tr53,tr54,tr62,tr63,tr4,tr13,tr45" data-trans2d="tr3,tr8,tr12,tr19,tr22,tr25,tr27,tr29,tr31,tr34,tr35,tr38,tr39,tr41">
