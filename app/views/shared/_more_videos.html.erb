@@ -1,0 +1,16 @@
+<% @videos.each do |video| %>
+    <li class="video-item">
+      <a class="animated" href="<%= video_playing_path(video.tv_code)%>" target="_blank">
+        <div class="video-poster"><img src="<%= video.cover %>" alt=""></div>
+        <div class="video-play" title="<%= video.title %>">
+          <h4><span><img src="<%= image_url('toutu/play.png') %>" style="width: 55px;height: 65px;padding-bottom: 10px;"></span></h4>
+        </div>
+        <div class="video-info">
+          <p><%=  video.title %></p>
+          <p><%= video_time video.duration %>
+            <span class="v-time"><%= video.created_at.strftime('%m/%d %H:%M') %></span>
+          </p>
+        </div>
+      </a>
+    </li>
+<% end %>

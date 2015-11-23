@@ -4,11 +4,7 @@
       <div role="alert"></div>
       <div class="avatar">
         <a class="user">
-          <% if current_user %>
-              <img src="<%= user_avatar current_user %>">
-          <% else %>
-              <img src="/images/avatar/wechat.png">
-          <% end %>
+              <img src="<%= image_path('toutu/just_logo.png') %>">
         </a>
       </div>
       <div class="textarea-wrapper" data-role="textarea" dir="auto">
@@ -63,7 +59,7 @@
         var new_comment = '';
         new_comment += '<li class="post"><div data-role="post-content" class="post-content authored-by-session-user"> <div class="avatar hovercard">';
         new_comment += '<img src="/images/avatar/wechat.png" alt="Avatar">';
-        new_comment += '</div><div class="post-body"><header><span class="post-byline"><span class="author publisher-anchor-color"> <a><%= VideoComment::Anonymous[rand(108)]%></a> </span></span> <span class="post-meta"> <span class="bullet time-ago-bullet" aria-hidden="true">•</span>';
+        new_comment += '</div><div class="post-body"><header><span class="post-byline"><span class="author publisher-anchor-color"> <a><%#= VideoComment::Anonymous[rand(108)]%></a> </span></span> <span class="post-meta"> <span class="bullet time-ago-bullet" aria-hidden="true">•</span>';
         new_comment += '<a data-role="relative-time" class="time-ago" title="<%= Time.now.strftime('%Y年%m月%d日 %H:%M') %>">刚刚</a></span>';
         new_comment += '<div class="post-body-inner" style="font-size: 16px;color: #000000">'+ params['comment']['content'] +'</div>';
         new_comment += '<footer><menu><li class="voting" data-role="voting"><a class="vote-up  count-0" data-action="upvote" title="Vote up"><span class="control">赞一个</span></a></li></menu></footer></div></div></li>';

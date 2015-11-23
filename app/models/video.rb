@@ -1,9 +1,27 @@
+# == Schema Information
+#
+# Table name: videos
+#
+#  id         :integer          not null, primary key
+#  column_id  :integer
+#  recommend  :integer          default("0")
+#  video_type :integer
+#  tv_code    :string           not null
+#  title      :string
+#  cover      :string
+#  duration   :string
+#  summary    :text
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class Video < ActiveRecord::Base
   validates_uniqueness_of :title, :tv_code
   validates_presence_of :column_id, :title, :cover, :video_type
   belongs_to :column
-  scope :latest, -> { order(updated_at: :desc) }
-  scope :recent, ->{ order(created_at: :desc)}
+  scope :latest, -> {order(updated_at: :desc)}
+  scope :recent, ->{order(created_at: :desc)}
+  scope :hexie, ->{where('video_type != 3')}
 
   #根据code获取优酷的视频信息 Video.def self.code_to_youku_info
   #{"id"=>"XMTM5MDUyNDY2MA==", "title"=>"忽必烈的二次创业 148", "thumbnail"=>"http://r1.ykimg.com/05420408564D93596A0A4804DD28AA95", "thumbnail_v2"=>"http://r1.ykimg.com/05420408564D93596A0A4804DD28AA95", "duration"=>"3348.18", "comment_count"=>"894", "favorite_count"=>"0", "up_count"=>"3089", "down_count"=>"85", "published"=>"2015-11-19 17:45:00", "copyright_type"=>"original", "public_type"=>"all", "state"=>"normal", "streamtypes"=>["hd2", "flvhd", "hd", "3gphd", "mp5hd", "mp5hd2"], "operation_limit"=>[], "category"=>"资讯", "view_count"=>462533, "tags"=>"罗振宇,罗辑思维,忽必烈,挑战,元朝,繁荣", "paid"=>0, "link"=>"http://v.youku.com/v_show/id_XMTM5MDUyNDY2MA==.html", "player"=>"http://player.youku.com/player.php/sid/XMTM5MDUyNDY2MA==/partnerid/9f88fcd420d33601/v.swf", "user"=>{"id"=>"128391495", "name"=>"罗辑思维", "link"=>"http://i.youku.com/u/UNTEzNTY1OTgw"}}
@@ -65,7 +83,7 @@ class Video < ActiveRecord::Base
   end
 
   #视频头图判断更新
-  def self.update_cover_to_video(file,url)
+  def self.file_or_url_to_cover(file,url)
     return Cattle.cache_to_yun(file) if file.present?
     return url if file.nil?
   end

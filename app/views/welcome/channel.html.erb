@@ -1,16 +1,16 @@
-<%= content_for(:title, '好看好玩的视频 | 华轩·张') %>
-<%= render :partial=> 'shared/carousel_picture', locals: { columns: @channel }%>
-<div class="container">
+<%= content_for(:title, @channel.name + ' | 华轩·张') %>
+<div class="container" style="padding-top: 70px">
   <div class="grid">
     <div class="programa">
       <div class="side">
-        <span><img src="<%= image_url('toutu/video.png') %>" style="width: 20px;height: 16px;padding-bottom: 5px"></span>
-        <%= @videos.total_entries %> 个视频</p>
+        <p><img src="<%= image_url('toutu/video.png') %>" style="width: 20px;height: 16px;padding-bottom: 5px"></span>
+          <%= @videos.total_entries %> 个视频</p>
       </div>
       <div class="programa-list">
         <ul>
+          <li><a href="/">首页</a></li>
           <% Column.hexie.each do |channel| %>
-              <li>
+              <li <% if params[:english].present? && params[:english] == channel.english%> class="active" <% end %>>
                 <a href="<%= video_channel_path(channel.english) %>"> <%= channel.name %></a>
               </li>
           <% end %>
@@ -19,32 +19,32 @@
     </div>
     <div class="video">
       <ul class="video-list">
-        <% cache [:index, @videos.map{|c| c['updated_at']}.max] do%>
-            <%= render :partial=> 'shared/more_videos', locals: {videos:@videos} %>
+        <% cache [:channel, @channel.english, @videos.map{|c| c['updated_at']}.max] do%>
+            <%= render partial: 'shared/more_videos', locals: {videos:@videos} %>
         <% end %>
       </ul>
     </div>
     <div class="more">
-      <a class="load-more" href="javascript:void(0)" onclick="load_index_more(2,<%= @videos.total_entries - 9%>)">
+      <a class="load-more" href="javascript:void(0)" onclick="load_channel_more(2,<%= @channel.id %>,<%= @videos.total_entries - 9%>)">
         <h4>MORE 「 <%= @videos.total_entries - 9 > 0 ? @videos.total_entries - 9:'+ _ +'%> 」</h4>
       </a>
     </div>
   </div>
 </div>
 <script>
-    function load_index_more(page,total){
+    function load_channel_more(page,channel,total){
         var num = parseInt(page) + 1;
         if(parseInt(total) > 8){
             var local = parseInt(total) - 9;
         }else{
             var local = total;
         }
-        $.get('/videos/get_index_more',{page: page}, function(data){
+        $.get('/videos/get_channel_more',{page: page, column:channel}, function(data){
             console.log(data);
             if(data ==''){
                 $('.load-more').html('<h4>感谢您对我们视频的支持！(+ _ +) </h4>').removeAttr('onclick');
             }else{
-                $('.load-more').attr('onclick',"load_index_more ("+ num +","+ local +")");
+                $('.load-more').attr('onclick',"load_channel_more ("+ num +","+ channel +", "+ local +")");
                 $('.load-more').html("<h4>MORE「 "+ local + "」</h4>");
                 $('.video-list').append(data);
             }

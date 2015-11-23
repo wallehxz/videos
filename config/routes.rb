@@ -3,8 +3,12 @@ Rails.application.routes.draw do
 
   get 'dashboard/index'
 
-  match '/playing/(:tv_code).html',to: 'welcome#playing', via: :get, as: :playing
-  match '/v_show/(:youku_url)',to: 'welcome#interim_play', via: :get, as: :youku_play
+  match '/playing/(:tv_code).html',to: 'welcome#playing', via: :get, as: :video_playing
+  match '/channel/:english',to: 'welcome#channel', via: :get, as: :video_channel
+  match '/videos/get_channel_more',to: 'welcome#get_channel_more', via: :get
+  match '/videos/get_index_more',to: 'welcome#get_index_more', via: :get
+  match '/v_show/(:youku_url)',to: 'welcome#interim', via: :get, as: :youku_play
+  match '/feed',to: 'welcome#feed', via: :get, as: :feed, defaults: { format: :rss }
   match 'zhang/dashboard', to: 'administer/dashboard#index',via: :get, as: :dashboard
   match 'zhang/:english/videos', to: 'administer/dashboard#channel',via: :get, as: :channel
   match 'zhang/columns', to: 'administer/columns#index',via: :get, as: :columns

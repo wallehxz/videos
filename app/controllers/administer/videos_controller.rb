@@ -2,6 +2,8 @@ class Administer::VideosController < ApplicationController
   layout 'just_admin'
   before_action :set_column, :authenticate_admin!
   before_action :set_video, only: [:show, :edit, :update, :destroy]
+  before_action :set_param, only: [:create, :update]
+
 
   def new
     @video = Video.new
@@ -11,11 +13,10 @@ class Administer::VideosController < ApplicationController
   end
 
   def create
-    param = params[:video]
-    param[:column_id] = @column.id
-    param[:cover] = Video.update_cover_to_video(param[:photo_file],param[:cover])
-    param[:tv_code] = Video.type_url_to_code(param[:video_type],param[:tv_code])
-    param[:duration] = Video.video_type_to_duration(param[:video_type],param[:tv_code],param[:duration])
+    @param[:column_id] = @column.id
+    @param[:cover] = Video.file_or_url_to_cover(@param[:photo_file],@param[:cover])
+    @param[:tv_code] = Video.type_url_to_code(@param[:video_type],@param[:tv_code])
+    @param[:duration] = Video.video_type_to_duration(@param[:video_type],@param[:tv_code],@param[:duration])
     @video = Video.new(video_params)
     if @video.save
       redirect_to channel_path(@column.english)
@@ -25,8 +26,7 @@ class Administer::VideosController < ApplicationController
   end
 
   def update
-    param = params[:video]
-    param[:cover] = Video.update_cover_to_video(param[:photo_file],param[:cover])
+    @param[:cover] = Video.file_or_url_to_cover(@param[:photo_file],@param[:cover])
     if @video.update(video_params)
       redirect_to channel_path(@column.english)
     else
@@ -50,5 +50,9 @@ class Administer::VideosController < ApplicationController
 
     def set_column
       @column = Column.find(params[:column_id])
+    end
+
+    def set_param
+      @param = params[:video]
     end
 end

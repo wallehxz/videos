@@ -5,17 +5,21 @@
 #  id         :integer          not null, primary key
 #  name       :string
 #  english    :string
+#  icon       :string
 #  cover      :string
 #  summary    :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+
 require 'csv'
 class Column < ActiveRecord::Base
   validates_presence_of :name, :english, :icon
   validates_uniqueness_of :name, :english
   has_many :videos, :dependent => :destroy
-  scope :latest, -> { order(updated_at: :desc) }
+  scope :latest, ->{ order(updated_at: :desc) }
+  scope :recent, ->{ order(created_at: :desc) }
+  scope :hexie, ->{ where("english != 'Fucking'")}
 
   def self.picture_url(file)
     if file.present?
@@ -34,5 +38,10 @@ class Column < ActiveRecord::Base
         csv << [num,item.title,item.youku_id,item.video_cover]
       end
     end
+  end
+
+  def self.file_or_url(file,url)
+    return Cattle.cache_to_yun(file) if file.present?
+    return url if file.nil?
   end
 end

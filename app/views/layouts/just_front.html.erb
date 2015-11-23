@@ -32,7 +32,9 @@
           <span>栏目</span>
           <span class="caret"></span></a>
         <ul class="dropdown-menu" role="menu">
-          <li><a href="/channel"><img src="<%= image_url('toutu/column.png') %>" style="width: 25px;height: 26px;"> 电子竞技</a></li>
+          <% Column.hexie.each do |channel|%>
+              <li><a href="<%= video_channel_path(channel.english) %>"><img src="<%= image_url('toutu/column.png') %>" style="width: 25px;height: 26px;"><%= channel.name %></a></li>
+          <% end %>
         </ul>
       </li>
       <% if current_user %>

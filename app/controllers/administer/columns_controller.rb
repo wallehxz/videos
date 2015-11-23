@@ -3,6 +3,7 @@ class Administer::ColumnsController < ApplicationController
   layout 'just_admin'
   before_action :authenticate_admin!
   before_action :set_column, only: [:show, :edit, :update, :destroy]
+  before_action :set_param, only: [:create, :update]
 
   def index
     @columns = Column.latest.paginate(per_page:10, page:params[:page])
@@ -19,7 +20,7 @@ class Administer::ColumnsController < ApplicationController
   end
 
   def create
-    params[:column][:cover] = Column.picture_url(params[:column][:photo_file])
+    @param[:cover] = Column.file_or_url(@param[:photo_file],@param[:cover])
     @column = Column.new(column_params)
     if @column.save
       redirect_to columns_path
@@ -30,9 +31,7 @@ class Administer::ColumnsController < ApplicationController
   end
 
   def update
-      if params[:column][:photo_file].present?
-        params[:column][:cover] = Column.picture_url(params[:column][:photo_file])
-      end
+    @param[:cover] = Column.file_or_url(@param[:photo_file], @param[:cover])
       if @column.update(column_params)
         redirect_to columns_path
       else
@@ -73,5 +72,9 @@ class Administer::ColumnsController < ApplicationController
 
     def column_params
       params.require(:column).permit(:name, :english, :icon, :cover, :summary)
+    end
+
+    def set_param
+      @param = params[:column]
     end
 end
