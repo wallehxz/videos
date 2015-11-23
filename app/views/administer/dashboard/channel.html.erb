@@ -34,7 +34,7 @@
                 <% cache video.updated_at do %>
                     <tr style="text-align: center">
                       <td>
-                        <a href="<%= playing_path(video.tv_code)%>" target="_blank">
+                        <a href="<%= video_playing_path(video.tv_code)%>" target="_blank">
                           <img src="<%= video.cover %>" style="width: 225px;height: 120px">
                         </a>
                       </td>
@@ -75,7 +75,7 @@
         </div>
         <div class="col-sm-7">
           <div class="dataTables_paginate paging_simple_numbers">
-            <%= will_paginate @videos, :class=>'apple_pagination', :previous_label => '上一页', :next_label => '下一页' %>
+            <%= will_paginate @videos, :class=>'apple_pagination' %>
           </div>
         </div>
       </div>

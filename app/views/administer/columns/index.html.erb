@@ -70,6 +70,11 @@
         <div class="col-sm-5">
           <div class="dataTables_info" id="example1_info" role="status" aria-live="polite"><h5>总计：「<%= @columns.total_entries %>」栏目</h5></div>
         </div>
+        <div class="col-sm-7">
+          <div class="dataTables_paginate paging_simple_numbers">
+            <%= will_paginate @columns, :class=>'apple_pagination' %>
+          </div>
+        </div>
       </div>
     </div>
   </div>

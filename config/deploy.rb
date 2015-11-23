@@ -18,41 +18,41 @@ set :linked_files, %w{
 
 }
 
-set :linked_dirs, %w{tmp/cache public/uploads public/logger log}
+set :linked_dirs, %w{tmp/cache public/uploads public/logger}
 
 set :keep_releases, 5
 
 namespace :deploy do
 
-  desc "管理数据库配置文件"
+  desc '管理数据库配置文件'
   task :setup_config do
     on roles(:web) do |host|
       execute :mkdir, "-p #{deploy_to}/shared/config"
-      upload! "config/database.yml.sample", "#{deploy_to}/shared/config/database.yml"
-      upload! "config/secrets.yml.sample", "#{deploy_to}/shared/config/secrets.yml"
-      upload! "config/settings.rb.sample", "#{deploy_to}/shared/config/settings.rb"
+      upload! 'config/database.yml.sample', "#{deploy_to}/shared/config/database.yml"
+      upload! 'config/secrets.yml.sample', "#{deploy_to}/shared/config/secrets.yml"
+      upload! 'config/settings.rb.sample', "#{deploy_to}/shared/config/settings.rb"
     end
   end
 
-  desc "重启网页"
+  desc '重启网页'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
-      execute :touch, release_path.join("tmp/restart.txt")
+      execute :touch, release_path.join('tmp/restart.txt')
     end
   end
 
-  desc " 将配置数据写入数据库"
+  desc '将配置数据写入数据库'
   task :seed do
     on roles(fetch(:migration_role)) do
       within release_path do
         with rails_env: fetch(:rails_env) do
-          execute :rake, "db:seed"
+          execute :rake, 'db:seed'
         end
       end
     end
   end
 
-  after "deploy:migrate", "deploy:restart"
+  after 'deploy:migrate', 'deploy:restart'
 
   # task :stop do
   #   run "cd #{deploy_to}/current && ./crmd.sh stop"
