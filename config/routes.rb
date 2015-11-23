@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   match 'zhang/dashboard', to: 'administer/dashboard#index',via: :get, as: :dashboard
   match 'zhang/:english/videos', to: 'administer/dashboard#channel',via: :get, as: :channel
   match 'zhang/columns', to: 'administer/columns#index',via: :get, as: :columns
+  match 'zhang/import/:column_id', to: 'administer/columns#import_videos',via: :get, as: :import_column_video
+  match 'zhang/create/import', to: 'administer/columns#create_csv_data',via: :post, as: :create_import_video
   match 'zhang/sign_in', to: 'administer/sessions#admin_sign_in',via: :get, as: :admin_sign_in
   match 'zhang/sign_out', to: 'administer/sessions#admin_sign_out',via: :get, as: :admin_sign_out
   post 'zhang/admin_login', to: 'administer/sessions#admin_sign_login', as: :admin_login

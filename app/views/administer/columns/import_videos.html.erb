@@ -1,0 +1,48 @@
+<%= content_for(:title,  ' 栏目视频导入 | 轩') %>
+<section class="content-header">
+  <h1>
+    导入视频
+    <small>「视频数据」</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="/"><i class="fa fa-dashboard"></i> 数据中心</a></li>
+    <li class="active"><i class="glyphicon glyphicon-send"></i>导入视频</li>
+  </ol>
+</section>
+<section class="content">
+  <div style="padding-top: 10px">
+    <%= render partial: 'layouts/notice' %>
+    <div class="box box-danger">
+      <div class="box-header">
+        <h3 class="box-title">视频数据</h3>
+      </div>
+      <form method="post" action="<%= create_import_video_path %>" enctype="multipart/form-data">
+        <div class="box-body" style="padding-left: 150px">
+          <div class="form-group has-feedback">
+            <label> 栏目</label>
+            <div class="input-group" style="width: 300px">
+              <div class="input-group-addon">
+                <i class="glyphicon glyphicon-export"></i>
+              </div>
+              <input class="form-control" type="text" name="column_id" value="<%= params[:column_id] %>">
+            </div>
+          </div>
+          <div class="form-group has-error">
+            <label>文件</label>
+            <div class="input-group" style="width: 300px">
+              <div class="input-group-addon">
+                <i class="fa fa-file"></i>
+              </div>
+              <input class="form-control" type="file" name="data_file" accept=".csv">
+            </div>
+          </div>
+          <hr>
+          <div>
+            <button type="submit" class="btn btn-primary" style="width: 120px">提交</button>
+            <a href="<%= channel_path(params[:column_id]) %>" class="btn btn-default" style="width: 120px">取消</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

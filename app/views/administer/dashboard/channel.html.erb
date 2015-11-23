@@ -15,6 +15,7 @@
   <div class="box box-primary">
     <div class="box-header">
       <a href="<%= new_administer_column_video_path(@column) %>" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> 添加视频</a>
+      <a href="<%= import_column_video_path(@column.id) %>" class="btn btn-danger"><i class="glyphicon glyphicon-export"></i> 导入数据</a>
     </div>
     <div class="box-body">
       <div class="row">

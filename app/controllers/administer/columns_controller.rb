@@ -1,3 +1,4 @@
+require 'csv'
 class Administer::ColumnsController < ApplicationController
   layout 'just_admin'
   before_action :authenticate_admin!
@@ -42,6 +43,27 @@ class Administer::ColumnsController < ApplicationController
   def destroy
     @column.destroy
     redirect_to columns_path
+  end
+
+  def import_videos
+
+  end
+
+  def create_csv_data
+    csv_text = params[:data_file].tempfile
+    csv = CSV.parse(csv_text, :headers => true)
+    csv.each do |item|
+      data = Video.new
+      data.column_id = params[:column_id]
+      data.recommend = 0
+      data.video_type = 0
+      data.tv_code = item[2]
+      data.title = item[1]
+      data.cover = item[3]
+      data.duration = Video.code_to_youku_info(item[2])['duration']
+      data.save!
+    end
+    redirect_to channel_path(Column.find(params[:column_id]).english)
   end
 
   private
