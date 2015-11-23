@@ -59,7 +59,7 @@
 <%= render partial: 'shared/user_login' %>
 <script type="text/javascript" >
     var ivaInstance = new Iva('playerCnt', {
-        appkey: 'EkF-n6aZY',
+        appkey: '<%= Settings.videojj %>',
         title: '<%= @video.title %>',
         video: '<%= code_type_to_url(@video.tv_code,@video.tv_code)%>',
         cover: '<%= Settings.qiniu_cdn_host %>img_video_poster.png',
