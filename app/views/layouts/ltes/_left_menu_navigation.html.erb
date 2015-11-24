@@ -10,6 +10,11 @@
       <i class="fa fa-columns"></i> <span>栏目管理</span>
     </a>
   </li>
+  <li class="treeview <% if controller_name=='seven_cattle'%>active<% end %>">
+    <a href="<%= files_path %>">
+      <i class="fa fa-cloud"></i> <span>文件管理</span>
+    </a>
+  </li>
   <li class="header">视频管理</li>
   <% Column.latest.each do |item| %>
       <li class="treeview <% if params[:english] == item.english || params[:column_id] == item.id.to_s %>active<% end %>">

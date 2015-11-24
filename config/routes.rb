@@ -1,14 +1,13 @@
 #coding=utf-8
 Rails.application.routes.draw do
 
-  get 'dashboard/index'
-
   match '/playing/(:tv_code).html',to: 'welcome#playing', via: :get, as: :video_playing
   match '/channel/:english',to: 'welcome#channel', via: :get, as: :video_channel
   match '/videos/get_channel_more',to: 'welcome#get_channel_more', via: :get
   match '/videos/get_index_more',to: 'welcome#get_index_more', via: :get
   match '/v_show/(:youku_url)',to: 'welcome#interim', via: :get, as: :youku_play
   match '/feed',to: 'welcome#feed', via: :get, as: :feed, defaults: { format: :rss }
+  match '/channel/:english/feed',to: 'welcome#feed', via: :get, as: :channel_feed, defaults: { format: :rss }
   match 'zhang/dashboard', to: 'administer/dashboard#index',via: :get, as: :dashboard
   match 'zhang/:english/videos', to: 'administer/dashboard#channel',via: :get, as: :channel
   match 'zhang/columns', to: 'administer/columns#index',via: :get, as: :columns
@@ -16,6 +15,12 @@ Rails.application.routes.draw do
   match 'zhang/create/import', to: 'administer/columns#create_csv_data',via: :post, as: :create_import_video
   match 'zhang/sign_in', to: 'administer/sessions#admin_sign_in',via: :get, as: :admin_sign_in
   match 'zhang/sign_out', to: 'administer/sessions#admin_sign_out',via: :get, as: :admin_sign_out
+  match 'zhang/files', to: 'administer/seven_cattle#index',via: :get, as: :files
+  match 'zhang/files/new', to: 'administer/seven_cattle#new',via: :get, as: :new_file
+  match 'zhang/files/edit', to: 'administer/seven_cattle#edit',via: :get, as: :edit_file
+  match 'zhang/files/delete', to: 'administer/seven_cattle#destroy',via: :get, as: :delete_file
+  match 'zhang/files/create', to: 'administer/seven_cattle#create',via: :post, as: :create_file
+  match 'zhang/files/update', to: 'administer/seven_cattle#update',via: :post, as: :update_file
   post 'zhang/admin_login', to: 'administer/sessions#admin_sign_login', as: :admin_login
   match 'zhang' => redirect('/zhang/dashboard'), via: :get
   namespace :administer, path:'/zhang' do

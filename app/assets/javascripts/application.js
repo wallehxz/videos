@@ -23,5 +23,3 @@
 //= require cute.css3d.module
 //= require cute.canvas.module
 //= require jquery.blockUI
-//= require Iva
-//= require video_js

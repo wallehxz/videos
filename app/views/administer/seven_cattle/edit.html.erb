@@ -1,0 +1,61 @@
+<%= content_for(:title,  '编辑文件 | 轩') %>
+<section class="content-header">
+  <h1>
+    文件云存储 <small>编辑文件</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> 数据中心</a></li>
+    <li><i class="fa fa-skyatlas"></i> 文件云存储</li>
+    <li class="active"><i class="fa fa-edit"></i> 重命名文件</li>
+  </ol>
+</section>
+<%= render partial: 'layouts/notice' %>
+<section class="content">
+  <div style="padding-top: 10px">
+    <div class="box box-warning">
+      <div class="box-header">
+        <h3 class="box-title">文件重命名</h3>
+      </div>
+      <form action="<%= update_file_path%>" method="post">
+        <div class="box-body" style="padding-left: 50px">
+          <div class="form-group has-success">
+            <label>文件预览</label>
+            <div class="input-group" style="width: 400px;border: solid;text-align: center">
+              <% if @file['mimeType'].include?('image') %>
+                  <img src="<%= Settings.qiniu_cdn_host + params[:key] %>" style="height: 200px">
+              <% elsif @file['mimeType'].include?('video') %>
+                  <video id="mediablah" controls="controls" height="300px" src="<%= Settings.qiniu_cdn_host + params[:key] %>"></video>
+              <% else %>
+                  <img src="<%= image_url('toutu/file.png') %>" style="height: 200px">
+              <% end %>
+            </div>
+          </div>
+          <div class="form-group has-warning">
+            <label>原文件名</label>
+            <div class="input-group" style="width: 400px">
+              <div class="input-group-addon">
+                <i class="glyphicon glyphicon-bookmark"></i>
+              </div>
+              <input type="text" name="old" value="<%= params[:key] %>" class="form-control" readonly>
+              <input type="hidden" name="type" value="<%= @file['mimeType']%>">
+            </div>
+          </div>
+          <div class="form-group has-error">
+            <label>新文件名</label>
+            <div class="input-group" style="width: 400px">
+              <div class="input-group-addon">
+                <i class="glyphicon glyphicon-heart-empty"></i>
+              </div>
+              <input type="text" name="new" value="" placeholder="请键入文件的新名称" class="form-control">
+            </div>
+          </div>
+          <hr>
+          <div>
+            <button type="submit" class="btn btn-primary" style="width: 120px">提交</button>
+            <a href="<%= files_path %>" class="btn btn-warning" style="width: 120px">取消</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

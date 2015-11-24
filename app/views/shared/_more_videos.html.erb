@@ -2,13 +2,13 @@
     <li class="video-item">
       <a class="animated" href="<%= video_playing_path(video.tv_code)%>" target="_blank">
         <div class="video-poster"><img src="<%= video.cover %>" alt=""></div>
-        <div class="video-play" title="<%= video.title %>">
-          <h4><span><img src="<%= image_url('toutu/play.png') %>" style="width: 55px;height: 65px;padding-bottom: 10px;"></span></h4>
+        <div class="video-play" title="<%= video_to_column_name(video.column_id)%>">
+          <h4><span><img src="<%= Settings.qiniu_cdn_host + 'img_zqr71PLUiHDljFmKnI6t.png' %>"style="width: 55px;height: 65px;padding-bottom: 10px;"></span></h4>
         </div>
         <div class="video-info">
-          <p><%=  video.title %></p>
-          <p><%= video_time video.duration %>
-            <span class="v-time"><%= video.created_at.strftime('%m/%d %H:%M') %></span>
+          <p><i class="fa fa-bookmark-o">&nbsp;</i><%=  video.title %></p>
+          <p><i class="fa fa-clock-o"></i>&nbsp;<%= video_time video.duration %>
+            <span class="v-time"><i class="fa fa-calendar"></i>&nbsp;<%= video.created_at.strftime('%m/%d %H:%M') %></span>
           </p>
         </div>
       </a>

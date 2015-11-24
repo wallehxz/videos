@@ -1,11 +1,11 @@
 xml.instruct! :xml, :version => '1.0'
 xml.rss :version => '2.0' do
-  cache [ :video, @videos.first.created_at ] do
+  cache [ :video, params[:english], @videos.first.created_at ] do
     xml.channel do
       xml.title '华轩·张'
       xml.link 'http://huaxuan.link'
       xml.language 'zh-CN'
-      xml.description '好看好玩的视频'
+      xml.description '在沉默中爆发'
 
       for video in @videos
         xml.item do

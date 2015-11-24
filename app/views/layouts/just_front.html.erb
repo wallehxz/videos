@@ -7,7 +7,7 @@
   <%= content_for?(:meta)? yield(:meta) :'' %>
   <%= csrf_meta_tags %>
   <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
-  <%= stylesheet_link_tag  'just_front', 'slider','disqus', 'Iva', 'video_js', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag  'just_front', 'slider','disqus','LTE_admin/css/font-awesome', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </head>
 <body>
@@ -29,11 +29,11 @@
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-          <span>栏目</span>
-          <span class="caret"></span></a>
+          <span>栏目</span>&nbsp;<i class="fa fa-diamond"></i>
+        </a>
         <ul class="dropdown-menu" role="menu">
           <% Column.hexie.each do |channel|%>
-              <li><a href="<%= video_channel_path(channel.english) %>"><img src="<%= image_url('toutu/column.png') %>" style="width: 25px;height: 26px;"><%= channel.name %></a></li>
+              <li><a href="<%= video_channel_path(channel.english) %>"><i class="<%= channel.icon %>"></i>&nbsp;&nbsp;<%= channel.name %></a></li>
           <% end %>
         </ul>
       </li>
@@ -45,15 +45,15 @@
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="<%#= admin_dashboard_path %>"><img src="<%= image_url('toutu/yinyang.png')%>" style="height: 20px;width: 20px;"> 数据管理</a></li>
-              <li><a href="<%#= avatar_user_details_path %>"><img src="<%= image_url('toutu/face.png')%>" style="height: 20px;width: 20px;"> 上传头像</a></li>
-              <li><a href="<%#= profile_user_details_path %>"><img src="<%= image_url('toutu/asterpods.png')%>" style="height: 20px;width: 23px;"> 个人中心</a></li>
-              <li><a href="<%= sign_out_path %>"><img src="<%= image_url('toutu/down.png')%>" style="height: 20px;width: 20px;"> 隐退江湖</a></li>
+              <li><a href="<%#= admin_dashboard_path %>"> <i class="fa fa-gears"></i>&nbsp;数据管理</a></li>
+              <li><a href="<%#= avatar_user_details_path %>"><i class="fa fa-upload"></i>&nbsp;上传头像</a></li>
+              <li><a href="<%#= profile_user_details_path %>"><i class="fa fa-user-secret"></i>&nbsp;个人中心</a></li>
+              <li><a href="<%= sign_out_path %>"><i class="fa fa-sign-out"></i>&nbsp;账户登出</a></li>
             </ul>
           </li>
       <% else %>
-          <li><a href="<%= sign_in_path %>">登录</a></li>
-          <li><a href="<%= sign_up_path %>">注册</a></li>
+          <li><a href="<%= sign_in_path %>">登录&nbsp;<i class="fa fa-sign-in"></i></a></li>
+          <li><a href="<%= sign_up_path %>">注册&nbsp;<i class="fa fa-user-plus"></i></a></li>
       <% end %>
     </ul>
   </nav>

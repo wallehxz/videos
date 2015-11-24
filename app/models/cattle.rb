@@ -2,7 +2,7 @@ require 'qiniu'
 class Cattle < ActiveRecord::Base
 
   #获取七牛服务文件列表
-  def self.files_list(marker = '',prefix= '')
+  def self.files_list(prefix= '',marker = '')
     bucket = 'meteor' #指定空间
     limit = 15
     list_policy = Qiniu::Storage::ListPolicy.new(bucket,limit,prefix)
@@ -22,6 +22,11 @@ class Cattle < ActiveRecord::Base
       item.write(file.read)
     end
     return file_name,file_path
+  end
+
+  def self.file_to_info(key)
+    code, result, response_headers = Qiniu::Storage.stat('meteor', key)
+    return result
   end
 
   #根据文件扩展名不同生成相应的名称

@@ -1,3 +1,5 @@
+<%= stylesheet_link_tag 'http://7xjfim.com2.z0.glb.qiniucdn.com/Iva.css' %>
+<%= javascript_include_tag 'http://7xjfim.com2.z0.glb.qiniucdn.com/Iva.js' %>
 <%= content_for(:title, @video.title + ' | 华轩·张') %>
 <div class="container">
   <div class="grid">
@@ -59,7 +61,7 @@
 <%= render partial: 'shared/user_login' %>
 <script type="text/javascript" >
     var ivaInstance = new Iva('playerCnt', {
-        appkey: '<%= Settings.videojj %>',
+        appkey: 'N1PBDCjXl',
         title: '<%= @video.title %>',
         video: '<%= code_type_to_url(@video.tv_code,@video.tv_code)%>',
         cover: '<%= Settings.qiniu_cdn_host %>img_video_poster.png',

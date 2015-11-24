@@ -11,7 +11,7 @@
         <ul>
           <% Column.hexie.each do |channel| %>
               <li>
-                <a href="<%= video_channel_path(channel.english) %>"> <%= channel.name %></a>
+                <a href="<%= video_channel_path(channel.english) %>"><i class="<%= channel.icon %>"></i>&nbsp;&nbsp;<%= channel.name %></a>
               </li>
           <% end %>
         </ul>
