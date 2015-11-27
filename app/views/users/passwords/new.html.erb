@@ -1,11 +1,12 @@
 <%= content_for(:title,  '忘记密码 | 轩') %>
+<%=javascript_include_tag 'http://api.geetest.com/get.php' %>
 <div class="main">
   <div class="main-login">
     <form accept-charset="UTF-8" action="/users/password" class="simple_form new_user" id="new_user" method="post">
       <div class="form-group">
-        <span id="tip_email"></span>
         <input autofocus="autofocus" aria-required="true" autocomplete="off"  id="email" name="user[email]" placeholder="请键入登陆邮箱" required="required" type="text" />
-        <input class="btn input-submit" name="commit" type="submit" value="给我发送认证邮件" />
+        <div id="geetest" style="padding-left: 25px;padding-bottom: 10px"></div>
+        <input id="btn_sub" class="btn input-submit" name="commit" type="submit" value="给我发送认证邮件" />
       </div>
     </form>
   </div>
@@ -16,11 +17,15 @@
         var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
         if(!reg.test($.trim($('#email').val())))
         {
-            $('#tip_email').html('请输入正确的邮箱');
+            $('#tip').html('请输入正确的邮箱');
             $('#email').val('');
             return false;
         }else{
-            $('#tip_email').html('');
+            $('#tip').html('邮箱正确，点击按钮即可获取验证邮件');
         }
-    })
+    });
+    window.embed_captcha = new window.Geetest({
+        gt: 'a92f1d66c86bf59349e17d722aefe043',
+        product: 'popup'
+    }).appendTo("#geetest").bindOn('#btn_sub');
 </script>

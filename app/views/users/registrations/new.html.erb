@@ -1,4 +1,5 @@
 <%= content_for(:title,  '新用户注册 | 轩') %>
+<%=javascript_include_tag 'http://api.geetest.com/get.php' %>
 <div class="main">
   <div class="main-login">
     <% if devise_error_messages!.present? %>
@@ -6,11 +7,10 @@
     <% end %>
     <form accept-charset="UTF-8" action="/users" class="simple_form new_user" id="new_user" method="post">
       <div class="form-group">
-        <span id="tip_email"></span>
         <input aria-required="true" autocomplete="off"  id="email" name="user[email]" placeholder="请建入常用邮箱" required="required" type="text" />
-        <p id="tip_pass"></p>
         <input aria-required="true" autocomplete="off"  id="password" name="user[password]" placeholder="请键入登录密码" required="required" type="password" />
-        <input class="btn input-submit" name="commit" type="submit" value="注册用户" />
+        <div id="geetest" style="padding-left: 25px;padding-bottom: 10px"></div>
+        <input id="btn_sub" class="btn input-submit" name="commit" type="submit" value="注册用户" />
       </div>
     </form>
   </div>
@@ -21,20 +21,24 @@
         var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
         if(!reg.test($.trim($('#email').val())))
         {
-            $('#tip_email').html("连邮箱都木有了？");
+            $('#tip').html("没邮箱，不注册");
             $('#email').val('');
             return false;
         }else{
-            $('#tip_email').html("");
+            $('#tip').html('邮箱可以使用，请填写登录密码');
         }
-    })
+    });
     $('#password').change(function(){
         if($('#password').val().length < 6){
-            $('#tip_pass').html('密码弱爆了！');
+            $('#tip').html('密码过于短小');
             $('#password').val('');
             return false;
         }else{
-            $('#tip_pass').html('');
+            $('#tip').html('密码：'+ $('#password').val() + ' 请牢记');
         }
-    })
+    });
+    window.embed_captcha = new window.Geetest({
+        gt: 'a92f1d66c86bf59349e17d722aefe043',
+        product: 'popup'
+    }).appendTo("#geetest").bindOn('#btn_sub');
 </script>
