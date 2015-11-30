@@ -2,7 +2,7 @@
 source 'https://rubygems.org/'  #官方源
 
 ruby '2.0.0'
-gem 'rails', '4.2.2'
+gem 'rails', '4.2.5'
 gem 'pg', '0.18.4'  # postgresql 数据连接
 gem 'will_paginate', '3.0.7'   #数据分页
 gem 'faraday', '0.9.2' #HTTP post 、get 请求
@@ -15,25 +15,17 @@ gem 'coffee-rails', '4.1.0' # CoffeeScript adapter for the Rails asset pipeline.
 gem 'jquery-rails', '4.0.5' # provides jQuery and the jQuery-ujs driver 驱动
 gem 'turbolinks', '2.5.3'  # makes following links in your web application faster
 gem 'jbuilder', '2.3.2' # Build JSON APIs
-# gem 'rails_12factor', group: :production
 gem 'sdoc', '~> 0.4.0', group: :doc # bundle exec rake doc:rails generates the API under doc/api.
 gem 'qiniu', '6.4.2'  #七牛云存储服务
 gem 'unicorn', '4.9.0' # Rails Server
-#gem 'puma', '2.14.0'
+#gem 'puma', '2.14.0' #bin/rails s puma -t 4:16 -w 2 -b 0.0.0.0 -p 3000 -e development
 gem 'newrelic_rpm', '3.14.0.305' #网站性能监测
-# Rails Server  bin/rails s puma -t 4:16 -w 2 -b 0.0.0.0 -p 3000 -e development
 gem 'therubyracer', '0.12.2', :platform => :ruby  # Call Ruby code and manipulate Ruby objects from JavaScript.
-gem 'guard-livereload', '2.4.0' #automatically reloads your browser when 'view' files are modified
 group :development, :test do
-  # annotate --exclude tests,fixtures,factories,serializers
-  gem 'annotate', '2.6.5' #注释 https://github.com/ctran/annotate_models
-  gem 'byebug', '3.5.1'        # anywhere in the code to stop execution and get a debugger console  调试
-  gem 'web-console', '2.0.0' # A set of debugging tools for your Rails application.
-  #Turn Pry into a primitive debugger. Adds 'step' and 'next' commands to control execution.
-  #项目调试
-  gem 'pry-nav', '0.2.4'
-  gem 'pry-doc', '0.6.0'
-  gem 'rspec-rails', '3.4.0'  # http://www.rubydoc.info/gems/rspec-rails/frames 项目测试
+  gem 'annotate', '2.6.5' # annotate --exclude tests,fixtures,factories,serializers
+  gem 'web-console', '2.2.1'  #in view  <% console %>
+  gem 'pry-nav', '0.2.4' #in method  binding.pry
+  gem 'rspec-rails', '3.4.0'  # 项目测试 bundle exec rspec
   gem 'guard-rspec', '4.5.0' #https://github.com/rspec/rspec-rails
 end
 group :development do

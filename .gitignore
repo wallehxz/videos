@@ -16,5 +16,5 @@
 /.rvmrc
 /.idea/
 /.DS_Store
-Gemfile
+#Gemfile
 /public/uploads
