@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20151120082300) do
     t.string   "nick_name"
     t.string   "avatar"
     t.string   "phone"
+    t.string   "role",                   default: "looker"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= content_for?(:title) ? yield(:title) : '个人信息 | 华轩·张' %></title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <%= stylesheet_link_tag 'just_user', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'just_user', 'particles','wxLogin', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
+  <style type='text/css' id='hot_style_patch'>
+      .main-wechat{ padding-top: 45px !important}
+      .done, .alert { position: static !important}
+  </style>
+</head>
+<body class="sessions-new ">
+<div id="particles-js"></div>
+<section class="wrapper">
+  <div class="card">
+    <div class="front">
+      <header class="header">
+        <div style="padding-left: 32%">
+          <a href="<%= new_avatar_path %>" title="点击修改头像">
+            <img src="<%= current_user.avatar %>" style="height: 120px" class="img-circle">
+          </a>
+        </div>
+        <div class="header-help">
+          <a href="/" class="header-help__btn">帮助</a>
+        </div>
+      </header>
+      <div class="main">
+        <div class="main-login">
+          <form accept-charset="UTF-8" action="<%= update_profile_path %>" class="simple_form new_user" id="new_user" method="post">
+            <div class="form-group">
+              <input aria-required="true" autocomplete="off"  value="<%= current_user.email %>"  type="text" disabled style="color: red" />
+              <input aria-required="true" autocomplete="off"  id="nick_name" name="nick_name" placeholder="请键入网络昵称" value="<%= current_user.nick_name %>"  type="text" style="color: brown"/>
+              <input aria-required="true" autocomplete="off"  id="iphone" name="phone" placeholder="请键入联系方式" value="<%= current_user.phone %>" type="text" style="color: mediumblue"/>
+              <input class="btn input-submit" name="commit" type="submit" value="更新资料" />
+            </div>
+          </form>
+        </div>
+      </div>
+      <footer class="footer">
+      </footer>
+    </div>
+  </div>
+</section>
+</body>
+</html>

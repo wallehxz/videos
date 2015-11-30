@@ -125,4 +125,14 @@ module ApplicationHelper
     Column.find(video).name
   end
 
+  def display_name(user)
+    return user.nick_name if user.nick_name.present?
+    return user.email if user.nick_name.nil?
+  end
+
+  def display_avatar(user)
+    return user.avatar if user.avatar.present?
+    return image_path('toutu/user.png') if user.avatar.nil?
+  end
+
 end

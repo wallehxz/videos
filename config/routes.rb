@@ -1,6 +1,8 @@
 #coding=utf-8
 Rails.application.routes.draw do
 
+  get 'profile/new_avatar'
+
   match '/playing/(:tv_code).html',to: 'welcome#playing', via: :get, as: :video_playing
   match '/channel/:english',to: 'welcome#channel', via: :get, as: :video_channel
   match '/videos/get_channel_more',to: 'welcome#get_channel_more', via: :get
@@ -23,6 +25,10 @@ Rails.application.routes.draw do
   match 'zhang/files/update', to: 'administer/seven_cattle#update',via: :post, as: :update_file
   post 'zhang/admin_login', to: 'administer/sessions#admin_sign_login', as: :admin_login
   match 'zhang' => redirect('/zhang/dashboard'), via: :get
+  match '/my/avatar',to: 'users/profile#new_avatar', via: :get, as: :new_avatar
+  match '/my/profile',to: 'users/profile#profile', via: :get, as: :profile
+  match '/create/avatar',to: 'users/profile#create_avatar', via: :post, as: :create_avatar
+  match '/update/profile',to: 'users/profile#update_profile', via: :post, as: :update_profile
   namespace :administer, path:'/zhang' do
     resources :columns do
       resources :videos

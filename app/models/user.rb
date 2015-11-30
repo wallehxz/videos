@@ -8,6 +8,7 @@
 #  nick_name              :string
 #  avatar                 :string
 #  phone                  :string
+#  role                   :string           default("looker")
 #  reset_password_token   :string
 #  reset_password_sent_at :datetime
 #  remember_created_at    :datetime

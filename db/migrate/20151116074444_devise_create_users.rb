@@ -7,6 +7,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :nick_name
       t.string :avatar
       t.string :phone
+      t.string :role, default: 'looker'
       ## Recoverable
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at
