@@ -2,10 +2,7 @@
 <%=javascript_include_tag 'http://api.geetest.com/get.php' %>
 <div class="main">
   <div class="main-login">
-    <% if devise_error_messages!.present? %>
-        <p style="color: #dd3c5a;float: left;padding-left: 20px">⊙_⊙！邮箱已经被使用，请换一个</p>
-    <% end %>
-    <form accept-charset="UTF-8" action="/users" class="simple_form new_user" id="new_user" method="post">
+    <form accept-charset="UTF-8" action="/users" class="simple_form new_user" id="new_user" method="post" onkeydown="if(event.keyCode==13 || event.which ==13) return false;">
       <div class="form-group">
         <input aria-required="true" autocomplete="off"  id="email" name="user[email]" placeholder="请建入常用邮箱" required="required" type="text" />
         <input aria-required="true" autocomplete="off"  id="password" name="user[password]" placeholder="请键入登录密码" required="required" type="password" />
@@ -24,8 +21,6 @@
             $('#tip').html("没邮箱，不注册");
             $('#email').val('');
             return false;
-        }else{
-            $('#tip').html('邮箱可以使用，请填写登录密码');
         }
     });
     $('#password').change(function(){

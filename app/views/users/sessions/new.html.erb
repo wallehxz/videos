@@ -2,10 +2,7 @@
 <%=javascript_include_tag 'http://api.geetest.com/get.php' %>
 <div class="main">
   <div class="main-login">
-    <% if request.url.include?('users') %>
-        <p style="color: #dd3c5a;float: left;padding-left: 20px">⊙_⊙！邮箱不存在或密码不匹配</p>
-    <% end %>
-    <form accept-charset="UTF-8" action="/sign_login" class="simple_form new_user" id="new_user" method="post">
+    <form accept-charset="UTF-8" action="/sign_login" class="simple_form new_user" id="new_user" method="post" onkeydown="if(event.keyCode==13 || event.which ==13) return false;">
       <div class="form-group">
         <input aria-required="true" autocomplete="off"  id="email" name="user[email]" required="required" type="text" placeholder="请建入注册邮箱"/>
         <input aria-required="true" autocomplete="off"  id="password" name="user[password]" placeholder="请键入登陆密码" required="required" type="password" />
@@ -24,8 +21,6 @@
             $('#tip').html('就单纯要个邮箱就这么难吗');
             $('#email').val('');
             return false;
-        }else{
-            $('#tip').html('');
         }
     });
     $('#password').change(function(){
@@ -33,8 +28,6 @@
             $('#tip').html('密码长度和生命成正比');
             $('#password').val('');
             return false;
-        }else{
-            $('#tip').html('');
         }
     });
     window.embed_captcha = new window.Geetest({

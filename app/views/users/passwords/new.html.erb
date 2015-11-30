@@ -2,7 +2,7 @@
 <%=javascript_include_tag 'http://api.geetest.com/get.php' %>
 <div class="main">
   <div class="main-login">
-    <form accept-charset="UTF-8" action="/users/password" class="simple_form new_user" id="new_user" method="post">
+    <form accept-charset="UTF-8" action="/users/password" class="simple_form new_user" id="new_user" method="post" onkeydown="if(event.keyCode==13 || event.which ==13) return false;">
       <div class="form-group">
         <input autofocus="autofocus" aria-required="true" autocomplete="off"  id="email" name="user[email]" placeholder="请键入登陆邮箱" required="required" type="text" />
         <div id="geetest" style="padding-left: 25px;padding-bottom: 10px"></div>
