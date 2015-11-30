@@ -1,5 +1,5 @@
 GEM
-  remote: https://ruby.taobao.org/
+  remote: https://rubygems.org/
   specs:
     actionmailer (4.2.5)
       actionpack (= 4.2.5)
