@@ -135,4 +135,10 @@ module ApplicationHelper
     return image_path('toutu/user.png') if user.avatar.nil?
   end
 
+  def display_role(user)
+    return '文艺小骚年' if user.role=='looker'
+    return '荒野大嫖客' if user.role=='fucker'
+    return '苦逼管理员' if user.role=='admin'
+  end
+
 end

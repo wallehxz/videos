@@ -21,7 +21,7 @@
       <header class="header">
         <div style="padding-left: 32%">
           <a href="<%= new_avatar_path %>" title="点击修改头像">
-            <img src="<%= current_user.avatar %>" style="height: 120px" class="img-circle">
+            <img src="<%= display_avatar current_user %>" style="height: 120px" class="img-circle">
           </a>
         </div>
         <div class="header-help">
@@ -32,6 +32,7 @@
         <div class="main-login">
           <form accept-charset="UTF-8" action="<%= update_profile_path %>" class="simple_form new_user" id="new_user" method="post">
             <div class="form-group">
+              <input aria-required="true" autocomplete="off"  value="<%= display_role current_user %>"  type="text" disabled style="color: black" />
               <input aria-required="true" autocomplete="off"  value="<%= current_user.email %>"  type="text" disabled style="color: red" />
               <input aria-required="true" autocomplete="off"  id="nick_name" name="nick_name" placeholder="请键入网络昵称" value="<%= current_user.nick_name %>"  type="text" style="color: brown"/>
               <input aria-required="true" autocomplete="off"  id="iphone" name="phone" placeholder="请键入联系方式" value="<%= current_user.phone %>" type="text" style="color: mediumblue"/>
