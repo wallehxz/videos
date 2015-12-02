@@ -141,4 +141,11 @@ module ApplicationHelper
     return '苦逼管理员' if user.role=='admin'
   end
 
+  def column_video_or_recommend(column)
+    recommend = Video.recent.where(:column_id=>column).where(:recommend=> 1).first
+    video = Video.recent.where(:column_id=>column).where(:recommend=> 0).first
+    return video_playing_path recommend.tv_code if recommend.present?
+    return video_playing_path video.tv_code if video.present?
+  end
+
 end
