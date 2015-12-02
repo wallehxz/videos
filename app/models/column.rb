@@ -20,6 +20,7 @@ class Column < ActiveRecord::Base
   scope :latest, ->{ order(updated_at: :desc) }
   scope :recent, ->{ order(created_at: :desc) }
   scope :hexie, ->{ where("english != 'Fucking'")}
+  scope :shunxu, ->{ order(id: :asc) }
 
   def self.picture_url(file)
     if file.present?

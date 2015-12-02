@@ -30,8 +30,8 @@
             </tr>
             </thead>
             <tbody>
-            <% @videos.each do |video| %>
-                <% cache video.updated_at do %>
+            <% cache [params[:english], @videos.map{|c| c.updated_at}.max] do %>
+                <% @videos.each do |video| %>
                     <tr style="text-align: center">
                       <td>
                         <a href="<%= video_playing_path(video.tv_code)%>" target="_blank">

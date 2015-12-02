@@ -4,7 +4,7 @@ class WelcomeController < ApplicationController
   skip_before_filter :verify_authenticity_token, only: [:get_channel_more]
 
   def index
-    @channel = Column.hexie.order(updated_at: :desc)
+    @channel = Column.hexie.shunxu
     @videos = Video.recent.hexie.paginate(:per_page=>9,:page=> 1)
   end
 
