@@ -26,74 +26,76 @@
             </tr>
             </thead>
             <tbody>
-            <% @users.each do |user| %>
-              <tr style="text-align: center">
-                <td>
-                  <img src="<%= display_avatar user  %>" style="height: 100px;width: 100px">
-                </td>
-                <td style="text-align: left">
-                  <br>
-                  <span class="label
-                  <% if user.role =='admin' %>
-                    label-danger
-                  <% elsif user.role =='fucker'%>
-                    label-warning
-                  <% elsif user.role =='looker'%>
-                    label-default
-                  <% end %>
-                  " style="font-size: 16px">
-                    <i class="fa fa-drupal"></i>
-                    <%= display_role user %>
-                  </span>
-                  <br><br>
-                  <span class="label label-info" style="font-size: 16px">
-                    <i class="fa fa-cc-amex"></i>
-                    <%= display_name user %>
-                  </span>
-                </td>
-                <td style="text-align: left">
-                  <br>
-                  <span class="label label-primary" style="font-size: 16px">
-                    <i class="fa  fa-mobile"></i>
-                    <%= user.phone ? user.phone : '010-12345678' %>
-                  </span>
-                  <br><br>
-                  <span class="label label-success" style="font-size: 16px">
-                    <i class="fa fa-envelope"></i>
-                    <%= user.email %>
-                  </span>
-                </td>
-                <td>
-                  <% if user.role == 'looker'%>
-                      <a href="<%= role_set_path(user_id:user.id, role:'admin') %>" data-confirm="将用户添加为管理员" class="btn btn-danger">
-                        <i class="glyphicon glyphicon-plus"></i>
-                        <span>管理权限</span>
-                      </a><br><br>
-                      <a href="<%= role_set_path(user_id:user.id, role:'fucker') %>" data-confirm="将用户添加毛片观看权限" class="btn btn-warning">
-                        <i class="glyphicon glyphicon-eye-open"></i>
-                        <span>毛片大师</span>
-                      </a>
-                  <% elsif user.role == 'fucker' %>
-                      <a href="<%= role_set_path(user_id:user.id, role:'admin') %>" data-confirm="将用户添加为管理员" class="btn btn-danger">
-                        <i class="glyphicon glyphicon-plus"></i>
-                        <span>管理权限</span>
-                      </a><br><br>
-                      <a href="<%= role_set_path(user_id:user.id, role:'looker') %>" data-confirm="将用户添加视频浏览权限" class="btn btn-success">
-                        <i class="glyphicon glyphicon-eye-open"></i>
-                        <span>视频浏览</span>
-                      </a>
-                  <% elsif user.role == 'admin' %>
-                      <a href="<%= role_set_path(user_id:user.id, role:'fucker') %>" data-confirm="将用户添加毛片观看权限" class="btn btn-warning">
-                        <i class="glyphicon glyphicon-eye-open"></i>
-                        <span>毛片大师</span>
-                      </a><br><br>
-                      <a href="<%= role_set_path(user_id:user.id, role:'looker') %>" data-confirm="将用户添加视频浏览权限" class="btn btn-success">
-                          <i class="glyphicon glyphicon-eye-open"></i>
-                          <span>视频浏览</span>
-                      </a>
-                  <% end %>
-                </td>
-              </tr>
+            <% cache [:users, @users.total_entries, @users.map{|u| u.updated_at}.max] do %>
+                <% @users.each do |user| %>
+                  <tr style="text-align: center">
+                    <td>
+                      <img src="<%= display_avatar user  %>" style="height: 100px;width: 100px">
+                    </td>
+                    <td style="text-align: left">
+                      <br>
+                      <span class="label
+                      <% if user.role =='admin' %>
+                        label-danger
+                      <% elsif user.role =='fucker'%>
+                        label-warning
+                      <% elsif user.role =='looker'%>
+                        label-default
+                      <% end %>
+                      " style="font-size: 16px">
+                        <i class="fa fa-drupal"></i>
+                        <%= display_role user %>
+                      </span>
+                      <br><br>
+                      <span class="label label-info" style="font-size: 16px">
+                        <i class="fa fa-cc-amex"></i>
+                        <%= display_name user %>
+                      </span>
+                    </td>
+                    <td style="text-align: left">
+                      <br>
+                      <span class="label label-primary" style="font-size: 16px">
+                        <i class="fa  fa-mobile"></i>
+                        <%= user.phone ? user.phone : '010-12345678' %>
+                      </span>
+                      <br><br>
+                      <span class="label label-success" style="font-size: 16px">
+                        <i class="fa fa-envelope"></i>
+                        <%= user.email %>
+                      </span>
+                    </td>
+                    <td>
+                      <% if user.role == 'looker'%>
+                          <a href="<%= role_set_path(user_id:user.id, role:'admin') %>" data-confirm="将用户添加为管理员" class="btn btn-danger">
+                            <i class="glyphicon glyphicon-plus"></i>
+                            <span>管理权限</span>
+                          </a><br><br>
+                          <a href="<%= role_set_path(user_id:user.id, role:'fucker') %>" data-confirm="将用户添加毛片观看权限" class="btn btn-warning">
+                            <i class="glyphicon glyphicon-eye-open"></i>
+                            <span>毛片大师</span>
+                          </a>
+                      <% elsif user.role == 'fucker' %>
+                          <a href="<%= role_set_path(user_id:user.id, role:'admin') %>" data-confirm="将用户添加为管理员" class="btn btn-danger">
+                            <i class="glyphicon glyphicon-plus"></i>
+                            <span>管理权限</span>
+                          </a><br><br>
+                          <a href="<%= role_set_path(user_id:user.id, role:'looker') %>" data-confirm="将用户添加视频浏览权限" class="btn btn-success">
+                            <i class="glyphicon glyphicon-eye-open"></i>
+                            <span>视频浏览</span>
+                          </a>
+                      <% elsif user.role == 'admin' %>
+                          <a href="<%= role_set_path(user_id:user.id, role:'fucker') %>" data-confirm="将用户添加毛片观看权限" class="btn btn-warning">
+                            <i class="glyphicon glyphicon-eye-open"></i>
+                            <span>毛片大师</span>
+                          </a><br><br>
+                          <a href="<%= role_set_path(user_id:user.id, role:'looker') %>" data-confirm="将用户添加视频浏览权限" class="btn btn-success">
+                              <i class="glyphicon glyphicon-eye-open"></i>
+                              <span>视频浏览</span>
+                          </a>
+                      <% end %>
+                    </td>
+                  </tr>
+                <% end %>
             <% end %>
             </tbody>
           </table>

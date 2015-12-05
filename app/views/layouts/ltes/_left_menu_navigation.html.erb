@@ -21,7 +21,7 @@
     </a>
   </li>
   <li class="header">视频管理</li>
-  <% Column.latest.each do |item| %>
+  <% Column.shunxu.each do |item| %>
       <li class="treeview <% if params[:english] == item.english || params[:column_id] == item.id.to_s %>active<% end %>">
         <a href="<%= channel_path(item.english) %>">
           <i class="<%= item.icon %>"></i> <span><%= item.name %></span>

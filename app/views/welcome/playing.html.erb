@@ -63,7 +63,7 @@
     var ivaInstance = new Iva('playerCnt', {
         appkey: 'N1PBDCjXl',
         title: '<%= @video.title %>',
-        video: '<%= code_type_to_url(@video.tv_code,@video.tv_code)%>',
+        video: '<%= code_type_to_url(@video.tv_code,@video.video_type)%>',
         cover: '<%= Settings.qiniu_cdn_host %>img_video_poster.png',
         autoplay: true
     });
