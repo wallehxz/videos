@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   match 'zhang/dashboard', to: 'administer/dashboard#index',via: :get, as: :dashboard
   match 'zhang/:english/videos', to: 'administer/dashboard#channel',via: :get, as: :channel
   match 'zhang/users', to: 'administer/dashboard#users',via: :get, as: :users
+  match 'zhang/search', to: 'administer/dashboard#search',via: :get, as: :search
   match 'zhang/role_set', to: 'administer/dashboard#role_control',via: :get, as: :role_set
   match 'zhang/columns', to: 'administer/columns#index',via: :get, as: :columns
   match 'zhang/import/:column_id', to: 'administer/columns#import_videos',via: :get, as: :import_column_video

@@ -141,6 +141,13 @@ module ApplicationHelper
     return '文艺小骚年' if user.role=='looker'
   end
 
+  def display_video_type(video)
+    return '优酷视频' if video.video_type == 0
+    return '腾讯视频' if video.video_type == 1
+    return '爱奇艺视频' if video.video_type == 2
+    return '爱情动作片' if video.video_type == 3
+  end
+
   def column_video_or_recommend(column)
     recommend = Video.recent.where(:column_id=>column).where(:recommend=> 1).first
     video = Video.recent.where(:column_id=>column).where(:recommend=> 0).first

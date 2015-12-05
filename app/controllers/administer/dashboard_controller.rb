@@ -6,6 +6,10 @@ class  Administer::DashboardController < ApplicationController
 
   end
 
+  def search
+    @videos = Video.where("title like '%#{params[:query]}%'").recent.paginate(per_page:10,page:params[:page])
+  end
+
   def channel
     @column = Column.find_by_english(params[:english])
     @videos = Video.where(column_id: @column.id).recent.paginate(per_page:10,page:params[:page])

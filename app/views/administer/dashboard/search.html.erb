@@ -1,22 +1,17 @@
-<%= content_for(:title, @column.name + ' | 轩') %>
+<%= content_for(:title, '搜索' +params[:query] + ' | 轩') %>
 <section class="content-header">
   <h1>
-    「<%= @column.name %>」
+    「搜索关键字」
     <small>视频列表</small>
   </h1>
   <ol class="breadcrumb">
     <li><a href="<%= dashboard_path%>"><i class="fa fa-dashboard"></i> 数据中心</a></li>
-    <li><a href="<%= channel_path(@column.english)%>"><i class="fa fa-caret-square-o-right"></i> 栏目信息</a></li>
-    <li class="active"><i class="<%= @column.icon %>"></i> <%= @column.name %></li>
+    <li><a href=""><i class="fa fa-caret-square-o-right"></i> 搜索关键字</a></li>
   </ol>
 </section>
 <%= render partial: 'layouts/notice' %>
 <section class="content">
   <div class="box box-primary">
-    <div class="box-header">
-      <a href="<%= new_administer_column_video_path(@column) %>" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> 添加视频</a>
-      <a href="<%= import_column_video_path(@column.id) %>" class="btn btn-danger"><i class="glyphicon glyphicon-export"></i> 导入数据</a>
-    </div>
     <div class="box-body">
       <div class="row">
         <div class="col-sm-12">
@@ -30,7 +25,6 @@
             </tr>
             </thead>
             <tbody>
-            <% cache [params[:english], @videos.map{|c| c.updated_at}.max] do %>
                 <% @videos.each do |video| %>
                     <tr style="text-align: center">
                       <td>
@@ -39,9 +33,9 @@
                         </a>
                       </td>
                       <td style="text-align: left"><br>
-                        <label class="label label-waring" style="font-size: 16px">
+                        <label class="label label-default" style="font-size: 16px">
                           <i class="fa fa-video-camera"></i>
-                          <%= display_video_type video %>
+                          <%= video_to_column_name video.column_id %>
                         </label><br><br>
                         <label class="label label-default" style="font-size: 16px" title="「<%= video.title %>」">
                           <i class="fa fa-caret-square-o-right"></i>
@@ -73,14 +67,13 @@
                       </td>
                     </tr>
                 <% end %>
-            <% end %>
             </tbody>
           </table>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-5">
-          <div class="dataTables_info" id="example1_info" role="status" aria-live="polite"><h5>总计：「<%= @videos.total_entries%>」视频</h5></div>
+          <div class="dataTables_info" id="example1_info" role="status" aria-live="polite"><h5>总计搜索到：「<%= @videos.total_entries%>」视频</h5></div>
         </div>
         <div class="col-sm-7">
           <div class="dataTables_paginate paging_simple_numbers">
