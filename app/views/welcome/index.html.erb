@@ -10,9 +10,11 @@
       <div class="programa-list">
         <ul>
           <% Column.hexie.each do |channel| %>
-              <li>
-                <a href="<%= video_channel_path(channel.english) %>"><i class="<%= channel.icon %>"></i>&nbsp;&nbsp;<%= channel.name %></a>
-              </li>
+              <li><a href="<%= video_channel_path(channel.english) %>"><i class="<%= channel.icon %>"></i>&nbsp;&nbsp;<%= channel.name %></a></li>
+          <% end %>
+          <% if current_user && current_user.can_av? && Column.find_by_english('Fucking')%>
+              <% channel = Column.find_by_english('Fucking') %>
+              <li><a href="<%= video_channel_path(channel.english) %>"><i class="<%= channel.icon %>"></i>&nbsp;&nbsp;<%= channel.name %></a></li>
           <% end %>
         </ul>
       </div>

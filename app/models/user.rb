@@ -27,4 +27,11 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  scope :role_asc, ->{order(role: :asc)}
+  scope :role_desc, ->{order(role: :desc)}
+
+  def can_av?
+    return true if self.role =='admin' || self.role == 'fucker' || self.sign_in_count >= 50
+  end
+
 end

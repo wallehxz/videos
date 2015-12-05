@@ -4,7 +4,11 @@
       <div role="alert"></div>
       <div class="avatar">
         <a class="user">
-              <img src="<%= image_path('toutu/just_logo.png') %>">
+          <% if current_user %>
+            <img src="<%= display_avatar current_user %>">
+          <% else %>
+            <img src="<%= image_path('toutu/just_logo.png') %>">
+          <% end %>
         </a>
       </div>
       <div class="textarea-wrapper" data-role="textarea" dir="auto">
@@ -15,26 +19,24 @@
           </div>
         </div>
         <div id="comment-btn" class="post-actions" style="display: none">
-          <% if current_user %>
-            <div class="logged-in"style="text-align: right">
-              <a id='user' class="btn" style="background-color: #2A92DD" onclick="comment(<%= current_user.id %>,'')">
-                <span>以「<%= user_name current_user %>」评论</span>
-              </a>
-              <a id='no-user' href="javascript:void(0)" class="btn" style="background-color: #000000" onclick="Anonymous()">
-                <span>「匿名」评论</span>
-              </a>
-              <a id="reply-user" class="btn" style="display: none"></a>
-            </div>
-          <% else %>
-            <div class="logged-in"style="text-align: right">
-              <a id='no-user' href="javascript:void(0)" class="btn" style="background-color: #000000" onclick="Anonymous()">
-                  <span>「匿名」评论</span>
-              </a>
-              <a id="user_login" href="javascript:void(0)" class="btn" style="background-color: #dd3b5a">
-                <span>「登录」评论</span>
-              </a>
-            </div>
-          <% end %>
+          <div class="logged-in"style="text-align: right">
+              <% if current_user %>
+                  <a id='user' class="btn" style="background-color: #2A92DD" onclick="comment(<%= current_user.id %>,'')">
+                    <span>以「<%= display_name current_user %>」评论</span>
+                  </a>
+                  <a id='no-user' href="javascript:void(0)" class="btn" style="background-color: #000000" onclick="Anonymous()">
+                    <span>「匿名」评论</span>
+                  </a>
+                  <a id="reply-user" class="btn" style="display: none"></a>
+              <% else %>
+                  <a id='no-user' href="javascript:void(0)" class="btn" style="background-color: #000000" onclick="Anonymous()">
+                      <span>「匿名」评论</span>
+                  </a>
+                  <a id="user_login" href="javascript:void(0)" class="btn" style="background-color: #dd3b5a">
+                    <span>「登录」评论</span>
+                  </a>
+              <% end %>
+          </div>
         </div>
       </div>
     </div>
@@ -83,8 +85,8 @@
             $.get('/video_comments/user_comment', params, function(data){});
             var new_comment = '';
             new_comment += '<li class="post"><div data-role="post-content" class="post-content authored-by-session-user"> <div class="avatar hovercard">';
-            new_comment += '<img src="<%= user_avatar current_user %>" alt="Avatar">';
-            new_comment += '</div><div class="post-body"><header><span class="post-byline"><span class="author publisher-anchor-color"><a><%= user_name current_user %></a> </span><span title="<%= rank_name current_user %>"><img src="<%= rank_picture current_user %>" style="height:24px;"></span></span> <span class="post-meta"> <span class="bullet time-ago-bullet" aria-hidden="true">•</span>';
+            new_comment += '<img src="<%= display_avatar current_user %>" alt="Avatar">';
+            new_comment += '</div><div class="post-body"><header><span class="post-byline"><span class="author publisher-anchor-color"><a><%= display_name current_user %></a> </span><span title="<%= rank_name current_user %>"><img src="<%= rank_picture current_user %>" style="height:24px;"></span></span> <span class="post-meta"> <span class="bullet time-ago-bullet" aria-hidden="true">•</span>';
             new_comment += '<a data-role="relative-time" class="time-ago" title="<%= Time.now.strftime('%Y年%m月%d日 %H:%M')%>">刚刚</a></span>';
             new_comment += '<div class="post-body-inner" style="font-size: 16px;color: #000000">' +params['comment']['content'] +'</div>';
             new_comment += '<footer><menu><li class="voting" data-role="voting"><a class="vote-up  count-0" data-action="upvote" title="Vote up"><span class="control">赞一个</span></a></li><li class="bullet" aria-hidden="true">•</li> <li class="share"> <a class="toggle" style="font-size: 18px"><span class="text">分享 ›</span></a> <ul> <li class="twitter"><a href="#">QQ空间</a></li> <li class="facebook"><a href="#">新浪微博</a></li> <li class="link"><a href="#">安全链接</a></li> </ul> </li> </menu> </footer> </div> </div> </li>';

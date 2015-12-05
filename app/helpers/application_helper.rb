@@ -136,9 +136,9 @@ module ApplicationHelper
   end
 
   def display_role(user)
-    return '文艺小骚年' if user.role=='looker'
-    return '荒野大嫖客' if user.role=='fucker'
     return '苦逼管理员' if user.role=='admin'
+    return '荒野大嫖客' if user.role=='fucker'
+    return '文艺小骚年' if user.role=='looker'
   end
 
   def column_video_or_recommend(column)

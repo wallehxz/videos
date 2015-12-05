@@ -17,6 +17,15 @@ class WelcomeController < ApplicationController
     if Column.find_by_english(params[:english])
       @channel = Column.find_by_english(params[:english])
       @videos = Video.recent.where(:column_id => @channel.id).paginate(:per_page=>9,:page=> 1)
+      if params[:english] =='Fucking'
+        if current_user.present? && current_user.can_av?
+          @channel;@videos
+        else
+          redirect_to root_path
+        end
+      else
+        @channel;@videos
+      end
     else
       redirect_to root_path
     end

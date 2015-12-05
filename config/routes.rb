@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   match '/channel/:english/feed',to: 'welcome#feed', via: :get, as: :channel_feed, defaults: { format: :rss }
   match 'zhang/dashboard', to: 'administer/dashboard#index',via: :get, as: :dashboard
   match 'zhang/:english/videos', to: 'administer/dashboard#channel',via: :get, as: :channel
+  match 'zhang/users', to: 'administer/dashboard#users',via: :get, as: :users
+  match 'zhang/role_set', to: 'administer/dashboard#role_control',via: :get, as: :role_set
   match 'zhang/columns', to: 'administer/columns#index',via: :get, as: :columns
   match 'zhang/import/:column_id', to: 'administer/columns#import_videos',via: :get, as: :import_column_video
   match 'zhang/create/import', to: 'administer/columns#create_csv_data',via: :post, as: :create_import_video

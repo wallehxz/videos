@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_admin
 
   def authenticate_admin!
-    if session[:admin].nil?
+    unless current_user.present? && current_user.role == 'admin' || session[:admin].present?
       flash[:notice] ='您还没有管理员权限,请登录'
       redirect_to admin_sign_in_path
     end
@@ -20,6 +20,17 @@ class ApplicationController < ActionController::Base
     if current_user.nil?
       redirect_to root_path
     end
+  end
+
+  def display_name(user)
+    return user.nick_name if user.nick_name.present?
+    return user.email if user.nick_name.nil?
+  end
+
+  def display_role(user)
+    return '苦逼管理员' if user.role=='admin'
+    return '荒野大嫖客' if user.role=='fucker'
+    return '文艺小骚年' if user.role=='looker'
   end
 
 end

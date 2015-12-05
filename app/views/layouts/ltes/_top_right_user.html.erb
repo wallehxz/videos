@@ -3,28 +3,38 @@
     <% if current_admin.present? %>
         <img src="<%= image_url('toutu/face.png') %>" class="user-image" alt="User Image"/>
         <span class="hidden-xs">然而并没有什么卵用</span>
+    <% elsif current_user.present? %>
+        <img src="<%= display_avatar current_user %>" class="user-image" alt="User Image"/>
+        <span class="hidden-xs"><%= display_name current_user %></span>
     <% end%>
   </a>
   <ul class="dropdown-menu">
     <li class="user-header">
       <% if current_admin.present? %>
-          <img src="<%= image_url('toutu/face.png')%>" class="img-circle" alt="User Image" />
+          <img src="" class="img-circle" alt="User Image" />
           <p>
             开发者<br>
             developer@anye.com
             <small><%= Time.now.strftime('%Y，%m月')%></small>
           </p>
+      <% elsif current_user.present? %>
+          <img src="<%= display_avatar current_user %>" class="img-circle" alt="User Image" />
+          <p>
+            管理员<br>
+            <%= display_name current_user %>
+            <small><%= current_user.created_at.strftime('%Y，%m月')%></small>
+          </p>
       <% end %>
     </li>
     <li class="user-body">
       <div class="col-xs-4 text-center">
-        <a href="<%#= admin_released_path %>">视频</a>
+        <a href="<%= dashboard_path %>"><i class="fa fa-vimeo-square"></i>视频</a>
       </div>
       <div class="col-xs-4 text-center">
-        <a href="<%#= admin_dashboard_path %>">栏目</a>
+        <a href="<%= columns_path %>"><i class="fa fa-flag-checkered"></i>栏目</a>
       </div>
       <div class="col-xs-4 text-center">
-        <a href="<%#= admin_users_path %>">成员</a>
+        <a href="<%= users_path %>"><i class="fa fa-user-md"></i>成员</a>
       </div>
     </li>
     <!-- Menu Footer-->
@@ -35,6 +45,8 @@
       <div class="pull-right">
         <% if current_admin.present? %>
             <a href="<%= admin_sign_out_path %>" class="btn btn-default btn-flat">登出</a>
+        <% elsif current_user.present? %>
+            <a href="<%= sign_out_path %>" class="btn btn-default btn-flat">登出</a>
         <% end %>
       </div>
     </li>

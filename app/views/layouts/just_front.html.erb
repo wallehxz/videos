@@ -30,6 +30,10 @@
           <% Column.hexie.each do |channel|%>
               <li><a href="<%= video_channel_path(channel.english) %>"><i class="<%= channel.icon %>"></i>&nbsp;&nbsp;<%= channel.name %></a></li>
           <% end %>
+          <% if current_user && current_user.can_av? && Column.find_by_english('Fucking')%>
+              <% channel = Column.find_by_english('Fucking') %>
+              <li><a href="<%= video_channel_path(channel.english) %>"><i class="<%= channel.icon %>"></i>&nbsp;&nbsp;<%= channel.name %></a></li>
+          <% end %>
         </ul>
       </li>
       <% if current_user %>
@@ -40,7 +44,7 @@
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" role="menu">
-              <% if current_user.role = 'admin' %>
+              <% if current_user.role == 'admin' %>
                  <li><a href="<%= dashboard_path %>"> <i class="fa fa-gears"></i>&nbsp;数据管理</a></li>
               <% end%>
               <li><a href="<%= new_avatar_path %>"><i class="fa fa-upload"></i>&nbsp;上传头像</a></li>
