@@ -9,7 +9,7 @@
       <div class="programa-list">
         <ul>
           <li><a href="/"><i class="fa fa-home"></i>&nbsp;&nbsp;首页</a></li>
-          <% Column.hexie.each do |channel| %>
+          <% Column.hexie.shunxu.each do |channel| %>
               <li <% if params[:english].present? && params[:english] == channel.english%> class="active" <% end %>>
                 <a href="<%= video_channel_path(channel.english) %>"><i class="<%= channel.icon %>"></i>&nbsp;&nbsp;<%= channel.name %></a>
               </li>
