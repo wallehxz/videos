@@ -17,7 +17,7 @@ xml.rss :version => '2.0' do
             xml.picture video.cover
             xml.source code_type_to_url(video.tv_code,video.video_type)
             xml.description do
-              xml.cdata! video.summary ? video.summary : '<p>暂无简介</p>'
+              xml.cdata! video.summary.present?? video.summary : '<p>暂无简介</p>'
             end
             xml.pubDate video.created_at.to_s(:rfc822)
           end
