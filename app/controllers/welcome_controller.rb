@@ -45,11 +45,11 @@ class WelcomeController < ApplicationController
   end
 
   def feed
-    if Column.find_by_english(params[:english])
+    if Column.find_by_english(params[:english]) && params[:english] != 'Fucking'
       @column = Column.find_by_english(params[:english])
       @videos = Video.recent.where(column_id:@column.id).limit(20)
     else
-      @videos = Video.recent.limit(20)
+      @videos = Video.hexie.recent.limit(20)
     end
     render 'welcome/feed', layout: false
   end
