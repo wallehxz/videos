@@ -47,7 +47,11 @@ class WelcomeController < ApplicationController
   def feed
     if Column.find_by_english(params[:english]) && params[:english] != 'Fucking'
       @column = Column.find_by_english(params[:english])
-      @videos = Video.recent.where(column_id:@column.id).limit(20)
+      if params[:all] == 'true'
+        @videos = Video.recent.where(column_id:@column.id)
+      else
+        @videos = Video.recent.where(column_id:@column.id).limit(20)
+      end
     else
       @videos = Video.hexie.recent.limit(20)
     end
