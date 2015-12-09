@@ -1,6 +1,6 @@
 xml.instruct! :xml, :version => '1.0'
 xml.rss :version => '2.0' do
-  cache [ :video, params[:english], @videos.map{|v| v.updated_at}.max ] do
+  cache [ :feed, params[:english], params[:all], @videos.count,@videos.map{|v| v.updated_at}.max ] do
     xml.channle do
       xml.title '^轩^'
       xml.language 'zh-CN'
