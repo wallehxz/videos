@@ -1,9 +1,9 @@
 <!doctype html>
 <html class="no-js" lang="">
 <head>
+  <title><%= content_for?(:title) ? yield(:title) : '在沉默中爆发 | ^轩^' %></title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
-  <title><%= content_for?(:title) ? yield(:title) : '好玩好看的视频 | 轩' %></title>
   <%= content_for?(:meta)? yield(:meta) :'' %>
   <%= csrf_meta_tags %>
   <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>

@@ -1,4 +1,4 @@
-<%= content_for(:title,  '修改密码 | 轩') %>
+<%= content_for(:title,  '修改密码 | ^轩^') %>
 <div class="main">
   <div class="main-login">
     <% if devise_error_messages!.present? %>
@@ -22,7 +22,7 @@
 <script>
     $('#user_password').change(function(){
         if($('#user_password').val().length < 6){
-            $('#tip_pass').html('密码弱爆了！');
+            $('#tip_pass').html('密码过于短小');
             $('#user_password').val('');
             return false;
         }else{
@@ -31,7 +31,7 @@
     })
     $('#user_password_confirmation').change(function(){
         if($('#user_password_confirmation').val() != $('#user_password').val()){
-            $('#tip_con').html('输入密码时请勿手抖！');
+            $('#tip_con').html('两次密码不匹配');
             $('#user_password_confirmation').val('');
             $('#user_password').val('');
             return false;

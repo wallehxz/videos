@@ -1,6 +1,7 @@
 <%= stylesheet_link_tag 'http://7xjfim.com2.z0.glb.qiniucdn.com/Iva.css' %>
 <%= javascript_include_tag 'http://7xjfim.com2.z0.glb.qiniucdn.com/Iva.js' %>
-<%= content_for(:title, @video.title + ' | 华轩·张') %>
+<%= content_for(:title, @video.title + ' | ^轩^') %>
+<%= render partial: 'shared/og_meta', video:@video %>
 <div class="container">
   <div class="grid">
     <div class="display">
@@ -75,5 +76,5 @@
         $.get('/video_comments/comment_vote', params, function(data){});
         var num = parseInt(vot_count)+1;
         $('#vote_'+ comment_id).removeAttr('title').removeAttr('href').removeAttr('onclick').html('<span class="control" style="padding-left: 10px">已获赞 「'+ num +'」</span>')
-    };
+    }
 </script>
