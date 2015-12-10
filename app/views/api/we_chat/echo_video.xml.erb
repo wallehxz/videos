@@ -1,0 +1,17 @@
+<xml>
+<ToUserName><![CDATA[<%= @request['FromUserName'] %>]]></ToUserName>
+<FromUserName><![CDATA[<%= @request['ToUserName'] %>]]></FromUserName>
+<CreateTime><%= Time.now.to_i %></CreateTime>
+<MsgType><![CDATA[news]]></MsgType>
+<ArticleCount><%= @videos.count %></ArticleCount>
+<Articles>
+    <% @videos.each do |item| %>
+        <item>
+            <Title><![CDATA[<%= item.title %>]]></Title>
+            <Description><![CDATA[<%= item.title %>]]></Description>
+            <PicUrl><![CDATA[<%= item.cover %>]]></PicUrl>
+            <Url><![CDATA[<%= 'http://huaxuan.link' + video_playing_path(item.tv_code) %>]]></Url>
+        </item>
+    <% end %>
+</Articles>
+</xml>

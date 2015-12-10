@@ -52,6 +52,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     get 'echo_msg' => 'we_chat#echo_get_msg'
+    post 'echo_msg' => 'we_chat#echo_post_msg'
   end
 
 end
