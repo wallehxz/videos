@@ -18,13 +18,17 @@
   <nav class="navbar navbar-default" role="navigation">
     <div class="navbar-header">
       <a class="navbar-brand" href="/" style="padding-top: 0px">
-        <img alt="Brand" height="50" src="<%= image_url('toutu/just_logo.png') %>">
+        <% unless current_user.present? %>
+            <img alt="Brand" height="50" src="<%= image_url('toutu/just_logo.png') %>" title="在沉默中爆发">
+        <% else %>
+            <img alt="Brand" height="50" src="<%= rank_picture current_user %>" title="<%= rank_name current_user%>">
+        <% end %>
       </a>
     </div>
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-          <span>栏目</span>&nbsp;<i class="fa fa-diamond"></i>
+          <i class="fa fa-diamond"></i>&nbsp;<span>栏目</span><span class="caret"></span>
         </a>
         <ul class="dropdown-menu" role="menu">
           <% Column.hexie.each do |channel|%>
@@ -39,7 +43,7 @@
       <% if current_user %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-              <img src="<%= display_avatar current_user%>" height="18px" class="img-circle">
+              <img src="<%= display_avatar current_user%>" height="18px" class="img-circle">&nbsp;&nbsp;
               <%= display_name current_user %>
               <span class="caret"></span>
             </a>
@@ -47,14 +51,15 @@
               <% if current_user.role == 'admin' %>
                  <li><a href="<%= dashboard_path %>"> <i class="fa fa-gears"></i>&nbsp;数据管理</a></li>
               <% end%>
+              <li><a><img src="<%= image_path(rank_picture current_user) %>" height="20px">&nbsp;<%= rank_name(current_user)%></a></li>
               <li><a href="<%= new_avatar_path %>"><i class="fa fa-upload"></i>&nbsp;上传头像</a></li>
               <li><a href="<%= profile_path %>"><i class="fa fa-user-secret"></i>&nbsp;个人中心</a></li>
               <li><a href="<%= sign_out_path %>"><i class="fa fa-sign-out"></i>&nbsp;账户登出</a></li>
             </ul>
           </li>
       <% else %>
-          <li><a href="<%= sign_in_path %>">登录&nbsp;<i class="fa fa-sign-in"></i></a></li>
-          <li><a href="<%= sign_up_path %>">注册&nbsp;<i class="fa fa-user-plus"></i></a></li>
+          <li><a href="<%= sign_in_path %>"><i class="fa fa-sign-in"></i>&nbsp;登录</a></li>
+          <li><a href="<%= sign_up_path %>"><i class="fa fa-user-plus"></i>&nbsp;注册</a></li>
       <% end %>
     </ul>
   </nav>

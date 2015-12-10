@@ -29,6 +29,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   scope :role_asc, ->{order(role: :asc)}
   scope :role_desc, ->{order(role: :desc)}
+  scope :recent, -> {order(created_at: :asc)}
 
   def can_av?
     return true if self.role =='admin' || self.role == 'fucker' || self.sign_in_count >= 50
