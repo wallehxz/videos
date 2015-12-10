@@ -51,10 +51,10 @@
               <% if current_user.role == 'admin' %>
                  <li><a href="<%= dashboard_path %>"> <i class="fa fa-gears"></i>&nbsp;数据管理</a></li>
               <% end%>
-              <li><a><img src="<%= image_path(rank_picture current_user) %>" height="20px">&nbsp;<%= rank_name(current_user)%></a></li>
               <li><a href="<%= new_avatar_path %>"><i class="fa fa-upload"></i>&nbsp;上传头像</a></li>
               <li><a href="<%= profile_path %>"><i class="fa fa-user-secret"></i>&nbsp;个人中心</a></li>
               <li><a href="<%= sign_out_path %>"><i class="fa fa-sign-out"></i>&nbsp;账户登出</a></li>
+              <li><a><img src="<%= image_path(rank_picture current_user) %>" height="20px">&nbsp;<%= rank_name(current_user)%></a></li>
             </ul>
           </li>
       <% else %>
