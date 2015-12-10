@@ -1,8 +1,6 @@
 #coding=utf-8
 Rails.application.routes.draw do
 
-  get 'profile/new_avatar'
-
   match '/playing/(:tv_code).html',to: 'welcome#playing', via: :get, as: :video_playing
   match '/channel/:english',to: 'welcome#channel', via: :get, as: :video_channel
   match '/videos/get_channel_more',to: 'welcome#get_channel_more', via: :get
@@ -51,5 +49,9 @@ Rails.application.routes.draw do
     post 'sign_login', to: 'users/sessions#create'
   end
   root 'welcome#index'
+
+  namespace :api do
+    get 'echo_msg' => 'we_chat#echo_get_msg'
+  end
 
 end
