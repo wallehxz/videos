@@ -2266,11 +2266,14 @@ img[data-src] {
     display: none;
   }
 
-
-  #form .textarea-wrapper {
-    margin-left: 0 !important;
+  #form  {
+    width: 100%;
   }
 
+
+  #form .textarea-wrapper {
+    margin-left: 10px;
+  }
 
   #form .textarea-wrapper .textarea .placeholder {
     font-size: 15px;
@@ -2281,6 +2284,7 @@ img[data-src] {
 
 
   #form.expanded .textarea-wrapper .textarea {
+    width: 100%;
     min-height: 60px;
   }
 }
