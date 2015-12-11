@@ -3,7 +3,8 @@
 <head>
   <title><%= content_for?(:title) ? yield(:title) : '在沉默中爆发 | ^轩^' %></title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+  <!-- 相应式布局 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= content_for?(:meta)? yield(:meta) :'' %>
   <%= csrf_meta_tags %>
   <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>

@@ -1662,10 +1662,33 @@ a:hover, a:focus {
 //手机视频展示
 @media ( max-width: 969px) {
 
+  .player-poster{
+    margin-left: 10px;
+  }
+  .commend {
+    float: left;
+    width: 610px;
+    overflow: hidden;
+  }
+
   .relatives {
     margin-left: 10px;
-    width: 270px;
+    width: 300px;
     float: left;
+  }
+
+  .relatives ul.video-list li.video-item {
+    width: 300px;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+
+  .relatives ul.video-list li.video-item .video-poster {
+    width: 300px;
+  }
+  .relatives ul.video-list li.video-item .video-poster img {
+    width: 300px;
+    height: 160px;
   }
 
   .player {
@@ -1748,17 +1771,44 @@ a:hover, a:focus {
 
 @media (max-width: 500px){
 
+  .commend {
+    width: 95%;
+    margin-left: 10px;
+    padding-top: 10px;
+    overflow: hidden;
+  }
+
+  .relatives {
+    margin-left: 10px;
+    width: 95%;
+    float: left;
+  }
+
+  .relatives ul.video-list li.video-item {
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+
+  .relatives ul.video-list li.video-item .video-poster {
+    width: 100%;
+  }
+  .relatives ul.video-list li.video-item .video-poster img {
+    width: 100%;
+    height: 100%;
+  }
+
   .player {
-    width: 410px;
-    height: 260px;
+    width: 380px;
+    height: 240px;
     margin-top: 20px;
     margin-bottom: 15px;
     overflow: hidden;
     border: 1px solid #ebebeb;
   }
   .video_player{
-    width: 400px;
-    height:250px;
+    width: 370px;
+    height:220px;
   }
 
   .programa-list{
@@ -1800,25 +1850,31 @@ a:hover, a:focus {
   }
 }
 
-.video {
-  width: 100%;
-  margin: 0 auto;
-  clear: both;
-  overflow: hidden;
-}
-
-ul.video-list {
-  padding: 0;
-  margin: 0 auto;
-  border: 0;
-}
-
 @media (min-width: 970px) {
 
+  .commend {
+    width: 610px;
+    overflow: hidden;
+  }
+
   .relatives {
-    width: 270px;
+    width: 300px;
     float: right;
-    margin-left: 80px;
+    margin-left: 50px;
+  }
+
+  .relatives ul.video-list li.video-item {
+    width: 300px;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+
+  .relatives ul.video-list li.video-item .video-poster {
+    width: 300px;
+  }
+  .relatives ul.video-list li.video-item .video-poster img {
+    width: 300px;
+    height: 160px;
   }
 
   .player {
@@ -1869,6 +1925,19 @@ ul.video-list {
     opacity: 0;
     transition: all 500ms ease-out;
   }
+}
+
+.video {
+  width: 100%;
+  margin: 0 auto;
+  clear: both;
+  overflow: hidden;
+}
+
+ul.video-list {
+  padding: 0;
+  margin: 0 auto;
+  border: 0;
 }
 
 ul.video-list li.video-item a {
@@ -1956,35 +2025,6 @@ ul.video-list li.video-item .animated:hover .video-info {
 
 .cube-title p {
   margin-bottom: 0;
-}
-
-.relatives ul.video-list li.video-item {
-  width: 270px;
-  margin: 0 auto;
-  margin-top: 20px;
-}
-.relatives ul.video-list li.video-item:nth-child(3n+1) {
-  margin-left: auto;
-}
-.relatives ul.video-list li.video-item:nth-child(3n) {
-  margin-right: auto;
-}
-.relatives ul.video-list li.video-item .video-poster {
-  width: 270px;
-}
-.relatives ul.video-list li.video-item .video-poster img {
-  width: 270px;
-  height: 160px;
-}
-.video-content{
-  width: 610px;
-}
-.video_content a{
-  color: #dd3c5a;
-}
-.commend {
-  width: 610px;
-  overflow: hidden;
 }
 
 .pannel {

@@ -1,5 +1,5 @@
 <%= stylesheet_link_tag 'video_player' %>
-<%= javascript_include_tag 'video_player-4.2' %>
+<%= javascript_include_tag 'video_player' %>
 <%= content_for(:title, @video.title + ' | ^轩^') %>
 <%= render partial: 'shared/og_meta', video:@video %>
 <div class="container">
@@ -24,9 +24,7 @@
   <div class="grid">
     <div class="cube">
       <div class="relatives">
-        <div class="cube-title">
-          <h3>相关推荐</h3>
-        </div>
+        相关推荐
         <% sql_query = Video.find_by_sql("select * from videos where(id !=#{@video.id}) and column_id = #{@video.column_id} order by random() limit 3") %>
         <%= render partial: 'shared/video_related', locals: {related: sql_query}%>
       </div>
