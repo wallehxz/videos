@@ -26,22 +26,28 @@
 	filter:none !important;
 }
 
-.cs-circleslight .br-previous {
-	left:10px;
-	background-position:0px 0px;
+@media (min-width: 970px){
+  .cs-circleslight .br-previous {
+    left:10px;
+    background-position:0px 0px;
+  }
+
+  .cs-circleslight .br-next {
+    right:10px;
+    background-position:-60px 0px;
+  }
+
 }
 
-.cs-circleslight .br-next {
-	right:10px;
-	background-position:-60px 0px;
-}
+@media (max-width: 969px){
+  .cs-circleslight .br-previous {
+    display: none;
+  }
 
-.cs-circleslight .br-previous:hover {
-	background-position:0px -60px;
-}
+  .cs-circleslight .br-next {
+    display: none;
+  }
 
-.cs-circleslight .br-next:hover {
-	background-position:-60px -60px;
 }
 
 .cs-circleslight .br-slidecontrol {
