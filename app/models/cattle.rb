@@ -2,6 +2,7 @@ require 'qiniu'
 class Cattle < ActiveRecord::Base
 
   #获取七牛服务文件列表
+  # Cattle.files_list
   def self.files_list(prefix= '',marker = '')
     bucket = 'meteor' #指定空间
     limit = 15
@@ -9,6 +10,17 @@ class Cattle < ActiveRecord::Base
     list_policy.marker = marker  #加上对象
     code,result,headers = Qiniu::Storage.list(list_policy)
     return result['marker'],result['items']
+  end
+
+  #云存储文件统计
+  # Cattle.file_sum
+  def self.file_sum()
+    bucket = 'meteor' #指定空间
+    limit = 10000
+    prefix= ''
+    list_policy = Qiniu::Storage::ListPolicy.new(bucket,limit,prefix)
+    code,result,headers = Qiniu::Storage.list(list_policy)
+    return result['items'].size
   end
 
   #将文件缓存到本地磁盘，生成新的名称和地址

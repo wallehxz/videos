@@ -18,3 +18,7 @@
 //= require ./js/demo
 //= require ./js/respond.min
 //= require ./plugins/iCheck/icheck.min
+//= require ./plugins/jvectormap/jvectormap-2.0.3.min
+//= require ./plugins/jvectormap/jvectormap-world-mill
+//= require ./plugins/jvectormap/jvectormap-cn-mill
+
