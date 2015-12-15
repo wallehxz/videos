@@ -3,12 +3,12 @@
 <head>
   <title><%= content_for?(:title) ? yield(:title) : '在沉默中爆发 | ^轩^' %></title>
   <meta charset="utf-8">
-  <!-- 相应式布局 -->
+  <!-- 响应式布局 -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= content_for?(:meta)? yield(:meta) :'' %>
   <%= csrf_meta_tags %>
   <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
-  <%= stylesheet_link_tag  'just_front', 'slider','disqus','LTE_admin/css/font-awesome', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag  'front', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </head>
 <body>
@@ -73,3 +73,7 @@
 </footer>
 </body>
 </html>
+<script>
+    $(document).on('page:fetch',   function() { NProgress.start(); });
+    $(document).on('page:change',  function() { NProgress.done(); });
+</script>

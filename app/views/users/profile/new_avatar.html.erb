@@ -4,8 +4,10 @@
   <title><%= content_for?(:title) ? yield(:title) : '上传头像 | ^轩^' %></title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <%= stylesheet_link_tag 'just_user', 'avatar_upload', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'just_user', 'particles','wxLogin','cropbox', 'data-turbolinks-track' => true %>
+  <!-- 响应式布局 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%= stylesheet_link_tag 'front_user', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'user_info', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
   <style type='text/css' id='hot_style_patch'>
@@ -80,4 +82,8 @@
 </section>
 </body>
 </html>
+<script>
+    $(document).on('page:fetch',   function() { NProgress.start(); });
+    $(document).on('page:change',  function() { NProgress.done(); });
+</script>
 

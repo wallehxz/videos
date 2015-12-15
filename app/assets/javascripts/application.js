@@ -11,15 +11,14 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
-//= require turbolinks
-//= require jquery-2.1.3.min
 //= require plugins
 //= require vendor
-//= require cute.slider
-//= require cute.transitions.all
 //= require yepnope
-//= require cute.2d.module
-//= require cute.css3d.module
-//= require cute.canvas.module
+//= require cute.slider
+//= require jquery_ujs
+//= require turbolinks
+//= require nprogress
+//= require video_player
 //= require jquery.blockUI
+//= require jquery-2.1.3.min
+//= require cute.transitions.all

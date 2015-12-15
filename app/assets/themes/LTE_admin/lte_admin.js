@@ -1,6 +1,7 @@
 //后台js
 //= require jquery
 //= require jquery_ujs
+//= require turbolinks
 //= require ./plugins/jQuery/jQuery-2.1.4.min
 //= require ./js/jquery-ui.min
 //= require ./js/bootstrap.min

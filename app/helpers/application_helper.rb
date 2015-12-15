@@ -89,6 +89,10 @@ module ApplicationHelper
     Column.find(video).name
   end
 
+  def video_to_column_icon(video)
+    Column.find(video).icon
+  end
+
   def display_name(user)
     return user.nick_name if user.nick_name.present?
     return user.email if user.nick_name.nil?
