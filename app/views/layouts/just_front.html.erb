@@ -29,7 +29,7 @@
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-          <i class="fa fa-diamond"></i>&nbsp;<span>栏目</span><span class="caret"></span>
+          <i class="fa fa-diamond"></i>&nbsp;<span>栏目</span>
         </a>
         <ul class="dropdown-menu" role="menu">
           <% Column.hexie.each do |channel|%>
@@ -46,7 +46,6 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
               <img src="<%= display_avatar current_user%>" height="18px" class="img-circle">&nbsp;&nbsp;
               <%= display_name current_user %>
-              <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" role="menu">
               <% if current_user.role == 'admin' %>

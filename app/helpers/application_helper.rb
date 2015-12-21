@@ -31,7 +31,7 @@ module ApplicationHelper
       return image_path('rank/rank-4.png')
     elsif num >= 20 && num < 30
       return image_path('rank/rank-5.png')
-    elsif num >= 30 && num < 45
+    elsif num >= 30 && num < 50
       return image_path('rank/rank-6.png')
     elsif num >= 50
       return image_path('rank/rank-7.png')
@@ -50,7 +50,7 @@ module ApplicationHelper
       return '「华贵铂金」'
     elsif num >= 20 && num < 30
       return '「璀璨钻石」'
-    elsif num >= 30 && num < 45
+    elsif num >= 30 && num < 50
       return '「超凡大师」'
     elsif num >= 50
       return '「最强王者」'
