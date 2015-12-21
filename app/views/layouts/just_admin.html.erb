@@ -111,6 +111,8 @@
 </div>
 <script type="text/javascript">
     $.widget.bridge('uibutton', $.ui.button);
+    $(document).on('page:fetch',   function() { NProgress.start(); });
+    $(document).on('page:change',  function() { NProgress.done(); });
 </script>
 </body>
 </html>

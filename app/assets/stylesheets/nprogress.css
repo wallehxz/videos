@@ -14,7 +14,7 @@
     left: 0;
 
     width: 100%;
-    height: 2px;
+    height: 3px;
 }
 
 /* Fancy blur effect */
@@ -33,13 +33,14 @@
 }
 
 /* Remove these to get rid of the spinner */
-#nprogress .spinner {
-    display: block;
-    position: fixed;
-    z-index: 1031;
-    top: 15px;
-    right: 15px;
-}
+/* 右上角提示 */
+/*#nprogress .spinner {*/
+    /*display: block;*/
+    /*position: fixed;*/
+    /*z-index: 1031;*/
+    /*top: 15px;*/
+    /*right: 15px;*/
+/*}*/
 
 #nprogress .spinner-icon {
     width: 18px;
