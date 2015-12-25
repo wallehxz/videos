@@ -1,29 +1,27 @@
-<% comments.each do |item| %>
+<% comments.each do |comment| %>
     <li class="post">
+      <% num = rand(Comment::Name.size) %>
       <div data-role="post-content" class="post-content authored-by-session-user">
         <div class="avatar hovercard">
-          <img src="/images/avatar/haizei/<%= rand(33) %>.jpg" alt="Avatar">
+          <img src="<%= rand_lol_picture num %>" alt="Avatar">
         </div>
         <div class="post-body">
           <header>
             <span class="post-byline">
               <span class="author publisher-anchor-color">
-                <a><%= VideoComment::Anonymous[rand(108)] %></a>
+                <a><%= Comment::Name[num] %></a>
               </span>
-                  <span class="bullet time-ago-bullet" aria-hidden="true">•</span>
-              <% youku_comment = rand(120) %>
-              <span title="<%= rand_rank_name youku_comment %>"><img src="<%= rand_rank_picture youku_comment %>" style="height: 24px"></span>
+              <span class="bullet time-ago-bullet" aria-hidden="true">•</span>
+               <span title="<%= rand_rank_name num %>"><img src="<%= rand_rank_picture num %>" style="height: 24px"></span>
             </span>
             <span class="post-meta">
               <span class="bullet time-ago-bullet" aria-hidden="true">•</span>
-              <span title="<%= item['published'].to_time.strftime('%Y年%m月%d日 %H:%M') %>"><%= time_ago_in_words(item['published']) %></span>
+              <span title="<%= comment['published'] %>"><%= time_ago_in_words(comment['published']) %></span>
             </span>
           </header>
           <div class="post-body-inner" style="font-size: 16px;color: #000000">
-            <%= item['content'] %>
+            <%= comment['content'] %>
           </div>
-          <footer>
-          </footer>
         </div>
       </div>
     </li>

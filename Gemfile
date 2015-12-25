@@ -17,6 +17,7 @@ gem 'turbolinks', '2.5.3'  # makes following links in your web application faste
 gem 'jbuilder', '2.3.2' # Build JSON APIs
 gem 'sdoc', '~> 0.4.0', group: :doc # bundle exec rake doc:rails generates the API under doc/api.
 gem 'qiniu', '6.4.2'  #七牛云存储服务
+gem 'bcrypt', '3.1.10' # BCrypt::Password.create
 gem 'unicorn', '4.9.0' # Rails Server
 #gem 'puma', '2.14.0' #bin/rails s puma -t 4:16 -w 2 -b 0.0.0.0 -p 3000 -e development
 gem 'newrelic_rpm', '3.14.0.305' #网站性能监测

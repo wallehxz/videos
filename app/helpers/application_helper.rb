@@ -38,6 +38,24 @@ module ApplicationHelper
     end
   end
 
+  def rand_rank_picture(num)
+    if num < 3
+      return image_path('rank/rank-1.png')
+    elsif num >= 3 && num < 7
+      return image_path('rank/rank-2.png')
+    elsif num >= 7 && num < 12
+      return image_path('rank/rank-3.png')
+    elsif num >= 12 && num < 20
+      return image_path('rank/rank-4.png')
+    elsif num >= 20 && num < 30
+      return image_path('rank/rank-5.png')
+    elsif num >= 30 && num < 50
+      return image_path('rank/rank-6.png')
+    elsif num >= 50
+      return image_path('rank/rank-7.png')
+    end
+  end
+
   def rank_name(user)
     num = user.sign_in_count
     if num < 3
@@ -55,6 +73,32 @@ module ApplicationHelper
     elsif num >= 50
       return '「最强王者」'
     end
+  end
+
+  def rand_rank_name(num)
+    if num < 3
+      return '「英勇黄铜」'
+    elsif num >= 3 && num < 7
+      return '「不屈白银」'
+    elsif num >= 7 && num < 12
+      return '「荣耀黄金」'
+    elsif num >= 12 && num < 20
+      return '「华贵铂金」'
+    elsif num >= 20 && num < 30
+      return '「璀璨钻石」'
+    elsif num >= 30 && num < 50
+      return '「超凡大师」'
+    elsif num >= 50
+      return '「最强王者」'
+    end
+  end
+
+  def rand_lol_picture(num)
+    return image_path("lol/#{num}.jpg")
+  end
+
+  def rand_lol_name(num)
+    return Comment::Name[num]
   end
 
   def baidu_ip_info(user)
@@ -100,7 +144,7 @@ module ApplicationHelper
 
   def display_avatar(user)
     return user.avatar if user.avatar.present?
-    return image_path('toutu/user.png') if user.avatar.nil?
+    return rand_lol_picture(rand(77)) if user.avatar.nil?
   end
 
   def display_role(user)

@@ -30,9 +30,14 @@ class User < ActiveRecord::Base
   scope :role_asc, ->{order(role: :asc)}
   scope :role_desc, ->{order(role: :desc)}
   scope :recent, -> {order(created_at: :asc)}
+  before_create :set_name
 
   def can_av?
     return true if self.role =='admin' || self.role == 'fucker' || self.sign_in_count >= 50
+  end
+
+  def set_name
+    self.nick_name = Comment::Name[rand(Comment::Name.size)]
   end
 
 end

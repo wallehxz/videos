@@ -33,10 +33,21 @@ class Video < ActiveRecord::Base
 
   #根据 code 获取视频的热点评论 Video.code_to_hot_comment
    def self.code_to_youku_hot_comment(code)
-     params = {client_id: Settings.youku_client_id, video_id:code}
+     params = {client_id: Settings.youku_client_id, video_id:code, count:5}
      response = $youku_conn.get '/v2/comments/hot/by_video.json', params
      return JSON.parse(response.body)['comments']
    end
+
+  def self.code_to_youku_comment(code)
+    params = {client_id: Settings.youku_client_id, video_id:code, count:5}
+    response = $youku_conn.get '/v2/comments/by_video.json', params
+    return JSON.parse(response.body)['comments']
+  end
+
+  def self.code_to_comment(code)
+    return code_to_youku_hot_comment(code) if code_to_youku_hot_comment(code).present?
+    return code_to_youku_comment(code) if code_to_youku_comment(code).present?
+  end
 
   #截取特殊符号标题内容
   def self.truncate_title(string)

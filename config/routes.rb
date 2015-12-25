@@ -1,6 +1,7 @@
 #coding=utf-8
 Rails.application.routes.draw do
 
+  resources :comments
   match '/playing/(:tv_code).html',to: 'welcome#playing', via: :get, as: :video_playing
   match '/channel/:english',to: 'welcome#channel', via: :get, as: :video_channel
   match '/videos/get_channel_more',to: 'welcome#get_channel_more', via: :get
@@ -30,6 +31,8 @@ Rails.application.routes.draw do
   match '/my/profile',to: 'users/profile#profile', via: :get, as: :profile
   match '/create/avatar',to: 'users/profile#create_avatar', via: :post, as: :create_avatar
   match '/update/profile',to: 'users/profile#update_profile', via: :post, as: :update_profile
+  match '/video/comment', to: 'comments#create', via: :post
+  match '/video/comment/vote', to: 'comments#vote', via: :get
   namespace :administer, path:'/zhang' do
     resources :columns do
       resources :videos

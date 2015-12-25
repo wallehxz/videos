@@ -27,7 +27,7 @@
         <%= render partial: 'shared/video_related', locals: {related: sql_query}%>
       </div>
       <div class="commend">
-        <h3>看客评论</h3>
+        <h4>看客评论</h4>
         <div>
           <div id="layout" data-tracking-area="layout">
             <div id="global-alert"></div>
@@ -35,19 +35,16 @@
               <div id="posts">
                 <!--本站用户发布评论-->
                 <%= render partial: 'shared/publish_comments' %>
+                <div id="footer" data-tracking-area="footer"></div>
                 <ul id="post-list" class="post-list" style="padding-left: 0px">
                   <!--本站用户评论-->
-                  <%#= render partial: 'shared/anye_user_comments', locals: { comments: @comments } %>
+                  <%= render partial: 'shared/user_comments' %>
                   <!--优酷用户最新十条评论-->
-                  <% hot_comment = Video.code_to_youku_hot_comment(@video.tv_code) %>
-                  <% if hot_comment.present? %>
-                      <%#= render partial: 'shared/youku_user_comments', locals: { comments: hot_comment } %>
-                  <% end %>
+                  <% hot_comment = Video.code_to_comment(@video.tv_code) %>
+                  <%= render partial: 'shared/youku_user_comments', locals: { comments: hot_comment } if hot_comment.present?%>
                 </ul>
               </div>
             </section>
-            <div id="footer" data-tracking-area="footer">
-            </div>
           </div>
         </div>
       </div>
@@ -64,13 +61,4 @@
         cover: '<%= Settings.qiniu_cdn_host %>img_video_poster.png',
         autoplay: true
     });
-    //给用户评论点赞
-    function vote_comment(comment_id,vot_count){
-        params = {};
-        params['comment'] = {};
-        params['comment']['comment_id'] = comment_id;
-        $.get('/video_comments/comment_vote', params, function(data){});
-        var num = parseInt(vot_count)+1;
-        $('#vote_'+ comment_id).removeAttr('title').removeAttr('href').removeAttr('onclick').html('<span class="control" style="padding-left: 10px">已获赞 「'+ num +'」</span>')
-    }
 </script>

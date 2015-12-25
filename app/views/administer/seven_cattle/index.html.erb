@@ -42,7 +42,7 @@
             </tr>
             </thead>
             <tbody>
-            <% cache [:file, @next_page] do%>
+            <% cache [:file, @next_page, Base64.strict_encode64(@files.map{|file| file['key'] }.join(','))] do%>
               <% @files.each do |file| %>
                 <tr style="text-align: center">
                   <td>
@@ -57,10 +57,7 @@
                     </a>
                   </td>
                   <td style="text-align:left;width: 50px"><br><br>
-                    <label class="label label-primary" style="font-size: 16px;">
-                      <i class="glyphicon glyphicon-compressed"></i>
                       <%= file['key']%>
-                    </label>
                   </td>
                   <td style="text-align:left;">
                     <label class="label label-info" style="font-size: 16px">

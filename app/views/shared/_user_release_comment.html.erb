@@ -1,0 +1,51 @@
+<li class="post">
+  <% if @comment.user_id == 0 %>
+    <% num = rand(Comment::Name.size) %>
+  <%else%>
+    <% user = User.find(@comment.user_id) %>
+  <%end%>
+  <div data-role="post-content" class="post-content authored-by-session-user">
+    <div class="avatar hovercard">
+      <% if @comment.user_id == 0 %>
+        <img src="<%= rand_lol_picture num %>" alt="Avatar">
+      <%else%>
+        <img src="<%= display_avatar user %>" alt="Avatar">
+      <%end%>
+    </div>
+    <div class="post-body">
+      <header>
+        <span class="post-byline">
+          <span class="author publisher-anchor-color">
+            <% if @comment.user_id == 0 %>
+                <a><%= Comment::Name[num] %></a>
+            <%else%>
+                <a><%= display_name user %></a>
+            <%end%>
+          </span>
+          <span class="bullet time-ago-bullet" aria-hidden="true">•</span>
+          <% if @comment.user_id == 0 %>
+           <span title="<%= rand_rank_name num %>"><img src="<%= rand_rank_picture num %>" style="height: 24px"></span>
+          <%else%>
+            <span title="<%= rank_name user %>"><img src="<%= rank_picture user %>" style="height: 24px"></span>
+          <%end%>
+        </span>
+        <span class="post-meta">
+          <span class="bullet time-ago-bullet" aria-hidden="true">•</span>
+          <span title="<%= @comment.created_at.strftime('%Y年%m月%d日 %H:%M') %>"><%= time_ago_in_words(@comment.created_at) %></span>
+        </span>
+      </header>
+      <div class="post-body-inner" style="font-size: 16px;color: #000000">
+        <%= raw @comment.content %>
+      </div>
+      <footer>
+        <menu>
+          <li class="voting" data-role="voting">
+            <a id="vote_<%= @comment.id %>" href="javascript:void(0)" class="vote-up  count-0" data-action="upvote">
+              <span class="control" style="padding-left: 10px"><i class="fa fa-thumbs-up"></i>•<%= @comment.vote %></span>
+            </a>
+          </li>
+        </menu>
+      </footer>
+    </div>
+  </div>
+</li>

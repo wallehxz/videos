@@ -37,8 +37,8 @@ class WelcomeController < ApplicationController
   end
 
   def playing
-
     @video = Video.find_by_tv_code!(params[:tv_code])
+    @comments = Comment.recent.where(video_id:@video.id)
     if @video.video_type == 3
       unless current_user.present? && current_user.can_av?
         redirect_to root_path

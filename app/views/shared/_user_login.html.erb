@@ -1,3 +1,4 @@
+<%= javascript_include_tag 'jquery.blockUI' %>
 <section  id="login_form" class="wrapper" style="display: none;">
   <div class="card">
     <div class="front">
@@ -31,7 +32,7 @@
 <script>
     $('#user_login').click(function(){
         $.blockUI({ message: $('#login_form') });
-    });
+    })
     $('#email').change(function(){
         var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
         if(!reg.test($.trim($('#email').val())))
