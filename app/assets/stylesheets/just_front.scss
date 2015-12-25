@@ -1655,7 +1655,12 @@ a:hover, a:focus {
 
 //mac浏览
 @media (min-width: 970px) {
-
+  .iphone_avatar{
+    display: none;
+  }
+  .ipad_avatar{
+    display: block;
+  }
   .navbar-right {
     float: right !important;
     margin-right: -15px;
@@ -1743,7 +1748,12 @@ a:hover, a:focus {
 
 //ipad浏览
 @media ( max-width: 969px) {
-
+  .iphone_avatar{
+    display: none;
+  }
+  .ipad_avatar{
+    display: block;
+  }
   .navbar-right {
     float: right !important;
     margin-right: 0px;
@@ -1861,7 +1871,12 @@ a:hover, a:focus {
 }
 //iphone浏览
 @media (max-width: 500px){
-
+  .ipad_avatar{
+    display: none;
+  }
+  .iphone_avatar{
+    display: block;
+  }
   .commend {
     width: 95%;
     margin-left: 10px;
