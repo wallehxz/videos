@@ -42,7 +42,7 @@
         if(parseInt(total) > 8){
             var local = parseInt(total) - 9;
         }else{
-            var local = total;
+            var local = 0;
         }
         $.get('/videos/get_channel_more',{page: page, column:channel}, function(data){
             console.log(data);

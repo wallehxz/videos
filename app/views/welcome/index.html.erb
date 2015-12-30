@@ -39,7 +39,7 @@
         if(parseInt(total) > 8){
             var local = parseInt(total) - 9;
         }else{
-            var local = total;
+            var local = 0;
         }
         $.get('/videos/get_index_more',{page: page}, function(data){
             console.log(data);
