@@ -40,8 +40,10 @@
                   <!--本站用户评论-->
                   <%= render partial: 'shared/user_comments' %>
                   <!--优酷用户最新十条评论-->
-                  <% hot_comment = Video.code_to_comment(@video.tv_code) %>
-                  <%= render partial: 'shared/youku_user_comments', locals: { comments: hot_comment } if hot_comment.present?%>
+                  <% if @video.video_type == 0%>
+                      <% hot_comment = Video.code_to_comment(@video.tv_code) %>
+                      <%= render partial: 'shared/youku_user_comments', locals: { comments: hot_comment } if hot_comment.present?%>
+                <% end %>
                 </ul>
               </div>
             </section>

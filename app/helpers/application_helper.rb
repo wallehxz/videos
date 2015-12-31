@@ -122,10 +122,10 @@ module ApplicationHelper
 
   #根据视频类型返回相应的播放链接
   def code_type_to_url(code,type)
-    return "http://v.youku.com/v_show/id_#{code}.html"if type.to_i == 0 #优酷
-    return code if type.to_i == 1
-    return code if type.to_i == 2
-    return "#{Settings.qiniu_cdn_host}vcd_#{code}.mp4"if type.to_i == 3 #源文件
+    return "http://v.youku.com/v_show/id_#{code}.html"if type.to_i == 0 #优酷视频
+    return "http://v.qq.com/#{code}.html" if type.to_i == 1 #腾讯视频
+    return "http://www.iqiyi.com/v_#{code}.html" if type.to_i == 2 #爱奇艺视频
+    return "#{Settings.qiniu_cdn_host}vcd_#{code}.mp4"if type.to_i == 3 #七牛源文件
   end
 
   #通过视频的频道编号返回其中文名称

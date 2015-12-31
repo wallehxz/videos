@@ -17,7 +17,7 @@
 
 class Video < ActiveRecord::Base
   validates_uniqueness_of :title, :tv_code
-  validates_presence_of :column_id, :title, :cover, :video_type
+  validates_presence_of :column_id, :title, :cover, :video_type, :duration, :tv_code
   belongs_to :column
   scope :latest, -> {order(updated_at: :desc)}
   scope :recent, ->{order(created_at: :desc)}
@@ -66,11 +66,11 @@ class Video < ActiveRecord::Base
   end
 
   def self.tencent_url_to_code(url)
-    return url
+    return (/qq.com\/([\w,\/]+)[\.]/im.match url)[1] if (/qq.com\/([\w,\/]+)[\.]/im.match url).present?
   end
 
   def self.iqiyi_url_to_code(url)
-    return url
+    return (/v_(\w+=*)[\.]/im.match url)[1] if (/v_(\w+=*)[\.]/im.match url).present?
   end
 
   def self.qiniu_url_to_code(url)
@@ -80,15 +80,15 @@ class Video < ActiveRecord::Base
   #视频时长判断获取
   def self.video_type_to_duration(type,code,time)
     return code_to_youku_info(code)['duration'] if type.to_i == 0
-    return time if type.to_i == 3
+    return time if type.to_i != 0
   end
 
   #视频的code根据类型判断生成
   #Video.type_to_tv_code
   def self.type_url_to_code(type,url)
-    return youku_url_to_code(url)      if type.to_i == 0 && url.include?('id_')
-    return tencent_url_to_code(url)  if type.to_i == 1 && url.include?('com')
-    return iqiyi_url_to_code(url)        if type.to_i == 2 && url.include?('com')
+    return youku_url_to_code(url)      if type.to_i == 0 && url.include?('.youku.com')
+    return tencent_url_to_code(url)  if type.to_i == 1 && url.include?('.qq.com')
+    return iqiyi_url_to_code(url)        if type.to_i == 2 && url.include?('.iqiyi.com')
     return qiniu_url_to_code(url)       if type.to_i == 3 && url.include?('com')
     return url
   end
