@@ -75,6 +75,11 @@
 </section>
 <script>
     $(function(){
-        $('#map').vectorMap({map: 'cn_mill'});
+        var palette = ['#66C2A5', '#FC8D62', '#8DA0CB', '#E78AC3', '#A6D854'];
+        $('#map').vectorMap({
+            map: 'cn_mill',
+            zoomOnScrollSpeed: 1,
+            regionStyle:{initial: {fill: palette[Math.floor(Math.random()*palette.length)]}},
+        });
     });
 </script>
