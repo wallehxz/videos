@@ -54,7 +54,7 @@
             </a>
             <ul class="dropdown-menu" role="menu">
               <% if current_user.role == 'admin' %>
-                 <li><a href="<%= dashboard_path %>"> <i class="fa fa-gears"></i>&nbsp;数据管理</a></li>
+                 <li><a href="<%= columns_path %>"> <i class="fa fa-gears"></i>&nbsp;数据管理</a></li>
               <% end%>
               <li><a href="<%= new_avatar_path %>"><i class="fa fa-upload"></i>&nbsp;上传头像</a></li>
               <li><a href="<%= profile_path %>"><i class="fa fa-user-secret"></i>&nbsp;个人中心</a></li>

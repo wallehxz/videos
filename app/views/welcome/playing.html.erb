@@ -60,7 +60,7 @@
         appkey: 'N1PBDCjXl',
         title: '<%= @video.title %>',
         video: '<%= code_type_to_url(@video.tv_code,@video.video_type)%>',
-        cover: '<%= Settings.qiniu_cdn_host %>img_video_poster.png',
+        cover: '<%= @video.cover %>',
         autoplay: true
     });
 </script>

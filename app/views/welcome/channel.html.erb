@@ -24,7 +24,7 @@
     </div>
     <div class="video">
       <ul class="video-list">
-        <% cache [:channel, @channel.english, @videos.map{|c| c['updated_at']}.max] do%>
+        <% cache [:channel, @videos.total_entries,@channel.english, @videos.map{|c| c['updated_at']}.max] do%>
             <%= render partial: 'shared/more_videos', locals: {videos:@videos} %>
         <% end %>
       </ul>

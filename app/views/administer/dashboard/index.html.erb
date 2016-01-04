@@ -60,14 +60,14 @@
     <div class="col-md-12">
       <div class="box box-success">
         <div class="box-header with-border">
-          <h3 class="box-title">世界地图</h3>
+          <h3 class="box-title">中国行政地图</h3>
           <div class="box-tools pull-right">
             <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
             <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
           </div>
         </div><!-- /.box-header -->
         <div class="box-body no-padding">
-          <div id="world-map" style="height: 400px"></div>
+          <div id="map" style="height: 400px"></div>
         </div>
       </div>
     </div>
@@ -75,9 +75,6 @@
 </section>
 <script>
     $(function(){
-        $('#world-map').vectorMap({
-            map: 'world_mill',
-            backgroundColor: 'gray'
-        });
+        $('#map').vectorMap({map: 'cn_mill'});
     });
 </script>
