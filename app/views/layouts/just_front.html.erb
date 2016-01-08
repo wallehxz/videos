@@ -20,7 +20,7 @@
     <div class="navbar-header">
       <a class="navbar-brand" href="/" style="padding-top: 0px">
         <% unless current_user.present? %>
-            <img alt="Brand" height="50" src="<%= image_url('toutu/google.gif') %>" title="在沉默中爆发">
+            <img alt="Brand" height="50" src="<%= image_url('toutu/just_logo.png') %>" title="在沉默中爆发">
         <% else %>
             <img alt="Brand" height="50" src="<%= rank_picture current_user %>" title="<%= rank_name current_user%>">
         <% end %>
