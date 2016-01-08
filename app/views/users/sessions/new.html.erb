@@ -1,38 +1,47 @@
-<%= content_for(:title,  '登录账户 | ^轩^') %>
-<%=javascript_include_tag 'http://api.geetest.com/get.php' %>
-<div class="main">
-  <div class="main-login">
-    <form accept-charset="UTF-8" action="/sign_login" class="simple_form new_user" id="new_user" method="post" onkeydown="if(event.keyCode==13 || event.which ==13) return false;">
-      <div class="form-group">
-        <input aria-required="true" autocomplete="off"  id="email" name="user[email]" required="required" type="text" placeholder="请建入注册邮箱"/>
-        <input aria-required="true" autocomplete="off"  id="password" name="user[password]" placeholder="请键入登陆密码" required="required" type="password" />
-        <div id="geetest" style="padding-left: 25px;padding-bottom: 10px"></div>
-        <input id="btn_sub" class="btn input-submit" name="commit" type="submit" value="登录账户" />
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="google" value="notranslate">
+  <title>登录账户 | ^轩^</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+  <%= stylesheet_link_tag 'login_animation', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'stop_execution','jquery-2.1.3.min', 'data-turbolinks-track' => true %>
+  <link rel="stylesheet prefetch" href="http://fonts.googleapis.com/css?family=Open+Sans">
+  <script>
+      window.console = window.console || function(t) {};
+  </script>
+</head>
+<body>
+<div class="cont" style="background-image: url('<%= Column.find_by_english('Fucking').cover %>');">
+  <div class="demo">
+    <div class="login">
+      <div class="login__check"></div>
+      <div class="login__form">
+        <form accept-charset="UTF-8" action="/sign_login"  method="post">
+        <div class="login__row">
+            <svg class="login__icon name svg-icon" viewBox="0 0 20 20">
+              <path d="M0,20 a10,8 0 0,1 20,0z M10,0 a4,4 0 0,1 0,8 a4,4 0 0,1 0,-8"></path>
+            </svg>
+            <input type="text" name="user[email]" class="login__input name" placeholder="Username">
+          </div>
+          <div class="login__row">
+            <svg class="login__icon pass svg-icon" viewBox="0 0 20 20">
+              <path d="M0,20 20,20 20,8 0,8z M10,13 10,16z M4,8 a6,8 0 0,1 12,0"></path>
+            </svg>
+            <input type="password" name="user[password]" class="login__input pass" placeholder="Password">
+          </div>
+          <button id="submit" type="submit" class="login__submit">Sign in</button>
+        </form>
+        <p class="login__signup">Don't have an account? &nbsp;<a href="<%= sign_up_path %>">Sign up</a></p>
       </div>
-    </form>
+    </div>
   </div>
 </div>
-<%= render 'users/shared/links' %>
 <script>
-    $('#email').change(function(){
-        var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
-        if(!reg.test($.trim($('#email').val())))
-        {
-            $('#tip').html('就单纯要个邮箱就这么难吗');
-            $('#email').val('');
-            return false;
-        }
-    });
-    $('#password').change(function(){
-        if($('#password').val().length < 6){
-            $('#tip').html('密码长度和生命成正比');
-            $('#password').val('');
-            return false;
-        }
-    });
-    window.embed_captcha = new window.Geetest({
-        gt: 'a92f1d66c86bf59349e17d722aefe043',
-        product: 'popup'
-    }).appendTo("#geetest").bindOn('#btn_sub');
-
+    $('#submit').click(function(){
+        $(this).addClass('processing');
+    })
 </script>
+</body>
+</html>

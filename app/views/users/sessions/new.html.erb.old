@@ -1,0 +1,38 @@
+<%= content_for(:title,  '登录账户 | ^轩^') %>
+<%=javascript_include_tag 'http://api.geetest.com/get.php' %>
+<div class="main">
+  <div class="main-login">
+    <form accept-charset="UTF-8" action="/sign_login" class="simple_form new_user" id="new_user" method="post" onkeydown="if(event.keyCode==13 || event.which ==13) return false;">
+      <div class="form-group">
+        <input aria-required="true" autocomplete="off"  id="email" name="user[email]" required="required" type="text" placeholder="请建入注册邮箱"/>
+        <input aria-required="true" autocomplete="off"  id="password" name="user[password]" placeholder="请键入登陆密码" required="required" type="password" />
+        <div id="geetest" style="padding-left: 25px;padding-bottom: 10px"></div>
+        <input id="btn_sub" class="btn input-submit" name="commit" type="submit" value="登录账户" />
+      </div>
+    </form>
+  </div>
+</div>
+<%= render 'users/shared/links' %>
+<script>
+    $('#email').change(function(){
+        var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+        if(!reg.test($.trim($('#email').val())))
+        {
+            $('#tip').html('就单纯要个邮箱就这么难吗');
+            $('#email').val('');
+            return false;
+        }
+    });
+    $('#password').change(function(){
+        if($('#password').val().length < 6){
+            $('#tip').html('密码长度和生命成正比');
+            $('#password').val('');
+            return false;
+        }
+    });
+    window.embed_captcha = new window.Geetest({
+        gt: 'a92f1d66c86bf59349e17d722aefe043',
+        product: 'popup'
+    }).appendTo("#geetest").bindOn('#btn_sub');
+
+</script>

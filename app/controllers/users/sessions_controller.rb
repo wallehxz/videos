@@ -1,5 +1,6 @@
 class Users::SessionsController < Devise::SessionsController
-  layout 'just_front_sign'
+  # layout 'just_front_sign'
+  layout false
 
   def create
     self.resource = warden.authenticate!(auth_options)
