@@ -36,7 +36,7 @@
             </tr>
             </thead>
             <tbody>
-            <% cache [:users, @users.total_entries, @users.map{|u| u.updated_at}.max] do %>
+            <% cache [:users, @users.total_entries, @users] do %>
                 <% @users.each do |user| %>
                   <tr style="text-align: center">
                     <td>
@@ -45,14 +45,14 @@
                     <td style="text-align: left">
                       <br>
                       <span class="label
-                      <% if user.role =='admin' %>
-                        label-danger
-                      <% elsif user.role =='fucker'%>
-                        label-warning
-                      <% elsif user.role =='looker'%>
-                        label-default
-                      <% end %>
-                      " style="font-size: 16px">
+                  <% if user.role =='admin' %>
+                    label-danger
+                  <% elsif user.role =='fucker'%>
+                    label-warning
+                  <% elsif user.role =='looker'%>
+                    label-default
+                  <% end %>
+                  " style="font-size: 16px">
                         <i class="fa fa-drupal"></i>
                         <%= display_role user %>
                       </span>
