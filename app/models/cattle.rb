@@ -5,7 +5,7 @@ class Cattle < ActiveRecord::Base
   # Cattle.files_list
   def self.files_list(prefix= '',marker = '')
     bucket = 'meteor' #指定空间
-    limit = 15
+    limit = 10
     list_policy = Qiniu::Storage::ListPolicy.new(bucket,limit,prefix)
     list_policy.marker = marker  #加上对象
     code,result,headers = Qiniu::Storage.list(list_policy)

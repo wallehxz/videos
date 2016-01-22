@@ -3,7 +3,6 @@ class Administer::SevenCattleController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @pre_page = params[:page]   if params[:page].present?
     @next_page,@files = Cattle.files_list(params[:prefix],params[:page])
   end
 

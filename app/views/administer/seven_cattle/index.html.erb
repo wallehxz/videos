@@ -45,14 +45,14 @@
             <% cache [:file, @next_page, Base64.strict_encode64(@files.map{|file| file['key'] }.join(','))] do%>
               <% @files.each do |file| %>
                 <tr style="text-align: center">
-                  <td>
+                  <td style="text-align: left">
                     <a href="<%= Settings.qiniu_cdn_host + file['key'] %>" target="_blank">
                       <% if file['mimeType'].include?('image') %>
                           <img src="<%= Settings.qiniu_cdn_host + file['key'] %>" style="height: 120px">
                       <% elsif file['mimeType'].include?('video') %>
-                          <img src="<%= image_url('video.png') %>" style="height: 120px">
+                          <img src="<%= image_url('toutu/video.png') %>" style="height: 120px">
                       <% else %>
-                          <img src="<%= image_url('file.png') %>" style="height: 120px">
+                          <img src="<%= image_url('toutu/file.png') %>" style="height: 120px">
                       <% end %>
                     </a>
                   </td>
@@ -61,7 +61,7 @@
                   </td>
                   <td style="text-align:left;">
                     <label class="label label-info" style="font-size: 16px">
-                      <i class="glyphicon glyphicon-file"></i>
+                      <i class="glyphicon glyphicon-floppy-saved"></i>
                       <%= (/.*(\/)(.*)/im.match file['mimeType'])[2] %>
                     </label><br><br>
                     <label class="label label-default" style="font-size: 16px">
@@ -90,15 +90,11 @@
         </div>
         <div class="col-sm-7">
           <div class="dataTables_paginate paging_simple_numbers">
-            <% if params[:page].present? %>
-                <a tabindex="0" href="/zhang/files?page=<%= @pre_page %>&prefix=<%= params[:prefix] %>" class="btn btn-default bg-olive"> 上一页 </a>
+            <a tabindex="0" href="/zhang/files?prefix=<%= params[:prefix] %>" class="btn btn-default bg-olive"> &lt;&lt;上一页 </a>
+            <% if @files.count < 10 %>
+                <a tabindex="0" href="#"class="btn btn-default">下一页&gt;&gt;</a>
             <% else %>
-                <a tabindex="0" href="#"class="btn btn-default">上一页>></a>
-            <% end %>
-            <% if @files.count < 15 %>
-                <a tabindex="0" href="#"class="btn btn-default">下一页>></a>
-            <% else %>
-                <a tabindex="0" href="/zhang/files?page=<%= @next_page %>&prefix=<%= params[:prefix] %>"class="btn btn-default  bg-olive">下一页>></a>
+                <a tabindex="0" href="/zhang/files?prefix=<%= params[:prefix] %>&page=<%= @next_page %>"class="btn btn-default  bg-olive">下一页>></a>
             <% end %>
           </div>
         </div>
