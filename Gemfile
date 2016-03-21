@@ -1,7 +1,7 @@
-#source 'https://ruby.taobao.org/'  #淘宝源
-source 'https://rubygems.org/'  #官方源
+source 'https://ruby.taobao.org/'  #淘宝源
+#source 'https://rubygems.org/'  #官方源
 
-ruby '2.0.0'
+ruby '2.2.0'
 gem 'rails', '4.2.5'
 gem 'pg', '0.18.4'  # postgresql 数据连接
 gem 'will_paginate', '3.0.7'   #数据分页
