@@ -6,7 +6,7 @@ class Administer::SessionsController < ApplicationController
 
   def admin_sign_login
     if params[:account].blank? || params[:password].blank?
-      flash[:error] = '账号密码不能为空'
+      flash[:notice] = '账号密码不能为空'
       redirect_to admin_sign_in_path
     else
       if params[:account] == Settings.account
@@ -15,11 +15,11 @@ class Administer::SessionsController < ApplicationController
           flash[:success] = '欢迎回来、数据管理员'
           redirect_to dashboard_path
         else
-          flash[:error] = '管理员密码有误'
+          flash[:notice] = '管理员密码有误'
           redirect_to admin_sign_in_path
         end
       else
-        flash[:error] = '账户不存在'
+        flash[:notice] = '账户不存在'
         redirect_to admin_sign_in_path
       end
     end
