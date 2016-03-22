@@ -1,6 +1,7 @@
 set :branch, 'master'
 set :rvm_ruby_version, '2.0.0'
 set :rvm_type, :user
+set :deploy_to, '/var/apps/Justin'
 set :rvm_custom_path, '/usr/local/rvm'
 set :rvm_roles, [:app, :web]
 

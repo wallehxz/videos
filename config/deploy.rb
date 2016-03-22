@@ -1,8 +1,6 @@
 set :application, 'JustingXX'
 set :scm, :git
 set :repo_url, 'git@github.com:lonely21475/JustingXX.git'
-# set :deploy_to, '/var/apps/Justin'
-set :deploy_to, '/home/ubuntu/program/koogle'
 set :rails_env, 'production'
 set :ssh_options, { keys: %w{~/.ssh/id_rsa}, forward_agent: true, auth_methods: %w(publickey) }
 
