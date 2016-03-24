@@ -1,4 +1,4 @@
-set :application, 'JustingXX'
+set :application, 'tv'
 set :scm, :git
 set :repo_url, 'git@github.com:lonely21475/JustingXX.git'
 set :rails_env, 'production'
