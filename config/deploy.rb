@@ -8,7 +8,7 @@ SSHKit.config.command_map[:rake] = 'bundle exec rake'
 SSHKit.config.command_map[:rails] = 'bundle exec rails'
 
 set :format, :pretty
-set :log_level, :debug
+set :log_level, :info
 
 set :linked_files, %w{
   config/database.yml
