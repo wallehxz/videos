@@ -2,23 +2,26 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
-# Require the gems listed in Gemfile, including any gems
-# you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
 module JustingXX
   class Application < Rails::Application
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration should go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded.
 
-    # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
-    # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
-    # config.time_zone = 'Central Time (US & Canada)'
-    config.time_zone = 'Beijing'
+    config.time_zone = 'Beijing'                   #时区
 
-    # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
-    config.i18n.default_locale = :'zh-CN'
+    config.i18n.default_locale = :'zh-CN'          #默认语言
+
+    config.active_record.default_timezone = :local #设置数据库时间解决数据时差问题
+
     config.i18n.enforce_available_locales = false
+
+    config.generators do |g|                       #自定义项目模板
+      g.assets          :false
+      g.stylesheets     :false
+      g.javascripts     :false
+      g.template_engine :erb
+      g.test_framework  :rspec, fixture :true
+      g.fixture_replacement :factory_girl
+    end
   end
 end
