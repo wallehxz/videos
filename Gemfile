@@ -33,8 +33,6 @@ group :development, :test do
 end
 group :development do
   #项目部署
-  gem 'capsum', '1.0.2', require: false #Collect gems and recipes related capistrano
-  gem 'capistrano-sidekiq', "0.3.8", require: false
   gem 'capistrano-rails', '1.1.3' #Rails specific Capistrano tasks 项目部署
   gem 'capistrano-rvm', '0.1.2'
   gem 'capistrano-bundler', '1.1.4'
