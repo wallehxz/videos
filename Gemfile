@@ -1,5 +1,5 @@
-#source 'https://ruby.taobao.org/'  #淘宝源
-source 'https://rubygems.org/'  #官方源
+source 'https://ruby.taobao.org/'  #淘宝源
+# source 'https://rubygems.org/'  #官方源
 
 ruby '2.2.0'
 gem 'rails', '4.2.5'
@@ -25,9 +25,10 @@ gem 'oneapm_rpm', '1.3.4'
 gem 'therubyracer', '0.12.2', :platform => :ruby  # Call Ruby code and manipulate Ruby objects from JavaScript.
 group :development, :test do
   gem 'annotate', '2.6.5' # annotate --exclude tests,fixtures,factories,serializers
-  gem 'web-console', '2.2.1'  #in view  <% console %>
-  gem 'pry-nav', '0.2.4' #in method  binding.pry
-  gem 'rspec-rails', '3.4.0'  # 项目测试 bundle exec rspec
+  gem 'pry-rails', '0.3.4'
+  gem 'pry-byebug', '3.3.0'
+  gem 'factory_girl_rails', '4.6.0'
+  gem 'rspec-rails', '3.4.2'
   gem 'guard-rspec', '4.5.0' #https://github.com/rspec/rspec-rails
 end
 group :development do
