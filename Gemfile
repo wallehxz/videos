@@ -24,13 +24,13 @@ gem 'therubyracer', '0.12.2', :platform => :ruby  # Call Ruby code and manipulat
 group :development, :test do
   gem 'annotate', '2.6.5' # annotate --exclude tests,fixtures,factories,serializers
   gem 'pry-rails', '0.3.4'
-  gem 'pry-byebug', '3.3.0'
   gem 'factory_girl_rails', '4.6.0'
   gem 'rspec-rails', '3.4.2'
   gem 'guard-rspec', '4.5.0' #https://github.com/rspec/rspec-rails
 end
 group :development do
   #项目部署
+  gem "capsum", "~> 1.0.0", require: false
   gem 'capistrano-rails', '1.1.3' #Rails specific Capistrano tasks 项目部署
   gem 'capistrano-rvm', '0.1.2'
   gem 'capistrano-bundler', '1.1.4'

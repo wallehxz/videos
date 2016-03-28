@@ -56,6 +56,9 @@ GEM
     capistrano-rvm (0.1.2)
       capistrano (~> 3.0)
       sshkit (~> 1.2)
+    capsum (1.0.4)
+      capistrano (~> 3.4.0)
+      capistrano-rails (~> 1.1.3)
     coderay (1.1.1)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -265,6 +268,7 @@ DEPENDENCIES
   capistrano-bundler (= 1.1.4)
   capistrano-rails (= 1.1.3)
   capistrano-rvm (= 0.1.2)
+  capsum (~> 1.0.0)
   coffee-rails (= 4.1.0)
   devise (= 3.5.2)
   factory_girl_rails (= 4.6.0)
@@ -289,4 +293,4 @@ DEPENDENCIES
   will_paginate (= 3.0.7)
 
 BUNDLED WITH
-   1.10.6
+   1.11.2

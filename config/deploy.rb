@@ -1,14 +1,15 @@
-set :application, 'tv'
+set :application, 'koogle'
 set :scm, :git
 set :repo_url, 'git@github.com:lonely21475/JustingXX.git'
 set :rails_env, 'production'
 set :ssh_options, { keys: %w{~/.ssh/id_rsa}, forward_agent: true, auth_methods: %w(publickey) }
+set :format, :pretty
+set :log_level, :debug
+set :keep_assets, 2
+set :keep_releases, 3
 
 SSHKit.config.command_map[:rake] = 'bundle exec rake'
 SSHKit.config.command_map[:rails] = 'bundle exec rails'
-
-set :format, :pretty
-set :log_level, :info
 
 set :linked_files, %w{
   config/database.yml
@@ -18,8 +19,6 @@ set :linked_files, %w{
 }
 
 set :linked_dirs, %w{tmp/cache public/uploads public/logger}
-
-set :keep_releases, 5
 
 namespace :deploy do
 
