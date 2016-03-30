@@ -7,6 +7,8 @@ Bundler.require(*Rails.groups)
 module JustingXX
   class Application < Rails::Application
 
+    config.assets.enabled = true
+
     config.time_zone = 'Beijing'                   #时区
 
     config.i18n.default_locale = :'zh-CN'          #默认语言

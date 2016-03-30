@@ -30,37 +30,37 @@
             </thead>
             <tbody>
             <% @columns.each do |channel| %>
-                <tr style="text-align: center">
-                  <td>
-                    <img src="<%= channel.cover %>" style="height: 140px">
-                  </td>
-                  <td style="text-align: left"><br>
-                    <label class="label label-primary" style="font-size: 16px">
-                      <i class="glyphicon glyphicon-link"></i>
-                      <%= channel.english %>
-                    </label><br><br>
-                    <label class="label label-primary" style="font-size: 16px">
-                      <i class="<%= channel.icon %>"></i>
-                      <%= channel.name %>
-                    </label><br><br>
-                    <label class="label label-default" style="font-size: 16px" title="更新于「<%= channel.updated_at.strftime('%Y-%m-%d %H:%M:%S') %>」">
-                      <i class="glyphicon glyphicon-time"></i>
-                      <%= distance_of_time_in_words_to_now channel.updated_at %>
-                    </label>
-                  </td>
-                  <td style="text-align: left;max-width: 400px"><%= channel.summary.html_safe %></td>
-                  <td><br>
-                    <a href="<%= edit_administer_column_path(channel) %>" class="btn btn-warning">
-                      <i class="glyphicon glyphicon-edit"></i>
-                      编辑
-                    </a>
-                    <br><br>
-                    <a href="<%= administer_column_path(channel) %>" class="btn btn-danger" data-method="delete" data-confirm="确定删除「<%= channel.name %>」?">
-                      <i class="glyphicon glyphicon-trash"></i>
-                      删除
-                    </a>
-                  </td>
-                </tr>
+              <tr style="text-align: center">
+                <td>
+                  <img src="<%= channel.cover %>" style="height: 140px">
+                </td>
+                <td style="text-align: left"><br>
+                  <label class="label label-primary" style="font-size: 16px">
+                    <i class="glyphicon glyphicon-link"></i>
+                    <%= channel.english %>
+                  </label><br><br>
+                  <label class="label label-primary" style="font-size: 16px">
+                    <i class="<%= channel.icon %>"></i>
+                    <%= channel.name %>
+                  </label><br><br>
+                  <label class="label label-default" style="font-size: 16px" title="更新于「<%= channel.updated_at.strftime('%Y-%m-%d %H:%M:%S') %>」">
+                    <i class="glyphicon glyphicon-time"></i>
+                    <%= distance_of_time_in_words_to_now channel.updated_at %>
+                  </label>
+                </td>
+                <td style="text-align: left;max-width: 400px"><%= channel.summary.html_safe %></td>
+                <td><br>
+                  <a href="<%= edit_administer_column_path(channel) %>" class="btn btn-warning">
+                    <i class="glyphicon glyphicon-edit"></i>
+                    编辑
+                  </a>
+                  <br><br>
+                  <a href="<%= administer_column_path(channel) %>" class="btn btn-danger" data-method="delete" data-confirm="确定删除「<%= channel.name %>」?">
+                    <i class="glyphicon glyphicon-trash"></i>
+                    删除
+                  </a>
+                </td>
+              </tr>
             <% end %>
             </tbody>
           </table>
@@ -68,11 +68,11 @@
       </div>
       <div class="row">
         <div class="col-sm-5">
-          <div class="dataTables_info" id="example1_info" role="status" aria-live="polite"><h5>总计：「<%= @columns.total_entries %>」栏目</h5></div>
+          <div class="dataTables_info" id="example1_info" role="status" aria-live="polite"><h5>总计：「<%= @columns.count %>」栏目</h5></div>
         </div>
         <div class="col-sm-7">
           <div class="dataTables_paginate paging_simple_numbers">
-            <%= will_paginate @columns, :class=>'apple_pagination' %>
+            <%#= will_paginate @columns, :class=>'apple_pagination' %>
           </div>
         </div>
       </div>

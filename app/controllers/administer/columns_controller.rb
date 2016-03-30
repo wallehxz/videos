@@ -6,7 +6,7 @@ class Administer::ColumnsController < ApplicationController
   before_action :set_param, only: [:create, :update]
 
   def index
-    @columns = Column.latest.paginate(per_page:10, page:params[:page])
+    @columns = Column.daoxu
   end
 
   def show

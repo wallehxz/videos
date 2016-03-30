@@ -1,22 +1,22 @@
 <ul class="sidebar-menu">
   <li class="header">功能管理</li>
   <li class="treeview <% if controller_name=='dashboard' && action_name=='index' %>active<% end %>">
-    <a href="<%= dashboard_path %>">
+    <a href="<%= dashboard_path %>" target="_self">
       <i class="fa fa-dashboard"></i> <span>数据中心</span>
     </a>
   </li>
   <li class="treeview <% if controller_name=='columns'%>active<% end %>">
-    <a href="<%= columns_path %>">
+    <a href="<%= columns_path %>" target="_self">
       <i class="fa fa-columns"></i> <span>栏目管理</span>
     </a>
   </li>
   <li class="treeview <% if controller_name=='seven_cattle'%>active<% end %>">
-    <a href="<%= files_path %>">
+    <a href="<%= files_path %>" target="_self">
       <i class="fa fa-cloud"></i> <span>文件管理</span>
     </a>
   </li>
   <li class="treeview <% if controller_name=='dashboard' && action_name == 'users'%>active<% end %>">
-    <a href="<%= users_path %>">
+    <a href="<%= users_path %>" target="_self">
       <i class="fa fa-user"></i> <span>用户管理</span>
     </a>
   </li>

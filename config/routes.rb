@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   match 'zhang/search', to: 'administer/dashboard#search',via: :get, as: :search
   match 'zhang/role_set', to: 'administer/dashboard#role_control',via: :get, as: :role_set
   match 'zhang/columns', to: 'administer/columns#index',via: :get, as: :columns
+  match 'zhang/set_skin', to: 'administer/dashboard#set_skin_style',via: :get, as: :set_skin
   match 'zhang/import/:column_id', to: 'administer/columns#import_videos',via: :get, as: :import_column_video
   match 'zhang/create/import', to: 'administer/columns#create_csv_data',via: :post, as: :create_import_video
   match 'zhang/sign_in', to: 'administer/sessions#admin_sign_in',via: :get, as: :admin_sign_in

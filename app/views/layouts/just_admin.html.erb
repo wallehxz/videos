@@ -22,13 +22,13 @@
       .jqsfield { color: white;font: 10px arial, san serif;text-align: left;}
   </style>
 </head>
-<body id="body-skin" class="sidebar-mini wysihtml5-supported skin-blue">
+<body id="body-skin" class="<% if current_user %><%= current_user.web_style %><% else %>sidebar-mini wysihtml5-supported skin-blue<% end %>">
 <div class="wrapper">
   <header class="main-header">
     <!-- Logo -->
     <a href="/" class="logo">
-      <span class="logo-mini"><b>轩</b></span>
-      <span class="logo-lg"><b>轩</b>数据管理</span>
+      <span class="logo-mini"><img src="<%= image_path('rank/rank-7.png')%>" style="width:50px"></span>
+      <span class="logo-lg"><b>Video</b>System</span>
     </a>
     <nav class="navbar navbar-static-top" role="navigation">
       <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">

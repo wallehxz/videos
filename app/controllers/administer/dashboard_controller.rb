@@ -36,4 +36,11 @@ class  Administer::DashboardController < ApplicationController
     end
   end
 
+  def set_skin_style
+    if current_user
+      current_user.web_style = params[:skin]
+      current_user.save
+    end
+  end
+
 end
