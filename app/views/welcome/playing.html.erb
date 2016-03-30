@@ -1,5 +1,6 @@
 <%= content_for(:title, @video.title + ' | Koogle') %>
 <%= render partial: 'shared/og_meta', video:@video %>
+<%= javascript_include_tag '//7xjfim.com2.z0.glb.qiniucdn.com/Iva.js' %>
 <div class="container">
   <div class="grid">
     <div class="display">
@@ -57,10 +58,11 @@
 <%= render partial: 'shared/user_login' %>
 <script type="text/javascript" >
     var ivaInstance = new Iva('playerCnt', {
-        appkey: 'N1PBDCjXl',
+        appkey: '4JAun1rRl',
         title: '<%= @video.title %>',
         video: '<%= code_type_to_url(@video.tv_code,@video.video_type)%>',
         cover: '<%= @video.cover %>',
+        autoFormat: true,
         autoplay: true
     });
 </script>

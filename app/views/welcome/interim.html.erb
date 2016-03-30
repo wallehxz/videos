@@ -1,4 +1,5 @@
 <%= content_for(:title, symbol_truncate(@video['title']) + ' | Koogle') %>
+<%= javascript_include_tag '//7xjfim.com2.z0.glb.qiniucdn.com/Iva.js' %>
 <div class="container">
   <div class="grid">
     <div class="display">
@@ -20,10 +21,11 @@
 </div>
 <script type="text/javascript" >
     var ivaInstance = new Iva('playerCnt', {
-        appkey: 'N1PBDCjXl',
+        appkey: '4JAun1rRl',
         title: '<%= symbol_truncate(@video['title']) %>',
         video: 'http://v.youku.com/v_show/id_<%= @video['id'] %>.html',
         cover: '<%= Settings.qiniu_cdn_host %>img_video_poster.png',
+        autoFormat: true,
         autoplay: true
     });
 </script>

@@ -18,6 +18,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require nprogress
-//= require video_player
 //= require jquery-2.1.3.min
 //= require cute.transitions.all
