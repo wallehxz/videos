@@ -27,9 +27,9 @@
             <tbody>
                 <% @videos.each do |video| %>
                     <tr style="text-align: center">
-                      <td>
+                      <td style="width:300px">
                         <a href="<%= video_playing_path(video.tv_code)%>" target="_blank">
-                          <img src="<%= video.cover %>" style="height:140px">
+                          <img src="<%= list_cover video.cover %>" style="height:140px">
                         </a>
                       </td>
                       <td style="text-align: left"><br>
