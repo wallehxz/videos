@@ -1,7 +1,7 @@
 <% @videos.each do |video| %>
     <li class="video-item">
       <a class="animated" href="<%= video_playing_path(video.tv_code)%>">
-        <div class="video-poster"><img src="<%= video.cover %>" alt=""></div>
+        <div class="video-poster"><img src="<%= video_cover(video.cover) %>" alt=""></div>
         <div class="video-play" title="<%= video_to_column_name(video.column_id)%>">
           <h4><span><img src="<%= Settings.qiniu_cdn_host + 'img_zqr71PLUiHDljFmKnI6t.png' %>"style="width: 55px;height: 65px;padding-bottom: 10px;"></span></h4>
         </div>

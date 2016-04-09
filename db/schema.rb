@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151222025852) do
+ActiveRecord::Schema.define(version: 20160409080640) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20151222025852) do
     t.string   "web_style",              default: "sidebar-mini wysihtml5-supported skin-blue"
     t.datetime "created_at",                                                                    null: false
     t.datetime "updated_at",                                                                    null: false
+    t.string   "location"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

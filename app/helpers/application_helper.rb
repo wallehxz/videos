@@ -101,25 +101,6 @@ module ApplicationHelper
     return Comment::Name[num]
   end
 
-  def baidu_ip_info(user)
-    user_ip = user.current_sign_in_ip.to_s
-    if user_ip != '127.0.0.1'
-      baidu_json = $baidu_api.get do |req|
-        req.url '/location/ip'
-        req.params['ip'] = user_ip
-        req.params['ak'] = '5PELDwT7pnzGDOjTjrV5oGq8'
-      end
-      body = JSON.parse(baidu_json.body)
-      if body['status'] == 0
-        return "#{body['content']['address']}"
-      else
-        return '登录地异常'
-      end
-    else
-      return '北京,海淀区,中关村'
-    end
-  end
-
   #根据视频类型返回相应的播放链接
   def code_type_to_url(code,type)
     return "http://v.youku.com/v_show/id_#{code}.html"if type.to_i == 0 #优酷视频
@@ -165,6 +146,26 @@ module ApplicationHelper
     video = Video.recent.where(:column_id=>column).where(:recommend=> 0).first
     return video_playing_path recommend.tv_code if recommend.present?
     return video_playing_path video.tv_code if video.present?
+  end
+
+  def video_cover(url)
+    return "#{url}!300x160" if url.include?(Settings.qiniu_cdn_host)
+    url
+  end
+
+  def carousel_cover(url)
+    return "#{url}!960x420" if url.include?(Settings.qiniu_cdn_host)
+    url
+  end
+
+  def carousel_avatar_cover(url)
+    return "#{url}!100x100" if url.include?(Settings.qiniu_cdn_host)
+    url
+  end
+
+  def list_cover(url)
+    return "#{url}!300x150" if url.include?(Settings.qiniu_cdn_host)
+    url
   end
 
 end

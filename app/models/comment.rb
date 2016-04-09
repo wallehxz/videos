@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: comments
+#
+#  id         :integer          not null, primary key
+#  user_id    :integer
+#  video_id   :integer
+#  reply_id   :integer
+#  vote       :integer
+#  content    :text
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class Comment < ActiveRecord::Base
   scope :recent, ->{ order(created_at: :desc) }
 
