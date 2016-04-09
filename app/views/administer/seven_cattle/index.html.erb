@@ -45,10 +45,10 @@
             <% cache [:file, @next_page, Base64.strict_encode64(@files.map{|file| file['key'] }.join(','))] do%>
               <% @files.each do |file| %>
                 <tr>
-                  <td style="text-align: left">
+                  <td style="text-align: left;width:300px">
                     <a href="<%= Settings.qiniu_cdn_host + file['key'] %>" target="_blank">
                       <% if file['mimeType'].include?('image') %>
-                          <img src="<%= Settings.qiniu_cdn_host + file['key'] + '!200x100' %>">
+                          <img src="<%= Settings.qiniu_cdn_host + file['key'] + '!300x150' %>">
                       <% elsif file['mimeType'].include?('video') %>
                           <img src="<%= image_url('toutu/video.png') %>" style="height: 120px">
                       <% else %>
