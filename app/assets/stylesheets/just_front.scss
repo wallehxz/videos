@@ -2016,8 +2016,8 @@ ul.video-list li.video-item .animated:hover .video-info {
   width: 100%;
   background-color: #ebebeb;
   color: #7a7c83;
-  margin: 25px auto;
-  padding: 13px 0 10px 0;
+  margin: 20px auto;
+  padding: 10px 0 10px 0;
   text-align: center;
 }
 .more a {
@@ -2030,6 +2030,11 @@ ul.video-list li.video-item .animated:hover .video-info {
   line-height: 1em;
   margin: 0 auto;
   font-weight: normal;
+}
+.more img {
+  height: 30px;
+  margin-top: -10px;
+  margin-bottom: -5px;
 }
 
 .display {

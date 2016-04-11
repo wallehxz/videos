@@ -10,11 +10,11 @@
       <div class="programa-list">
         <ul>
           <% Column.hexie.shunxu.each do |channel| %>
-              <li><a href="<%= video_channel_path(channel.english) %>"><i class="<%= channel.icon %>"></i>&nbsp;&nbsp;<%= channel.name %></a></li>
+            <li><a href="<%= video_channel_path(channel.english) %>"><i class="<%= channel.icon %>"></i>&nbsp;&nbsp;<%= channel.name %></a></li>
           <% end %>
           <% if current_user && current_user.can_av? && Column.find_by_english('Fucking')%>
-              <% channel = Column.find_by_english('Fucking') %>
-              <li><a href="<%= video_channel_path(channel.english) %>"><i class="<%= channel.icon %>"></i>&nbsp;&nbsp;<%= channel.name %></a></li>
+            <% channel = Column.find_by_english('Fucking') %>
+            <li><a href="<%= video_channel_path(channel.english) %>"><i class="<%= channel.icon %>"></i>&nbsp;&nbsp;<%= channel.name %></a></li>
           <% end %>
         </ul>
       </div>
@@ -22,7 +22,7 @@
     <div class="video">
       <ul class="video-list">
         <% cache [:index, @videos.total_entries,@videos.map{|c| c['updated_at']}.max] do%>
-            <%= render :partial=> 'shared/more_videos', locals: {videos:@videos} %>
+          <%= render :partial=> 'shared/more_videos', locals: {videos:@videos} %>
         <% end %>
       </ul>
     </div>
@@ -34,7 +34,7 @@
   </div>
 </div>
 <script>
-
+  var timer = null;
   function load_index_more(page,total){
     var num = parseInt(page) + 1;
     if(parseInt(total) > 8){
@@ -43,19 +43,22 @@
       var local = 0;
     }
     $.get('/videos/get_index_more',{page: page}, function(data){
-      if(data ==''){
-        $('.load-more').html('<h4>感谢您对我们视频的支持！(+ _ +) </h4>').removeAttr('onclick');
-      }else{
-        $('.load-more').attr('onclick',"load_index_more ("+ num +","+ local +")");
-        $('.load-more').html("<h4>MORE「 "+ local + "」</h4>");
-        $('.video-list').append(data);
-      }
+      $('.load-more').html("<img src='http://7u2lac.com1.z0.glb.clouddn.com/loading.gif'>");
+      clearTimeout(timer); //清空定时器，防止页面CPU消耗
+      timer = setTimeout(function() {
+        if(data ==''){
+          $('.load-more').html('<h4>感谢您对我们视频的支持！(+ _ +) </h4>').removeAttr('onclick');
+        }else{
+          $('.load-more').attr('onclick',"load_index_more ("+ num +","+ local +")");
+          $('.load-more').html("<h4>MORE「 "+ local + "」</h4>");
+          $('.video-list').append(data);
+        }
+      }, 1500);
     })
   }
 
   $(window).scroll(function(){
     if($(document).height() - $(window).scrollTop() == $(window).height()){
-      //setTimeout("$('.load-more').click()",2000);//延迟两秒加载
       $('.load-more').click();
     }
   });

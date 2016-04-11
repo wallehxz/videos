@@ -37,6 +37,7 @@
   </div>
 </div>
 <script>
+  var timer = null;
   function load_channel_more(page,channel,total){
     var num = parseInt(page) + 1;
     if(parseInt(total) > 8){
@@ -45,13 +46,17 @@
       var local = 0;
     }
     $.get('/videos/get_channel_more',{page: page, column:channel}, function(data){
-      if(data ==''){
-        $('.load-more').html('<h4>感谢您对我们视频的支持！(+ _ +) </h4>').removeAttr('onclick');
-      }else{
-        $('.load-more').attr('onclick',"load_channel_more ("+ num +","+ channel +", "+ local +")");
-        $('.load-more').html("<h4>MORE「 "+ local + "」</h4>");
-        $('.video-list').append(data);
-      }
+      $('.load-more').html("<img src='http://7u2lac.com1.z0.glb.clouddn.com/loading.gif'>");
+      clearTimeout(timer); //清空定时器，防止页面CPU消耗
+      timer = setTimeout(function(){
+        if(data ==''){
+          $('.load-more').html('<h4>感谢您对我们视频的支持！(+ _ +) </h4>').removeAttr('onclick');
+        }else{
+          $('.load-more').attr('onclick',"load_channel_more ("+ num +","+ channel +", "+ local +")");
+          $('.load-more').html("<h4>MORE「 "+ local + "」</h4>");
+          $('.video-list').append(data);
+        }
+      },1500)
     })
   }
 
