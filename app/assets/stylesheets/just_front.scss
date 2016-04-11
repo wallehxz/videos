@@ -1658,9 +1658,11 @@ a:hover, a:focus {
   .iphone_avatar{
     display: none;
   }
+
   .ipad_avatar{
     display: block;
   }
+
   .navbar-right {
     float: right !important;
     margin-right: -15px;
@@ -1697,7 +1699,7 @@ a:hover, a:focus {
 
   .player {
     width: 960px;
-    height: 580px;
+    height: 547px;
     margin-top: 20px;
     margin-bottom: 15px;
     overflow: hidden;
@@ -1706,8 +1708,9 @@ a:hover, a:focus {
 
   .video_player{
     width: 948px;
-    height:568px;
+    height:535px;
   }
+
   ul.video-list li.video-item {
     list-style: none;
     width: 300px;
@@ -1744,10 +1747,28 @@ a:hover, a:focus {
     transition: all 500ms ease-out;
   }
 
+  .footer-menu{
+    display: none;
+  }
+
 }
 
 //ipad浏览
 @media ( max-width: 969px) {
+  //隐藏顶部栏
+  .nav-wrapper.navbar-fixed-top{
+    display: none;
+  }
+
+  .c-860.c-demoslider{
+    padding-top: 10px
+  }
+
+  .container .grid .display {
+    padding-top: 0px;
+    margin-top: -15px;
+  }
+
   .iphone_avatar{
     display: none;
   }
@@ -1774,22 +1795,22 @@ a:hover, a:focus {
 
   .relatives {
     margin-left: 10px;
-    width: 300px;
+    width: 100%;
     float: left;
   }
 
   .relatives ul.video-list li.video-item {
-    width: 300px;
+    width: 100%;
     margin: 0 auto;
     margin-top: 20px;
   }
 
   .relatives ul.video-list li.video-item .video-poster {
-    width: 300px;
+    width: 100%;
   }
   .relatives ul.video-list li.video-item .video-poster img {
-    width: 300px;
-    height: 160px;
+    width: 100%;
+    height: 100%;
   }
 
   .player {
@@ -1800,6 +1821,7 @@ a:hover, a:focus {
     overflow: hidden;
     border: 1px solid #ebebeb;
   }
+
   .video_player{
     width: 650px;
     height:400px;
@@ -1817,32 +1839,33 @@ a:hover, a:focus {
   .navbar {
 
   }
-  .footer-subscribe{
+
+  .footer {
     display: none;
   }
 
-  .footer-copyright{
-    display: none;
+  .load-more-menu {
+    padding-bottom: 50px;
   }
 
   ul.video-list li.video-item {
     list-style: none;
-    width: 300px;
-    margin: 0 15px;
+    width: 48%;
+    margin-left: 10px;
     margin-top: 20px;
     float: left;
     text-align: left;
   }
 
   ul.video-list li.video-item .video-poster {
-    width: 300px;
-    height: 160px;
+    width: 100%;
+    height: 100%;
     border: 1px solid #ebebeb;
     box-size: border-box;
     overflow: hidden;
   }
   ul.video-list li.video-item .video-poster img {
-    width: 300px;
+    width: 100%;
   }
 
   ul.video-list li.video-item .video-play {
@@ -1850,7 +1873,7 @@ a:hover, a:focus {
     background-color: rgba(0, 0, 0, 0.5);
     position: absolute;
     width: 100%;
-    height: 160px;
+    height: 100%;
     top: 0;
     bottom: 0;
     right: 0;
@@ -1861,22 +1884,29 @@ a:hover, a:focus {
     transition: all 500ms ease-out;
   }
 
-  .programa-list{
-    margin-left: 10px;
-  }
   .side{
     margin-right: 10px;
   }
 
-}
-//iphone浏览
-@media (max-width: 500px){
-  .ipad_avatar{
+  .programa-list{
     display: none;
   }
-  .iphone_avatar{
-    display: block;
+
+}
+//ipad 小屏列表
+@media (max-width: 520px){
+  ul.video-list li.video-item {
+    list-style: none;
+    width: 95%;
+    margin-left: 10px;
+    margin-top: 20px;
+    float: left;
+    text-align: left;
   }
+}
+//iphone浏览
+@media (max-width: 450px){
+
   .commend {
     width: 95%;
     margin-left: 10px;
@@ -1905,21 +1935,19 @@ a:hover, a:focus {
   }
 
   .player {
-    width: 383px;
-    height: 233px;
+    width:435px;
+    height: 262px;
     margin-top: 20px;
     margin-bottom: 15px;
     overflow: hidden;
     border: 1px solid #ebebeb;
   }
+
   .video_player{
-    width: 370px;
-    height:220px;
+    width: 425px;
+    height: 243px;
   }
 
-  .programa-list{
-    display: none;
-  }
   ul.video-list li.video-item {
     list-style: none;
     width: 95%;
@@ -1953,6 +1981,45 @@ a:hover, a:focus {
     padding: 14% 4%;
     opacity: 0;
     transition: all 500ms ease-out;
+  }
+}
+
+//iphone 6p 播放器
+@media (max-width: 416px){
+  .player {
+    width:415px;
+    height: 244px;
+  }
+
+  .video_player{
+    width: 403px;
+    height: 232px;
+  }
+}
+
+//iphone 6 播放器
+@media (max-width: 376px){
+  .player {
+    width:375px;
+    height: 222px;
+  }
+
+  .video_player{
+    width: 363px;
+    height: 210px;
+  }
+}
+
+//iphone 5 播放器
+@media (max-width: 322px){
+  .player {
+    width:320px;
+    height: 190px;
+  }
+
+  .video_player{
+    width: 308px;
+    height: 180px;
   }
 }
 
@@ -2621,10 +2688,8 @@ ul.video-list li.video-item .animated:hover .video-info {
   margin: 10px 0px 0px 0px !important;
   padding: 0px !important;
 }
-/**************** 魔方特效 end ****************/
 
-
-/**************** 页面底拦 start****************/
+/**************** 页面底栏****************/
 .footer {
   padding: 20px 0;
   width: 100%;
@@ -2701,9 +2766,40 @@ ul.video-list li.video-item .animated:hover .video-info {
   font-size: 1.2rem;
   margin-bottom: 10px;
 }
-/**************** 页面底拦 end****************/
 
-/**************** 登录遮罩 start****************/
+/**************** 页面菜单 ****************/
+.footer-menu{
+  width: 100%;
+  height: 60px;
+  background: #444749;
+  color: rgba(236, 235, 231, 0.5);
+  position: fixed;
+  bottom: 0;
+}
+
+.footer-menu .row > div {
+  float: left;
+  text-align: center;
+  display: block;
+  width: 33%;
+  padding: 20px 0;
+}
+
+.footer-menu ul {
+  list-style: none;
+  padding: 0px;
+}
+
+.footer-menu li {
+  line-height: 1.5;
+}
+
+.footer-menu a {
+  color: white;
+}
+
+
+/**************** 登录遮罩****************/
 .wrapper {
   padding-top: 80px;
   width: 380px;
@@ -2966,5 +3062,3 @@ input[type="password"] {
 .input-submit:hover {
   background: #dd3b5a;
 }
-
-/**************** 登录遮罩 end****************/

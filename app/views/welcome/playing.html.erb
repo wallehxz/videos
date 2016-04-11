@@ -4,17 +4,17 @@
 <div class="container">
   <div class="grid">
     <div class="display">
-      <div class="player">
-        <div style="padding-left: 5px;padding-top: 5px">
-          <div id="playerCnt" class="video_player"></div>
-        </div>
-      </div>
       <div class="player-title">
         「<%= video_to_column_name(@video.column_id) %>」<%= @video.title %>
       </div>
       <div class="player-poster">
         <p><%= video_time @video.duration %>
           <span class="v-time"><%= @video.created_at.strftime('%m/%d %H:%M')%></span></p>
+      </div>
+      <div class="player">
+        <div style="padding-left: 5px;padding-top: 5px">
+          <div id="playerCnt" class="video_player"></div>
+        </div>
       </div>
     </div>
   </div>

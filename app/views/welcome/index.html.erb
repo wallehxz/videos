@@ -31,6 +31,7 @@
         <h4>MORE 「 <%= @videos.total_entries - 9 > 0 ? @videos.total_entries - 9:'+ _ +'%> 」</h4>
       </a>
     </div>
+    <div class="load-more-menu"></div>
   </div>
 </div>
 <script>
@@ -57,9 +58,9 @@
     })
   }
 
-  $(window).scroll(function(){
-    if($(document).height() - $(window).scrollTop() == $(window).height()){
-      $('.load-more').click();
-    }
-  });
+  // $(window).scroll(function(){
+  //   if($(document).height() - $(window).scrollTop() == $(window).height()){
+  //     $('.load-more').click();
+  //   }
+  // });
 </script>
