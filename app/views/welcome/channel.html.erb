@@ -37,22 +37,28 @@
   </div>
 </div>
 <script>
-    function load_channel_more(page,channel,total){
-        var num = parseInt(page) + 1;
-        if(parseInt(total) > 8){
-            var local = parseInt(total) - 9;
-        }else{
-            var local = 0;
-        }
-        $.get('/videos/get_channel_more',{page: page, column:channel}, function(data){
-            console.log(data);
-            if(data ==''){
-                $('.load-more').html('<h4>感谢您对我们视频的支持！(+ _ +) </h4>').removeAttr('onclick');
-            }else{
-                $('.load-more').attr('onclick',"load_channel_more ("+ num +","+ channel +", "+ local +")");
-                $('.load-more').html("<h4>MORE「 "+ local + "」</h4>");
-                $('.video-list').append(data);
-            }
-        })
+  function load_channel_more(page,channel,total){
+    var num = parseInt(page) + 1;
+    if(parseInt(total) > 8){
+      var local = parseInt(total) - 9;
+    }else{
+      var local = 0;
     }
+    $.get('/videos/get_channel_more',{page: page, column:channel}, function(data){
+      if(data ==''){
+        $('.load-more').html('<h4>感谢您对我们视频的支持！(+ _ +) </h4>').removeAttr('onclick');
+      }else{
+        $('.load-more').attr('onclick',"load_channel_more ("+ num +","+ channel +", "+ local +")");
+        $('.load-more').html("<h4>MORE「 "+ local + "」</h4>");
+        $('.video-list').append(data);
+      }
+    })
+  }
+
+  $(window).scroll(function(){
+    if($(document).height() - $(window).scrollTop() == $(window).height()){
+      //setTimeout("$('.load-more').click()",2000);
+      $('.load-more').click();
+    }
+  });
 </script>

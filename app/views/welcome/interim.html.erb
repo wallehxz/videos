@@ -20,12 +20,12 @@
   <div style="padding-top: 50px"></div>
 </div>
 <script type="text/javascript" >
-    var ivaInstance = new Iva('playerCnt', {
-        appkey: '4JAun1rRl',
-        title: '<%= symbol_truncate(@video['title']) %>',
-        video: 'http://v.youku.com/v_show/id_<%= @video['id'] %>.html',
-        cover: '<%= Settings.qiniu_cdn_host %>img_video_poster.png',
-        autoFormat: true,
-        autoplay: true
-    });
+  var ivaInstance = new Iva('playerCnt', {
+    appkey: '4JAun1rRl',
+    title: '<%= symbol_truncate(@video['title']) %>',
+    video: 'http://v.youku.com/v_show/id_<%= @video['id'] %>.html',
+    cover: '<%= Settings.qiniu_cdn_host %>img_video_poster.png',
+    autoFormat: true,
+    autoplay: true
+  });
 </script>

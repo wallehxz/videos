@@ -34,22 +34,29 @@
   </div>
 </div>
 <script>
-    function load_index_more(page,total){
-        var num = parseInt(page) + 1;
-        if(parseInt(total) > 8){
-            var local = parseInt(total) - 9;
-        }else{
-            var local = 0;
-        }
-        $.get('/videos/get_index_more',{page: page}, function(data){
-            console.log(data);
-            if(data ==''){
-                $('.load-more').html('<h4>感谢您对我们视频的支持！(+ _ +) </h4>').removeAttr('onclick');
-            }else{
-                $('.load-more').attr('onclick',"load_index_more ("+ num +","+ local +")");
-                $('.load-more').html("<h4>MORE「 "+ local + "」</h4>");
-                $('.video-list').append(data);
-            }
-        })
+
+  function load_index_more(page,total){
+    var num = parseInt(page) + 1;
+    if(parseInt(total) > 8){
+      var local = parseInt(total) - 9;
+    }else{
+      var local = 0;
     }
+    $.get('/videos/get_index_more',{page: page}, function(data){
+      if(data ==''){
+        $('.load-more').html('<h4>感谢您对我们视频的支持！(+ _ +) </h4>').removeAttr('onclick');
+      }else{
+        $('.load-more').attr('onclick',"load_index_more ("+ num +","+ local +")");
+        $('.load-more').html("<h4>MORE「 "+ local + "」</h4>");
+        $('.video-list').append(data);
+      }
+    })
+  }
+
+  $(window).scroll(function(){
+    if($(document).height() - $(window).scrollTop() == $(window).height()){
+      //setTimeout("$('.load-more').click()",2000);//延迟两秒加载
+      $('.load-more').click();
+    }
+  });
 </script>
