@@ -504,7 +504,7 @@ input:focus, textarea:focus, select:focus {
     width: 380px;
     height: 480px;
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 50%;
     margin: -240px 0 0 -190px;
     text-align: center;
@@ -638,7 +638,7 @@ input:focus, textarea:focus, select:focus {
 .header-help__btn, .header-close__btn {
   width: 24px;
   height: 24px;
-  background: asset_url('icons.svg') no-repeat;
+  /*background: asset_url('icons.svg') no-repeat;*/
   text-indent: -9999em;
   display: inline-block;
   position: absolute;

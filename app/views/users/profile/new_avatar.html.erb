@@ -33,21 +33,18 @@
             <input type="file" class="" name="file" id="upload-file" />
             <input type="hidden" id="data" name="avatar"/>
           </div>
-          <input type="button" id="btnCrop"  class="Btnsty_peyton" value="裁切">
-          <input type="button" id="btnZoomIn" class="Btnsty_peyton" value="+"  >
-          <input type="button" id="btnZoomOut" class="Btnsty_peyton" value="-" >
+          <a id="btnZoomOut" class="Btnsty_jian"><i class="fa fa-minus"></i></a>
+          <a id="btnZoomIn" class="Btnsty_jia"><i class="fa fa-plus"></i></a>
+          <a id="btnCrop"  class="Btnsty_cj"><i class="fa fa-check"></i></a>
         </div>
-        <div class="cropped" style="background: url(<%= image_path('avatar/form_background.png')%>)"></div>
+        <div class="cropped" style=""></div>
         <div class="upload-file">
-          <input type="submit" style="display: none" id="tijiao" class="Btnsty_upload" value="上传头像">
+          <input type="submit" id="tijiao" style="display:none" class="Btnsty_upload" value="上传头像">
         </div>
       </form>
     </div>
   </div>
 </section>
-<div class="footer-menu">
-  <%= render :partial => 'layouts/footer_menu' %>
-</div>
 </body>
 </html>
 <script type="text/javascript">
@@ -70,9 +67,10 @@
     })
     $('#btnCrop').on('click', function(){
       var img = cropper.getDataURL();
+      $('.cropped').attr('style','display:block');
       $('.cropped').html('');
-      $('.cropped').append('<br><img src="'+img+'" align="absmiddle" style="width:180px;margin-left:5px;border-radius:180px;box-shadow:0px 0px 12px #7E7E7E;"><p>180px*180px</p>');
-      $('.cropped').append('<img src="'+img+'" align="absmiddle" style="width:180px;margin-left:5px;"><p>180px*180px</p>');
+      $('.cropped').append('<br><img src="'+img+'" align="absmiddle" class="tu_yuan">');
+      $('.cropped').append('<img src="'+img+'" align="absmiddle" class="tu_fang">');
       $('#data').val(img);
       $('#tijiao').removeAttr('style');
     })

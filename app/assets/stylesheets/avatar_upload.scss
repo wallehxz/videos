@@ -1,162 +1,677 @@
 @charset "utf-8";
 
-.container {
-	width: 400px;
+@media ( min-width: 800px) {
+  .container {
+    width: 400px;
     margin: -50px auto 0 -100px;
-	position: relative;
-	font-family: 微软雅黑;
-	font-size: 16px;
-}
-.container p {
-	line-height: 12px;
-	line-height: 0px;
-	height: 0px;
-	margin: 10px;
-	color: #bbb
-}
-.action {
-	width: 400px;
-	height: 30px;
-	margin: 10px 0;
-}
-.cropped {
-	position: absolute;
-	right: -230px;
-	top: 0;
-	width: 200px;
-	border: 1px #ddd solid;
-	height: 460px;
-	padding: 4px;
-	box-shadow: 0px 0px 12px #ddd;
-	text-align: center;
-}
-.upload-file{
-  position: absolute;
-  top: 480px;
-  width: 400px;
-}
-.imageBox {
-	position: relative;
-	height: 400px;
-	width: 400px;
-	border: 1px solid #aaa;
-	background: #fff;
-	overflow: hidden;
-	background-repeat: no-repeat;
-	cursor: move;
-	box-shadow: 4px 4px 12px #B0B0B0; 
-}
-.imageBox .thumbBox {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	width: 202px;
-	height: 202px;
-	margin-top: -100px;
-	margin-left: -100px;
-	box-sizing: border-box;
-	border: 1px solid rgb(102, 102, 102);
-	box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.5);
-	background: none repeat scroll 0% 0% transparent;
-}
-.imageBox .spinner {
-	position: absolute;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	text-align: center;
-	line-height: 400px;
-	background: rgba(0,0,0,0.7);
+    position: relative;
+    font-family: 微软雅黑;
+    font-size: 16px;
+  }
+  .container p {
+    line-height: 12px;
+    line-height: 0px;
+    height: 0px;
+    margin: 10px;
+    color: #bbb
+  }
+  .action {
+    width: 400px;
+    height: 30px;
+    margin: 10px 0;
+  }
+  .cropped {
+    position: absolute;
+    right: -230px;
+    top: 0;
+    width: 200px;
+    border: 1px #ddd solid;
+    height: 460px;
+    padding: 4px;
+    box-shadow: 0px 0px 12px #ddd;
+    text-align: center;
+    background: asset_url('avatar/form_background.png');
+  }
+  .upload-file{
+    position: absolute;
+    top: 480px;
+    width: 400px;
+  }
+  .imageBox {
+    position: relative;
+    height: 400px;
+    width: 400px;
+    border: 1px solid #aaa;
+    background: #fff;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    cursor: move;
+    box-shadow: 4px 4px 12px #B0B0B0;
+  }
+  .imageBox .thumbBox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 202px;
+    height: 202px;
+    margin-top: -100px;
+    margin-left: -100px;
+    box-sizing: border-box;
+    border: 1px solid rgb(102, 102, 102);
+    box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.5);
+    background: none repeat scroll 0% 0% transparent;
+  }
+  .imageBox .spinner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    line-height: 400px;
+    background: rgba(0,0,0,0.7);
+  }
+
+  .Btnsty_jian{
+    float: right;
+    width: 66px;
+    display: inline-block;
+    margin-bottom: 10px;
+    height: 57px;
+    line-height: 57px;
+    font-size: 20px;
+    color: #FFFFFF;
+    margin:0px 2px;
+    background-color: #28b779;
+    border-radius: 3px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px #B0B0B0;
+    border: 0px #fff solid;
+  }
+  .Btnsty_jian:hover{
+    background-color: #dd3b5a;
+  }
+
+  .Btnsty_jia{
+    float: right;
+    width: 66px;
+    display: inline-block;
+    margin-bottom: 10px;
+    height: 57px;
+    line-height: 57px;
+    font-size: 20px;
+    color: #FFFFFF;
+    margin:0px 2px;
+    background-color: #28b779;
+    border-radius: 3px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px #B0B0B0;
+    border: 0px #fff solid;
+  }
+
+  .Btnsty_jia:hover{
+    background-color: #dd3b5a;
+  }
+
+  .Btnsty_cj{
+    float: right;
+    width: 66px;
+    display: inline-block;
+    margin-bottom: 10px;
+    height: 57px;
+    line-height: 57px;
+    font-size: 20px;
+    color: #FFFFFF;
+    margin:0px 2px;
+    background-color: #28b779;
+    border-radius: 3px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px #B0B0B0;
+    border: 0px #fff solid;
+  }
+  .Btnsty_cj:hover{
+    background-color: #dd3b5a;
+  }
+
+  .Btnsty_upload{
+    float: left;
+    width: 400px;
+    display: inline-block;
+    margin-bottom: 10px;
+    height: 57px;
+    line-height: 57px;
+    font-size: 20px;
+    color: #FFFFFF;
+    margin:0px 2px;
+    background-color: #ffb848;
+    color: black;
+    border-radius: 3px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px #B0B0B0;
+    border: 0px #fff solid;
+  }
+  .Btnsty_upload:hover{
+    background-color: #dd3b5a;
+  }
+
+  /*选择文件上传*/
+  .new-contentarea {
+    width: 165px;
+    overflow:hidden;
+    margin: 0 auto;
+    position:relative;float:left;
+  }
+  .new-contentarea label {
+    width:100%;
+    height:100%;
+    display:block;
+  }
+  .new-contentarea input[type=file] {
+    width:188px;
+    height:60px;
+    background:#333;
+    margin: 0 auto;
+    position:absolute;
+    right:50%;
+    margin-right:-94px;
+    top:0;
+    right/*\**/:0px\9;
+    margin-right/*\**/:0px\9;
+    width/*\**/:10px\9;
+    opacity:0;
+    filter:alpha(opacity=0);
+    z-index:2;
+  }
+  a.upload-img{
+    width:165px;
+    display: inline-block;
+    margin-bottom: 10px;
+    height:57px;
+    line-height: 57px;
+    font-size: 20px;
+    color: #FFFFFF;
+    background-color: black;
+    border-radius: 3px;
+    text-decoration:none;
+    cursor:pointer;
+    border: 0px #fff solid;
+    box-shadow: 0px 0px 5px #B0B0B0;
+  }
+  .upload-img:hover{
+    background-color: #dd3b5a;
+  }
+
+  .tc{text-align:center;}
+
+  .tu_fang {
+    width:180px;
+    margin-left:5px;
+    margin-top:20px;
+  }
+
+  .tu_yuan {
+    width:180px;
+    margin-left:5px;
+    border-radius:180px;
+    box-shadow:0px 0px 12px #7E7E7E;
+  }
 }
 
-.Btnsty_peyton{
-  float: right;
-   width: 66px;
-  display: inline-block;
-  margin-bottom: 10px;
-  height: 57px;
-  line-height: 57px;
-  font-size: 20px;
-  color: #FFFFFF;
-  margin:0px 2px;
-  background-color: #ffb848;
-  border-radius: 3px;
-  text-decoration: none;
-  cursor: pointer;
-  box-shadow: 0px 0px 5px #B0B0B0;
-  border: 0px #fff solid;
-}
-.Btnsty_peyton:hover{
-  background-color: #dd3b5a;
-}
+//ipad
+@media (max-width: 799px) {
+  .container {
+    width: 400px;
+    margin: 0px 0px -100px -20px;
+    position: relative;
+    font-family: 微软雅黑;
+    font-size: 16px;
+  }
+  .container p {
+    line-height: 12px;
+    line-height: 0px;
+    height: 0px;
+    margin: 10px;
+    color: #bbb
+  }
+  .action {
+    width: 400px;
+    height: 30px;
+    margin: 10px 0;
+  }
 
-.Btnsty_upload{
-  float: left;
-  width: 400px;
-  display: inline-block;
-  margin-bottom: 10px;
-  height: 57px;
-  line-height: 57px;
-  font-size: 20px;
-  color: #FFFFFF;
-  margin:0px 2px;
-  background-color: #28b779;
-  border-radius: 3px;
-  text-decoration: none;
-  cursor: pointer;
-  box-shadow: 0px 0px 5px #B0B0B0;
-  border: 0px #fff solid;
-}
-.Btnsty_upload:hover{
-  background-color: #dd3b5a;
-}
+  .cropped {
+    display: none;
+    position: absolute;
+    margin: 0px 100px 0px 50px;
+    top:0px;
+    width: 300px;
+    border: 1px #ddd solid;
+    height: 300px;
+    box-shadow: 0px 0px 12px #ddd;
+    text-align: center;
+    background: asset_url('avatar/form_background.png');
+  }
 
-/*选择文件上传*/
-.new-contentarea {
-	width: 165px;
-	overflow:hidden;
-	margin: 0 auto;
-	position:relative;float:left;
-}
-.new-contentarea label {
-	width:100%;
-	height:100%;
-	display:block;
-}
-.new-contentarea input[type=file] {
-	width:188px;
-	height:60px;
-	background:#333;
-	margin: 0 auto;
-	position:absolute;
-	right:50%;
-	margin-right:-94px;
-	top:0;
-	right/*\**/:0px\9;
-	margin-right/*\**/:0px\9;
-	width/*\**/:10px\9;
-	opacity:0;
-	filter:alpha(opacity=0);
-	z-index:2;
-}
-a.upload-img{
-	width:165px;
-	display: inline-block;
-	margin-bottom: 10px;
-	height:57px;
-	line-height: 57px;
-	font-size: 20px;
-	color: #FFFFFF;
-	background-color: #dd3b5a;
-	border-radius: 3px;
-	text-decoration:none;
-	cursor:pointer;
-	border: 0px #fff solid;
-	box-shadow: 0px 0px 5px #B0B0B0;
-}
-.upload-img:hover{
-	background-color: #dd3b5a;
-}
+  .upload-file{
+    position: absolute;
+    top: 300px;
+    width: 300px;
+  }
 
-.tc{text-align:center;}
+  .imageBox {
+    position: relative;
+    height: 300px;
+    width: 300px;
+    margin-left: 50px;
+    border: 1px solid #aaa;
+    background: #fff;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    cursor: move;
+    box-shadow: 4px 4px 12px #B0B0B0;
+  }
+
+  .imageBox .thumbBox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 202px;
+    height: 202px;
+    margin-top: -100px;
+    margin-left: -100px;
+    box-sizing: border-box;
+    border: 1px solid rgb(102, 102, 102);
+    box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.5);
+    background: none repeat scroll 0% 0% transparent;
+  }
+
+  .imageBox .spinner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    line-height: 300px;
+    background: rgba(0,0,0,0.7);
+  }
+
+  .Btnsty_jian{
+    width: 40px;
+    display: inline-block;
+    margin-top: 5px;
+    margin-left: -50px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+    color: #FFFFFF;
+    background-color: #28b779;
+    border-radius: 40px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px #B0B0B0;
+    border: 0px #fff solid;
+
+  }
+  .Btnsty_jian:hover {
+    background-color: #dd3b5a;
+  }
+
+  .Btnsty_jia{
+    width: 40px;
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    margin-left: 5px;
+    font-size: 20px;
+    color: #FFFFFF;
+    background-color: #28b779;
+    border-radius: 40px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px #B0B0B0;
+    border: 0px #fff solid;
+
+  }
+  .Btnsty_jia:hover{
+    background-color: #dd3b5a;
+  }
+
+  .Btnsty_cj{
+    width: 40px;
+    display: inline-block;
+    height: 40px;
+    margin-left: 5px;
+    line-height: 40px;
+    font-size: 20px;
+    color: #FFFFFF;
+    background-color: #28b779;
+    border-radius: 40px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px #B0B0B0;
+    border: 0px #fff solid;
+
+  }
+
+  .Btnsty_cj:hover{
+    background-color: #dd3b5a;
+  }
+
+  .Btnsty_upload{
+    float: left;
+    width: 300px;
+    display: inline-block;
+    margin-bottom: 10px;
+    height: 50px;
+    line-height: 30px;
+    font-size: 20px;
+    color: #FFFFFF;
+    margin: 100px 0px 0px 48px;
+    background-color: #ffb848;
+    border-radius: 3px;
+    text-decoration: none;
+    cursor: pointer;
+    color: black;
+    box-shadow: 0px 0px 5px #B0B0B0;
+    border: 0px #fff solid;
+  }
+  .Btnsty_upload:hover{
+    background-color: #dd3b5a;
+  }
+
+  /*选择文件上传*/
+  .new-contentarea {
+    width: 150px;
+    overflow:hidden;
+    margin: 0px 0px 0px 50px;
+    position:relative;float:left;
+  }
+
+  .new-contentarea label {
+    width:100%;
+    height:100%;
+    display:block;
+  }
+  .new-contentarea input[type=file] {
+    width:150px;
+    background:#333;
+    margin: 0 auto;
+    position:absolute;
+    right:50%;
+    margin-right:-94px;
+    top:0;
+    right/*\**/:0px\9;
+    margin-right/*\**/:0px\9;
+    width/*\**/:10px\9;
+    opacity:0;
+    filter:alpha(opacity=0);
+    z-index:2;
+  }
+
+  a.upload-img{
+    width:150px;
+    display: inline-block;
+    height:50px;
+    line-height: 50px;
+    font-size: 20px;
+    color: #FFFFFF;
+    background-color: black;
+    border-radius: 10px;
+    text-decoration:none;
+    cursor:pointer;
+    border: 0px #fff solid;
+    box-shadow: 0px 0px 5px #B0B0B0;
+  }
+
+  .upload-img:hover{
+    background-color: #dd3b5a;
+  }
+
+  .tc{text-align:center;}
+
+  .tu_fang {
+    display: none;
+    width:180px;
+    margin-left:5px;
+  }
+
+  .tu_yuan {
+    width:200px;
+    margin-left:50px;
+    margin-top:20px;
+    border-radius:200px;
+    box-shadow:0px 0px 12px #7E7E7E;
+  }
+}
+//iphone
+@media (max-width: 350px) {
+  .container {
+    width: 300px;
+    margin: 20px 0px -100px -50px;
+    position: relative;
+    font-family: 微软雅黑;
+    font-size: 16px;
+  }
+  .container p {
+    line-height: 12px;
+    line-height: 0px;
+    height: 0px;
+    margin: 10px;
+    color: #bbb
+  }
+  .action {
+    width: 400px;
+    height: 30px;
+    margin: 10px 0;
+  }
+
+  .cropped {
+    display: none;
+    position: absolute;
+    margin: 0px 100px 0px 50px;
+    top:0px;
+    width: 300px;
+    border: 1px #ddd solid;
+    height: 300px;
+    box-shadow: 0px 0px 12px #ddd;
+    text-align: center;
+    background: asset_url('avatar/form_background.png');
+  }
+
+  .upload-file{
+    position: absolute;
+    top: 300px;
+    width: 300px;
+  }
+
+  .imageBox {
+    position: relative;
+    height: 300px;
+    width: 300px;
+    margin-left: 50px;
+    border: 1px solid #aaa;
+    background: #fff;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    cursor: move;
+    box-shadow: 4px 4px 12px #B0B0B0;
+  }
+
+  .imageBox .thumbBox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 202px;
+    height: 202px;
+    margin-top: -100px;
+    margin-left: -100px;
+    box-sizing: border-box;
+    border: 1px solid rgb(102, 102, 102);
+    box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.5);
+    background: none repeat scroll 0% 0% transparent;
+  }
+
+  .imageBox .spinner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    line-height: 300px;
+    background: rgba(0,0,0,0.7);
+  }
+
+  .Btnsty_jian{
+    width: 40px;
+    display: inline-block;
+    margin-top: 5px;
+    margin-left: -50px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+    color: #FFFFFF;
+    background-color: #28b779;
+    border-radius: 40px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px #B0B0B0;
+    border: 0px #fff solid;
+
+  }
+  .Btnsty_jian:hover {
+    background-color: #dd3b5a;
+  }
+
+  .Btnsty_jia{
+    width: 40px;
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    margin-left: 5px;
+    font-size: 20px;
+    color: #FFFFFF;
+    background-color: #28b779;
+    border-radius: 40px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px #B0B0B0;
+    border: 0px #fff solid;
+
+  }
+  .Btnsty_jia:hover{
+    background-color: #dd3b5a;
+  }
+
+  .Btnsty_cj{
+    width: 40px;
+    display: inline-block;
+    height: 40px;
+    margin-left: 5px;
+    line-height: 40px;
+    font-size: 20px;
+    color: #FFFFFF;
+    background-color: #28b779;
+    border-radius: 40px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px #B0B0B0;
+    border: 0px #fff solid;
+
+  }
+
+  .Btnsty_cj:hover{
+    background-color: #dd3b5a;
+  }
+
+  .Btnsty_upload{
+    float: left;
+    width: 300px;
+    display: inline-block;
+    margin-bottom: 10px;
+    height: 50px;
+    line-height: 30px;
+    font-size: 20px;
+    color: #FFFFFF;
+    margin: 100px 0px 0px 48px;
+    background-color: #ffb848;
+    border-radius: 3px;
+    text-decoration: none;
+    cursor: pointer;
+    color: black;
+    box-shadow: 0px 0px 5px #B0B0B0;
+    border: 0px #fff solid;
+  }
+  .Btnsty_upload:hover{
+    background-color: #dd3b5a;
+  }
+
+  /*选择文件上传*/
+  .new-contentarea {
+    width: 150px;
+    overflow:hidden;
+    margin: 0px 0px 0px 50px;
+    position:relative;float:left;
+  }
+
+  .new-contentarea label {
+    width:100%;
+    height:100%;
+    display:block;
+  }
+  .new-contentarea input[type=file] {
+    width:150px;
+    background:#333;
+    margin: 0 auto;
+    position:absolute;
+    right:50%;
+    margin-right:-94px;
+    top:0;
+    right/*\**/:0px\9;
+    margin-right/*\**/:0px\9;
+    width/*\**/:10px\9;
+    opacity:0;
+    filter:alpha(opacity=0);
+    z-index:2;
+  }
+
+  a.upload-img{
+    width:150px;
+    display: inline-block;
+    height:50px;
+    line-height: 50px;
+    font-size: 20px;
+    color: #FFFFFF;
+    background-color: black;
+    border-radius: 10px;
+    text-decoration:none;
+    cursor:pointer;
+    border: 0px #fff solid;
+    box-shadow: 0px 0px 5px #B0B0B0;
+  }
+
+  .upload-img:hover{
+    background-color: #dd3b5a;
+  }
+
+  .tc{text-align:center;}
+
+  .tu_fang {
+    display: none;
+    width:180px;
+    margin-left:5px;
+  }
+
+  .tu_yuan {
+    width:200px;
+    margin-left:50px;
+    margin-top:20px;
+    border-radius:200px;
+    box-shadow:0px 0px 12px #7E7E7E;
+  }
+}

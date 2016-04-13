@@ -6,6 +6,8 @@
   color: rgba(236, 235, 231, 0.5);
   position: fixed;
   bottom: 0;
+  font-size: 16px;
+  font-family: "Avenir Next", Avenir, "Helvetica Neue", Helvetica, "Lantinghei SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
 }
 
 .footer-menu .row > div {
@@ -13,6 +15,10 @@
   text-align: center;
   display: block;
   width: 33.33%;
+}
+
+.footer-menu .row .active{
+  border-bottom: 4px solid #dd3b5a;
 }
 
 .footer-menu .row > div:hover {
