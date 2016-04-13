@@ -1769,6 +1769,10 @@ a:hover, a:focus {
     margin-top: -15px;
   }
 
+  .container div{
+    padding-top: -70px;
+  }
+
   .iphone_avatar{
     display: none;
   }
@@ -2765,37 +2769,6 @@ ul.video-list li.video-item .animated:hover .video-info {
   font-size: 12px;
   font-size: 1.2rem;
   margin-bottom: 10px;
-}
-
-/**************** 页面菜单 ****************/
-.footer-menu{
-  width: 100%;
-  height: 60px;
-  background: #444749;
-  color: rgba(236, 235, 231, 0.5);
-  position: fixed;
-  bottom: 0;
-}
-
-.footer-menu .row > div {
-  float: left;
-  text-align: center;
-  display: block;
-  width: 33%;
-  padding: 20px 0;
-}
-
-.footer-menu ul {
-  list-style: none;
-  padding: 0px;
-}
-
-.footer-menu li {
-  line-height: 1.5;
-}
-
-.footer-menu a {
-  color: white;
 }
 
 /**************** 登录遮罩****************/

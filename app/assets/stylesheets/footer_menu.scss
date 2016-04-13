@@ -1,0 +1,76 @@
+/**************** 页面菜单 ****************/
+.footer-menu{
+  width: 100%;
+  height: 55px;
+  background: #444749;
+  color: rgba(236, 235, 231, 0.5);
+  position: fixed;
+  bottom: 0;
+}
+
+.footer-menu .row > div {
+  float: left;
+  text-align: center;
+  display: block;
+  width: 33.33%;
+}
+
+.footer-menu .row > div:hover {
+  border-bottom: 4px solid #dd3b5a;
+}
+
+.footer-menu div > a {
+  color: white;
+  line-height:50px
+}
+
+.footer-menu ul.menu, ul.menu li{
+  width: 100%;
+  margin:0px;
+  padding:0px;
+  list-style:none;
+  position:relative
+}
+
+.footer-menu ul.menu li{
+  line-height:50px
+}
+
+.footer-menu ul.menu li{
+  float:left;
+  margin-left:10px
+}
+
+.footer-menu ul.menu li > a{
+  color: white;
+}
+
+.footer-menu ul.menu div{
+  width: 100%;
+  display: none;
+  position: absolute;
+  bottom: 50px;
+}
+
+.footer-menu ul.menu div a{
+  display: block;
+  line-height: 33px;
+  border-bottom: 1px solid white;
+  background: rgba(3,0,1,.6);
+  text-align: center;
+  width: 85%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.footer-menu ul.menu li:hover div{
+  display:block;
+  color: white;
+}
+
+.footer-menu ul.menu div a:hover {
+  background: #dd3b5a;
+  color: white;
+}

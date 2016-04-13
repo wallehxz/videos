@@ -1,11 +1,28 @@
 <div class="row">
   <div>
-    <a><icon class="fa fa-stack-overflow"></icon> 视频分类</a>
+    <a href="/"><icon class="fa fa-delicious"></icon> 精彩推荐</a>
   </div>
   <div>
-    <a><icon class="fa fa-delicious"></icon> 精彩推荐</a>
+    <ul class="menu">
+      <li>
+        <a><icon class="fa fa-stack-overflow"></icon> 视频分类</a>
+        <div>
+          <% Column.hexie.each do |channel|%>
+            <a href="<%= video_channel_path(channel.english) %>"><i class="<%= channel.icon %>"></i>&nbsp;&nbsp;<%= channel.name %></a>
+          <% end %>
+        </div>
+      </li>
+    </ul>
   </div>
   <div>
-    <a><icon class="fa fa-user-secret"></icon> 用户中心</a>
+    <ul class="menu">
+      <li>
+        <a><icon class="fa fa-user-secret"></icon> 用户中心</a>
+        <div>
+          <a href="<%= sign_up_path %>"><i class="fa fa-user-plus"></i>&nbsp;&nbsp;注册</a>
+          <a href="<%= sign_in_path %>"><i class="fa fa-sign-in"></i>&nbsp;&nbsp;登陆</a>
+        </div>
+      </li>
+    </ul>
   </div>
 </div>

@@ -16,36 +16,34 @@
   </style>
 </head>
 <body class="sessions-new ">
-<!--[if lt IE 7]>
-<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-<![endif]-->
-<div id="particles-js"></div>
-<section class="wrapper">
-  <div class="card">
-    <div class="front">
-      <header class="header">
-        <div class="header-logo">
-          <a href="/"><h1 class="header--logo__36kr"></h1></a>
-          <p id="tip" class="header--logo__slogan">
-            <% if request.url.include?('users') %>
-              邮箱已被使用，请更换
-            <% elsif request.url.include?('sign_login')%>
-                邮箱或密码有误，请检查
-            <% end %>
-          </p>
+  <div id="particles-js"></div>
+  <section class="wrapper">
+    <div class="card">
+      <div class="front">
+        <header class="header">
+          <div class="header-logo">
+            <a href="/"><h1 class="header--logo__36kr"></h1></a>
+            <p id="tip" class="header--logo__slogan">
+              <% if request.url.include?('users') %>
+                邮箱已被使用，请更换
+              <% elsif request.url.include?('sign_login')%>
+                  邮箱或密码有误，请检查
+              <% end %>
+            </p>
+          </div>
+          <div class="header-help">
+            <a href="/" class="header-help__btn">帮助</a>
+          </div>
+        </header>
+        <div>
+          <%= yield %>
         </div>
-        <div class="header-help">
-          <a href="/" class="header-help__btn">帮助</a>
-        </div>
-      </header>
-      <div>
-        <%= yield %>
       </div>
-      <footer class="footer">
-      </footer>
     </div>
+  </section>
+  <div class="footer-menu">
+    <%= render :partial => 'layouts/footer_menu' %>
   </div>
-</section>
 </body>
 </html>
 <script>

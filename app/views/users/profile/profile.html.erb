@@ -22,7 +22,7 @@
     <div class="front">
       <header class="header">
         <div style="padding-left: 32%">
-          <a href="<%= new_avatar_path %>" title="点击修改头像">
+          <a href="<%= new_avatar_path %>" title="点击修改头像" target="_self">
             <img src="<%= display_avatar current_user %>" style="height: 120px" class="img-circle">
           </a>
         </div>
@@ -48,6 +48,9 @@
     </div>
   </div>
 </section>
+<div class="footer-menu">
+  <%= render :partial => 'layouts/footer_menu' %>
+</div>
 </body>
 </html>
 <script>

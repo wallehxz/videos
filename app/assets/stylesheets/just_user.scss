@@ -26,43 +26,43 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
- 
+
 article, aside, canvas, details, figcaption, figure, footer, header, hgroup, img, menu, nav, section, summary {
   display: block;
 }
 
- 
+
 ol, ul {
   list-style: none;
 }
 
- 
+
 blockquote, q {
   quotes: none;
 }
 
- 
+
 blockquote:before, blockquote:after, q:before, q:after {
   content: '';
   content: none;
 }
 
- 
+
 [hidden] {
   display: none;
 }
 
- 
+
 abbr[title] {
   border-bottom: 1px dotted;
 }
 
- 
+
 b, strong {
   font-weight: bold;
 }
 
- 
+
 em {
   font-size: 16px;
   font-size: 1.6rem;
@@ -70,18 +70,18 @@ em {
   border-bottom: 1px solid #e4e4e4;
 }
 
- 
+
 dfn {
   font-style: italic;
 }
 
- 
+
 mark {
   background: #ff0;
   color: #000;
 }
 
- 
+
 sub, sup {
   font-size: 75%;
   line-height: 0;
@@ -89,27 +89,27 @@ sub, sup {
   vertical-align: baseline;
 }
 
- 
+
 sup {
   top: -0.5em;
 }
 
- 
+
 sub {
   bottom: -0.25em;
 }
 
- 
+
 svg:not(:root) {
   overflow: hidden;
 }
 
- 
+
 figure {
   margin: 0;
 }
 
- 
+
 a {
   background: transparent;
   border: 0;
@@ -122,19 +122,19 @@ a {
   transition: all 0.2s ease;
 }
 
- 
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
- 
+
 caption, th, td {
   text-align: left;
   font-weight: normal;
 }
 
- 
+
 button, input, select, textarea {
   font-size: 100%;
   margin: 0;
@@ -145,24 +145,24 @@ button, input, select, textarea {
   vertical-align: baseline;
 }
 
- 
+
 button, input[type="button"], input[type="reset"], input[type="submit"] {
   cursor: pointer;
   -webkit-appearance: button;
 }
 
- 
+
 button[disabled], input[disabled] {
   cursor: default;
 }
 
- 
+
 input[type="checkbox"], input[type="radio"] {
   box-sizing: border-box;
   padding: 0;
 }
 
- 
+
 input[type="search"] {
   -webkit-appearance: textfield;
   -moz-box-sizing: content-box;
@@ -170,35 +170,35 @@ input[type="search"] {
   box-sizing: content-box;
 }
 
- 
+
 input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance: none;
 }
 
- 
+
 button::-moz-focus-inner, input::-moz-focus-inner {
   border: 0;
   padding: 0;
 }
 
- 
+
 textarea {
   overflow: auto;
   vertical-align: top;
   resize: none;
 }
 
- 
+
 input:focus, textarea:focus {
   outline: none;
 }
 
- 
+
 input::-ms-clear {
   display: none;
 }
 
- 
+
 [placeholder]:focus::-webkit-input-placeholder {
   -webkit-transition: opacity 0.5s ease;
   -moz-transition: opacity 0.5s ease;
@@ -206,7 +206,7 @@ input::-ms-clear {
   opacity: 0;
 }
 
- 
+
 [placeholder]:focus::-moz-input-placeholder {
   -webkit-transition: opacity 0.5s ease;
   -moz-transition: opacity 0.5s ease;
@@ -214,7 +214,7 @@ input::-ms-clear {
   opacity: 0;
 }
 
- 
+
 html {
   font-size: 62.5%;
   position: relative;
@@ -226,7 +226,7 @@ html {
   -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
- 
+
 body {
   font-family: "Avenir Next", Avenir, "Helvetica Neue", Helvetica, "Lantinghei SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
   color: #747f8c;
@@ -245,97 +245,97 @@ body {
   hyphens: auto;
 }
 
- 
+
 ::selection {
   background-color: #38485a;
   color: #fff;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
 }
 
- 
+
 ::-moz-selection {
   background-color: #38485a;
   color: #fff;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
 }
 
- 
+
 img::selection {
   background: transparent;
 }
 
- 
+
 img::-moz-selection {
   background: transparent;
 }
 
- 
+
 .left {
   float: left;
 }
 
- 
+
 .right {
   float: right;
 }
 
- 
+
 .cf:after {
   content: "";
   display: table;
   clear: both;
 }
 
- 
+
 .text-center {
   text-align: center;
 }
 
- 
+
 a {
   text-decoration: none;
   color: #2977ba;
 }
 
- 
+
 a:hover {
   text-decoration: none;
   color: #205c90;
 }
 
- 
+
 a:focus {
   color: #6f6f6f;
 }
 
- 
+
 a:hover, a:focus, a:active {
   outline: 0;
 }
 
- 
+
 h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
 }
 
- 
+
 h1, h2, h3, h4, h5, h6, p, blockquote {
   margin: 0;
   padding: 0;
 }
 
- 
+
 input[type="text"] {
   -webkit-appearance: none;
   word-break: normal;
 }
 
- 
+
 .mb20 {
   margin-bottom: 20px;
 }
 
- 
+
 .btn {
   border-radius: 3px;
   display: inline-block;
@@ -345,17 +345,17 @@ img, video, object, embed, iframe {
   max-width: 100% !important;
 }
 
- 
+
 video, object, embed, iframe {
   width: 100%;
 }
 
- 
+
 iframe {
   max-height: 340px;
 }
 
- 
+
 img {
   image-rendering: optimizeQuality;
   -ms-interpolation-mode: bicubic;
@@ -398,7 +398,7 @@ img {
     transform: translateX(10px);
   }
 }
- 
+
 .shake {
   -webkit-animation: shake;
   -moz-animation: shake;
@@ -437,14 +437,14 @@ img {
     opacity: 1;
   }
 }
- 
+
 .fadeIn {
   -webkit-animation: fadeIn;
   -moz-animation: fadeIn;
   animation: fadeIn;
 }
 
- 
+
 .animated {
   -webkit-animation-duration: 1s;
   animation-duration: 1s;
@@ -453,7 +453,7 @@ img {
   display: inline-block !important;
 }
 
- 
+
 html, body {
   width: 100%;
   height: 100%;
@@ -461,77 +461,159 @@ html, body {
   background: #2472b4;
 }
 
- 
+
 ::-webkit-input-placeholder {
   color: #747f8c;
 }
 
- 
+
 :-moz-placeholder {
   color: #747f8c;
 }
 
- 
+
 ::-moz-placeholder {
   color: #747f8c;
 }
 
- 
+
 :-ms-input-placeholder {
   color: #747f8c;
 }
 
- 
+
 canvas {
   display: block;
   vertical-align: bottom;
 }
 
- 
+
 #particles-js {
   width: 100%;
   height: 100%;
 }
 
- 
+
 input:focus, textarea:focus, select:focus {
   border-color: rgba(115, 126, 140, 0.8);
 }
 
- 
-.wrapper {
-  width: 380px;
-  height: 480px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin: -240px 0 0 -190px;
-  text-align: center;
-  -webkit-perspective: 1000;
-  -moz-perspective: 1000;
-  perspective: 1000;
+//mac浏览
+@media ( min-width: 400px) {
+  .wrapper {
+    width: 380px;
+    height: 480px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -240px 0 0 -190px;
+    text-align: center;
+    -webkit-perspective: 1000;
+    -moz-perspective: 1000;
+    perspective: 1000;
+  }
+
+  .card {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+
+  .front {
+    display: block;
+    padding: 20px;
+    background: #FFF;
+    border-radius: 3px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.2);
+    z-index: 0;
+  }
+
+  .form-group input {
+    width: 300px;
+    height: 40px;
+  }
 }
 
-.card {
-  width: 100%;
-  height: 100%;
-  position: absolute;
+//iphone 6浏览
+@media ( max-width: 376px) {
+  .wrapper {
+    width: 92%;
+    height: 450px;
+    position: absolute;
+    top: 45%;
+    left: 54%;
+    margin: -240px 0 0 -190px;
+    text-align: center;
+    -webkit-perspective: 1000;
+    -moz-perspective: 1000;
+    perspective: 1000;
+  }
+
+  .card {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+
+  .front {
+    display: block;
+    margin: 20px auto;
+    background: #FFF;
+    border-radius: 3px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.2);
+    z-index: 0;
+  }
+  .form-group input {
+    width: 280px;
+    height: 40px;
+  }
 }
 
-.front {
-  display: block;
-  padding: 20px;
-  background: #FFF;
-  border-radius: 3px;
-  position: absolute;
-  width: 100%;
-  height: 100%;
+//iphone 5浏览
+@media ( max-width: 321px) {
+  .wrapper {
+    width: 300px;
+    height: 420px;
+    position: absolute;
+    top: 45%;
+    left: 62%;
+    margin: -240px 0 0 -190px;
+    text-align: center;
+    -webkit-perspective: 1000;
+    -moz-perspective: 1000;
+    perspective: 1000;
+  }
+    .card {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+
+  .front {
+    display: block;
+    margin: 20px auto;
+    background: #FFF;
+    border-radius: 3px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.2);
+    z-index: 0;
+  }
+
+  .form-group input {
+    width: 260px;
+    height: 40px;
+  }
+
 }
 
-.front {
-  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.2);
-  z-index: 0;
-}
 
 .header {
   margin-top: 10px;
@@ -679,10 +761,6 @@ input:focus, textarea:focus, select:focus {
   position: relative;
 }
 
-.form-group input {
-  width: 300px;
-  height: 40px;
-}
 
 .form-group input#user_verify {
   width: 200px;
@@ -710,7 +788,6 @@ input:focus, textarea:focus, select:focus {
   background-color: #EBEBEB;
 }
 
-
 .form-group .login-way {
   position: relative;
   margin-top: 20px;
@@ -724,7 +801,6 @@ input:focus, textarea:focus, select:focus {
   color: red;
   text-align: left;
 }
-
 
 .form-group .qrcode-layer {
   position: absolute;
@@ -740,7 +816,6 @@ input:focus, textarea:focus, select:focus {
   border-radius: 2px;
 }
 
-
 .form-group .qrcode-layer span {
   width: 0;
   height: 0;
@@ -749,7 +824,6 @@ input:focus, textarea:focus, select:focus {
   position: absolute;
   left: 45px;
 }
-
 
 .form-group .qrcode-layer span.bot {
   border-width: 5px;
@@ -765,33 +839,27 @@ input:focus, textarea:focus, select:focus {
   bottom: -10px;
 }
 
-
 .form-group .qrcode-layer .icon-qrcode {
   margin: 5px auto;
 }
-
 
 .form-group .icon {
   display: inline-block;
   margin: 15px;
 }
 
-
 .form-group .disabled {
   background-color: rgba(225, 225, 225, 0.9);
   cursor: not-allowed;
 }
 
-
 .form-group .disabled:hover {
   background-color: rgba(225, 225, 225, 0.9);
 }
 
-
 .form-group .input-error {
   border: 1px solid #B82222;
 }
-
 
 .form-group .input-resent, .form-group .input-tips {
   color: #fff;
@@ -805,7 +873,6 @@ input:focus, textarea:focus, select:focus {
   cursor: pointer;
 }
 
-
 .form-group .input-tips {
   background-color: #B82222;
 }
@@ -815,7 +882,7 @@ input:focus, textarea:focus, select:focus {
   background-color: #9194A0;
 }
 
- 
+
 input[type="text"] {
   display: inline-block;
   border-radius: 3px;
@@ -825,7 +892,7 @@ input[type="text"] {
   color: #747f8c;
 }
 
- 
+
 input[type="password"] {
   display: inline-block;
   border-radius: 3px;
@@ -835,19 +902,18 @@ input[type="password"] {
   color: #747f8c;
 }
 
- 
+
 .input-submit {
   background-color: #2376BC;
   font-weight: bold;
   color: #fff;
 }
 
- 
+
 .input-submit:hover {
   background: #dd3b5a;
 }
 
- 
 .done, .alert {
   position: absolute;
   top: 0;
@@ -860,34 +926,21 @@ input[type="password"] {
   height: 50px;
 }
 
- 
 .verify h3 {
   margin-bottom: 30px;
 }
 
- 
 .verify span {
   color: #2977BA;
   padding-right: 2px;
   padding-left: 2px;
 }
 
- 
-.footer {
-  position: absolute;
-  bottom: 20px;
-  width: 240px;
-  left: 50%;
-  margin-left: -120px;
-}
-
- 
 #wechat_login_container iframe {
   width: 200px;
   height: 200px;
 }
 
- 
 .alert {
   position: static;
   width: auto;

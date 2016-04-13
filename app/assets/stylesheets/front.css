@@ -3,5 +3,6 @@
  *= require disqus
  *= require nprogress
  *= require just_front
+ *= require footer_menu
  *= require LTE_admin/css/font-awesome
  */
