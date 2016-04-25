@@ -5,7 +5,14 @@
   <div class="<%= 'active' if ['channel','playing','interim'].include?("#{action_name}") %>">
     <ul class="menu">
       <li>
-        <a><icon class="fa fa-stack-overflow"></icon> 视频分类</a>
+        <a>
+          <% if params[:english].present? || params[:tv_code].present? %>
+            <% column = Column.find_by_english(params[:english]) || Column.find(@video.column_id) %>
+            <i class="<%= column.icon %>"></i>&nbsp;<span><%= column.name %></span>
+          <% else %>
+            <icon class="fa fa-stack-overflow"></icon> 视频分类
+          <% end %>
+        </a>
         <div>
           <% Column.hexie.each do |channel|%>
             <a href="<%= video_channel_path(channel.english) %>"><i class="<%= channel.icon %>"></i>&nbsp;&nbsp;<%= channel.name %></a>
