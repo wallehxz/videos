@@ -14,7 +14,7 @@
       </li>
     </ul>
   </div>
-  <div>
+  <div class="<%= 'active' unless ['index','channel','playing','interim'].include?("#{action_name}") %>">
     <ul class="menu">
     <% if current_user %>
       <li>
