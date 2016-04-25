@@ -1,4 +1,7 @@
 /**************** 页面菜单 ****************/
+/* 修复在手机上没有鼠标指针的问题，即 li:hover 等问题*/
+body { cursor: pointer }
+
 .footer-menu{
   width: 100%;
   height: 55px;
