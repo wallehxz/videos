@@ -1,6 +1,6 @@
 set :application, 'koogle'
 set :scm, :git
-set :repo_url, 'git@github.com:lonely21475/JustingXX.git'
+set :repo_url, 'git@github.com:kooogle/videos.git'
 set :rails_env, 'production'
 set :ssh_options, { keys: %w{~/.ssh/id_rsa}, forward_agent: true, auth_methods: %w(publickey) }
 set :format, :pretty
