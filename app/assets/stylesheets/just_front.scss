@@ -1601,20 +1601,6 @@ a:hover, a:focus {
   text-decoration: none;
 }
 
-.programa {
-  margin-top: 10px;
-  clear: both;
-  overflow: hidden;
-  border-bottom: 2px solid #a1b1bc;
-}
-
-.side {
-  float: right;
-//  width: 320px;
-  text-align: right;
-  margin-top: 14px;
-  margin-left: 40px;
-}
 .side span {
   margin-right: 7px;
 }
@@ -1670,6 +1656,21 @@ a:hover, a:focus {
 
   .navbar-header {
     float: left;
+  }
+
+  .programa {
+    margin-top: 10px;
+    clear: both;
+    overflow: hidden;
+    padding-top: 55px;
+    border-bottom: 2px solid #a1b1bc;
+  }
+
+  .side {
+    float: right;
+    text-align: right;
+    margin-top: 14px;
+    margin-left: 40px;
   }
 
   .commend {
@@ -1791,6 +1792,21 @@ a:hover, a:focus {
   .player-poster{
     margin-left: 10px;
   }
+
+  .programa {
+    margin-top: 10px;
+    clear: both;
+    overflow: hidden;
+    border-bottom: 2px solid #a1b1bc;
+  }
+
+  .side {
+    float: left;
+    text-align: right;
+    margin-left: 10px;
+    font-size: 18px;
+  }
+
   .commend {
     float: left;
     width: 610px;
