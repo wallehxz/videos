@@ -1,6 +1,6 @@
 # source 'https://ruby.taobao.org/'  #淘宝源
-source 'https://gems.ruby-china.org'  #Ruby-China源
-# source 'https://rubygems.org/'  #官方源
+# source 'https://gems.ruby-china.org'  #Ruby-China源
+source 'https://rubygems.org/'  #官方源
 
 # ruby '2.2.2'
 gem 'rails', '4.2.5'
