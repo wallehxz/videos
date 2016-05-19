@@ -14,10 +14,10 @@
 <%= render 'users/shared/links' %>
 <script>
     $('#email').change(function(){
-        var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+        var reg = /^([a-zA-Z0-9_-.])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
         if(!reg.test($.trim($('#email').val())))
         {
-            $('#tip').html('请输入正确的邮箱');
+            $('#tip').html('请填写正确的邮箱');
             $('#email').val('');
             return false;
         }else{

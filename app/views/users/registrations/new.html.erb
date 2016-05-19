@@ -4,8 +4,8 @@
   <div class="main-login">
     <form accept-charset="UTF-8" action="/users" class="simple_form new_user" id="new_user" method="post" onkeydown="if(event.keyCode==13 || event.which ==13) return false;">
       <div class="form-group">
-        <input aria-required="true" autocomplete="off"  id="email" name="user[email]" placeholder="请建入常用邮箱" required="required" type="text" />
-        <input aria-required="true" autocomplete="off"  id="password" name="user[password]" placeholder="请键入登录密码" required="required" type="password" />
+        <input type="text" aria-required="true" id="email" name="user[email]"  placeholder="Email" required="required"/>
+        <input type="text" aria-required="true" id="password" name="user[password]" placeholder="Password" required="required" onfocus="this.type='password'"/>
         <div id="geetest" style="padding-left: 25px;padding-bottom: 10px"></div>
         <input id="btn_sub" class="btn input-submit" name="commit" type="submit" value="注册用户" />
       </div>
@@ -15,26 +15,24 @@
 <br>
 <%= render 'users/shared/links' %>
 <script>
-    $('#email').change(function(){
-        var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
-        if(!reg.test($.trim($('#email').val())))
-        {
-            $('#tip').html("没邮箱，不注册");
-            $('#email').val('');
-            return false;
-        }
-    });
-    $('#password').change(function(){
-        if($('#password').val().length < 6){
-            $('#tip').html('密码过于短小');
-            $('#password').val('');
-            return false;
-        }else{
-            $('#tip').html('密码：'+ $('#password').val() + ' 请牢记');
-        }
-    });
-    window.embed_captcha = new window.Geetest({
-        gt: 'a92f1d66c86bf59349e17d722aefe043',
-        product: 'popup'
-    }).appendTo("#geetest").bindOn('#btn_sub');
+  $('#email').change(function(){
+    var reg = /^([a-zA-Z0-9_-.])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+    if(!reg.test($.trim($('#email').val())))
+    {
+      $('#tip').html("请填写正确邮箱");
+      $('#email').val('');
+      return false;
+    }
+  });
+  $('#password').change(function(){
+    if($('#password').val().length < 6){
+      $('#tip').html('密码强度太弱了，不安全');
+      $('#password').val('');
+      return false;
+    }
+  });
+  window.embed_captcha = new window.Geetest({
+    gt: 'a92f1d66c86bf59349e17d722aefe043',
+    product: 'popup'
+  }).appendTo("#geetest").bindOn('#btn_sub');
 </script>
