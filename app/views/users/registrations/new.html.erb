@@ -16,18 +16,18 @@
 <%= render 'users/shared/links' %>
 <script>
   $('#email').change(function(){
-    var reg = /^([a-zA-Z0-9_-.])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+    var reg = /^([a-zA-Z0-9-._-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
     if(!reg.test($.trim($('#email').val())))
     {
-      $('#tip').html("请填写正确邮箱");
       $('#email').val('');
+      $('#email').attr('placeholder','请填写正确邮箱');
       return false;
     }
   });
   $('#password').change(function(){
     if($('#password').val().length < 6){
-      $('#tip').html('密码强度太弱了，不安全');
       $('#password').val('');
+      $('#password').attr('placeholder','密码强度太弱了，不安全');
       return false;
     }
   });

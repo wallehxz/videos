@@ -46,12 +46,12 @@
 </body>
 <script type="text/javascript">
   $('#email').change(function(){
-    var email = $('#email').val();
-    if(email.indexOf('@') < 0){
+    var reg = /^([a-zA-Z0-9-._-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+    if(!reg.test($.trim($('#email').val())))
+    {
       $('#email').val('');
-      $('#email').attr('placeholder','请填写正确的邮箱');
+      $('#email').attr('placeholder','请填写正确邮箱');
     }
-
   });
   $('#submit').click(function(){
       $(this).addClass('processing');

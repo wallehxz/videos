@@ -14,14 +14,14 @@
 <%= render 'users/shared/links' %>
 <script>
     $('#email').change(function(){
-        var reg = /^([a-zA-Z0-9_-.])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+        var reg = /^([a-zA-Z0-9-._-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
         if(!reg.test($.trim($('#email').val())))
         {
-            $('#tip').html('请填写正确的邮箱');
             $('#email').val('');
+            $('#email').attr('placeholder','请填写正确的邮箱');
             return false;
         }else{
-            $('#tip').html('邮箱正确，点击按钮即可获取验证邮件');
+            alert('点击按钮即可获取验证邮件！');
         }
     });
     window.embed_captcha = new window.Geetest({
