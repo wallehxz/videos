@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   match '/videos/get_channel_more',to: 'welcome#get_channel_more', via: :get
   match '/videos/get_index_more',to: 'welcome#get_index_more', via: :get
   match '/v_show/(:youku_url)',to: 'welcome#interim', via: :get, as: :youku_play
-  match '/feed',to: 'welcome#feed', via: :get, as: :feed, defaults: { format: :rss }
-  match '/channel/:english/feed',to: 'welcome#feed', via: :get, as: :channel_feed, defaults: { format: :rss }
+  match '/feed',to: 'welcome#feed', via: :get, as: :feed, defaults: { format: :xml }
+  match '/channel/:english/feed',to: 'welcome#feed', via: :get, as: :channel_feed, defaults: { format: :xml }
   match 'zhang/dashboard', to: 'administer/dashboard#index',via: :get, as: :dashboard
   match 'zhang/:english/videos', to: 'administer/dashboard#channel',via: :get, as: :channel
   match 'zhang/users', to: 'administer/dashboard#users',via: :get, as: :users
