@@ -28,7 +28,6 @@ class Video < ActiveRecord::Base
   # Video.code_to_youku_info('XMTM5MDUyNDY2MA==')
   def self.code_to_youku_info(code)
     params = { video_id:code,client_id:Settings.youku_client_id}
-    binding.pry
     response = $youku_conn.get '/v2/videos/show_basic.json', params
     return JSON.parse(response.body)
   end
