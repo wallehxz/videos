@@ -1,5 +1,5 @@
 <%= content_for(:title, symbol_truncate(@video['title']) + ' | Koogle') %>
-<%= javascript_include_tag 'video_player' %>
+<script type="text/javascript" src="//7xjfim.com2.z0.glb.qiniucdn.com/Iva.js"></script>
 <div class="container">
   <div class="grid">
     <div class="display">
@@ -11,8 +11,8 @@
           <span class="v-time"><%= @video['published']%></span></p>
       </div>
       <div class="player">
-        <div style="padding-left: 5px;padding-top: 5px">
-          <div id="playerCnt" style="width:948px;height:568px;"></div>
+        <div>
+          <div id="playerCnt" class="video_player"></div>
         </div>
       </div>
     </div>

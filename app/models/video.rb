@@ -25,8 +25,10 @@ class Video < ActiveRecord::Base
 
   #根据code获取优酷的视频信息 Video.def self.code_to_youku_info
   #{"id"=>"XMTM5MDUyNDY2MA==", "title"=>"忽必烈的二次创业 148", "thumbnail"=>"http://r1.ykimg.com/05420408564D93596A0A4804DD28AA95", "thumbnail_v2"=>"http://r1.ykimg.com/05420408564D93596A0A4804DD28AA95", "duration"=>"3348.18", "comment_count"=>"894", "favorite_count"=>"0", "up_count"=>"3089", "down_count"=>"85", "published"=>"2015-11-19 17:45:00", "copyright_type"=>"original", "public_type"=>"all", "state"=>"normal", "streamtypes"=>["hd2", "flvhd", "hd", "3gphd", "mp5hd", "mp5hd2"], "operation_limit"=>[], "category"=>"资讯", "view_count"=>462533, "tags"=>"罗振宇,罗辑思维,忽必烈,挑战,元朝,繁荣", "paid"=>0, "link"=>"http://v.youku.com/v_show/id_XMTM5MDUyNDY2MA==.html", "player"=>"http://player.youku.com/player.php/sid/XMTM5MDUyNDY2MA==/partnerid/9f88fcd420d33601/v.swf", "user"=>{"id"=>"128391495", "name"=>"罗辑思维", "link"=>"http://i.youku.com/u/UNTEzNTY1OTgw"}}
+  # Video.code_to_youku_info('XMTM5MDUyNDY2MA==')
   def self.code_to_youku_info(code)
     params = { video_id:code,client_id:Settings.youku_client_id}
+    binding.pry
     response = $youku_conn.get '/v2/videos/show_basic.json', params
     return JSON.parse(response.body)
   end
