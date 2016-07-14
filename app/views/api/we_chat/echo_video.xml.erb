@@ -7,10 +7,10 @@
 <Articles>
     <% @videos.each do |item| %>
         <item>
-            <Title><![CDATA[<%= item.title %>]]></Title>
-            <Description><![CDATA[<%= item.title %>]]></Description>
+            <Title><![CDATA[<%= strip_tags item.title %>]]></Title>
+            <Description><![CDATA[<%= strip_tags item.title %>]]></Description>
             <PicUrl><![CDATA[<%= item.cover %>]]></PicUrl>
-            <Url><![CDATA[<%= 'http://huaxuan.link' + video_playing_path(item.tv_code) %>]]></Url>
+            <Url><![CDATA[<%= "http://#{Settings.host}" + video_playing_path(item.tv_code) %>]]></Url>
         </item>
     <% end %>
 </Articles>
