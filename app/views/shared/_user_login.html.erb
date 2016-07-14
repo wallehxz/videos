@@ -30,27 +30,27 @@
   </div>
 </section>
 <script>
-    $('#user_login').click(function(){
-        $.blockUI({ message: $('#login_form') });
-    })
-    $('#email').change(function(){
-        var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
-        if(!reg.test($.trim($('#email').val())))
-        {
-            $('#tip').html("键入的帐号格式不匹配");
-            $('#email').val('');
-            return false;
-        }else{
-            $('#tip').html("");
-        }
-    })
-    $('#password').change(function(){
-        if($('#password').val().length < 6){
-            $('#tip').html('键入的密码非安全长度');
-            $('#password').val('');
-            return false;
-        }else{
-            $('#tip').html("");
-        }
-    })
+  $('#user_login').click(function(){
+    $.blockUI({ message: $('#login_form') });
+  })
+  $('#email').change(function(){
+    var reg = /^([a-zA-Z0-9-._-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+    if(!reg.test($.trim($('#email').val())))
+    {
+      $('#tip').html("键入的帐号格式不匹配");
+      $('#email').val('');
+      return false;
+    }else{
+      $('#tip').html("");
+    }
+  })
+  $('#password').change(function(){
+    if($('#password').val().length < 6){
+      $('#tip').html('键入的密码非安全长度');
+      $('#password').val('');
+      return false;
+    }else{
+      $('#tip').html("");
+    }
+  })
 </script>

@@ -34,34 +34,34 @@
 </div><!-- /.login-box -->
 
 <script>
-    $(function () {
-        $('input').iCheck({
-            checkboxClass: 'icheckbox_square-blue',
-            radioClass: 'iradio_square-blue',
-            increaseArea: '20%' // optional
-        });
+  $(function () {
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass: 'iradio_square-blue',
+      increaseArea: '20%' // optional
     });
+  });
 </script>
 <script>
-    $('#email').change(function(){
-        var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
-        if(!reg.test($.trim($('#email').val())))
-        {
-            $('#tip').html("键入的邮箱格式不正确");
-            $('#email').val('');
-            $('#password').val('');
-            return false;
-        }else{
-            $('#tip').html("");
-        }
-    })
-    $('#password').change(function(){
-        if($('#password').val().length < 6){
-            $('#tip').html('键入的密码非安全长度,请保持6位以上');
-            $('#password').val('');
-            return false;
-        }else{
-            $('#tip').html('');
-        }
-    })
+  $('#email').change(function(){
+    var reg = /^([a-zA-Z0-9-._-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+    if(!reg.test($.trim($('#email').val())))
+    {
+      $('#tip').html("键入的邮箱格式不正确");
+      $('#email').val('');
+      $('#password').val('');
+      return false;
+    }else{
+      $('#tip').html("");
+    }
+  })
+  $('#password').change(function(){
+    if($('#password').val().length < 6){
+      $('#tip').html('键入的密码非安全长度,请保持6位以上');
+      $('#password').val('');
+      return false;
+    }else{
+      $('#tip').html('');
+    }
+  })
 </script>
