@@ -1,8 +1,6 @@
-# source 'https://ruby.taobao.org/'  #淘宝源
-# source 'https://gems.ruby-china.org'  #Ruby-China源
-source 'https://rubygems.org/'  #官方源
+source 'https://gems.ruby-china.org'  #Ruby-China源
+#source 'https://rubygems.org/'  #官方源
 
-# ruby '2.2.2'
 gem 'rails', '4.2.5'
 gem 'pg', '0.18.4'  # postgresql 数据连接
 gem 'will_paginate', '3.0.7'   #数据分页
@@ -18,7 +16,8 @@ gem 'turbolinks', '2.5.3'  # makes following links in your web application faste
 gem 'jbuilder', '2.3.2' # Build JSON APIs
 gem 'qiniu', '6.4.2'  #七牛云存储服务
 gem 'bcrypt', '3.1.10' # BCrypt::Password.create
-gem 'listen', '3.1.1'
+gem 'listen', '3.0.8'
+gem 'puma', '3.6.0' #Server
 # gem 'newrelic_rpm', '3.14.0.305' #网站性能监测
 gem 'oneapm_rpm', '1.3.4'
 group :production do
@@ -38,5 +37,6 @@ group :development do
   gem 'capistrano-rails', '1.1.3' #Rails specific Capistrano tasks 项目部署
   gem 'capistrano-rvm', '0.1.2'
   gem 'capistrano-bundler', '1.1.4'
+  gem 'capistrano3-puma', '1.2.1'
   gem 'sdoc', '~> 0.4.0', group: :doc # bundle exec rake doc:rails generates the API under doc/api.
 end

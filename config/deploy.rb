@@ -11,6 +11,10 @@ set :keep_releases, 3
 SSHKit.config.command_map[:rake] = 'bundle exec rake'
 SSHKit.config.command_map[:rails] = 'bundle exec rails'
 
+
+#Puma Server
+set :puma_init_active_record, true
+
 set :linked_files, %w{
   config/database.yml
   config/secrets.yml
@@ -18,7 +22,14 @@ set :linked_files, %w{
 
 }
 
-set :linked_dirs, %w{tmp/cache public/uploads public/logger}
+set :linked_dirs, %w{
+  log
+  tmp/cache
+  tmp/pids
+  tmp/sockets
+  public/uploads
+  public/logger
+}
 
 namespace :deploy do
 
@@ -32,7 +43,7 @@ namespace :deploy do
     end
   end
 
-  desc '重启网页'
+  desc '重启服务'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
       execute :touch, release_path.join('tmp/restart.txt')
