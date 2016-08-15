@@ -6,8 +6,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <!-- 响应式布局 -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <%= stylesheet_link_tag 'LTE_admin/lte_admin', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'LTE_admin/lte_admin', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
   <!--[if lt IE 9]>
@@ -22,6 +20,8 @@
       .jqsfield { color: white;font: 10px arial, san serif;text-align: left;}
   </style>
 </head>
+  <%= stylesheet_link_tag 'LTE_admin/lte_admin', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'LTE_admin/lte_admin', 'data-turbolinks-track' => true %>
 <body id="body-skin" class="<% if current_user %><%= current_user.web_style %><% else %>sidebar-mini wysihtml5-supported skin-blue<% end %>">
 <div class="wrapper">
   <header class="main-header">

@@ -6,8 +6,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <!-- 响应式布局 -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <%= stylesheet_link_tag 'front_user', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'user_info', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
   <style type='text/css' id='hot_style_patch'>
@@ -15,6 +13,8 @@
       .done, .alert { position: static !important}
   </style>
 </head>
+<%= stylesheet_link_tag 'front_user', media: 'all', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'user_info', 'data-turbolinks-track' => true %>
 <body class="sessions-new ">
   <div id="particles-js"></div>
   <section class="wrapper">

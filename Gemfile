@@ -19,7 +19,7 @@ gem 'bcrypt', '3.1.10' # BCrypt::Password.create
 gem 'listen', '3.0.8'
 gem 'puma', '3.6.0' #Server
 # gem 'newrelic_rpm', '3.14.0.305' #网站性能监测
-gem 'oneapm_rpm', '1.3.4'
+# gem 'oneapm_rpm', '1.3.4'
 group :production do
   gem 'therubyracer'
 end
