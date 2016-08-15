@@ -20,9 +20,9 @@
       .jqsfield { color: white;font: 10px arial, san serif;text-align: left;}
   </style>
 </head>
+<body id="body-skin" class="<% if current_user %><%= current_user.web_style %><% else %>sidebar-mini wysihtml5-supported skin-blue<% end %>">
   <%= stylesheet_link_tag 'LTE_admin/lte_admin', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'LTE_admin/lte_admin', 'data-turbolinks-track' => true %>
-<body id="body-skin" class="<% if current_user %><%= current_user.web_style %><% else %>sidebar-mini wysihtml5-supported skin-blue<% end %>">
 <div class="wrapper">
   <header class="main-header">
     <!-- Logo -->
