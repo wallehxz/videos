@@ -10,12 +10,12 @@
   <%= csrf_meta_tags %>
   <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
 </head>
-<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-<%= stylesheet_link_tag  'front', media: 'all', 'data-turbolinks-track' => true %>
 <body>
 <!--[if lt IE 10]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<%= stylesheet_link_tag  'front', media: 'all', 'data-turbolinks-track' => true %>
 <div class="nav-wrapper navbar-fixed-top">
   <nav class="navbar navbar-default" role="navigation">
     <div class="navbar-header">
