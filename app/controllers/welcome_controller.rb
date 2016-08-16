@@ -1,6 +1,6 @@
 require 'will_paginate'
 class WelcomeController < ApplicationController
-  layout 'just_front'
+  layout 'front_end'
   skip_before_filter :verify_authenticity_token, only: [:get_channel_more]
 
   def index

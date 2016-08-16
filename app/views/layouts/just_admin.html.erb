@@ -22,6 +22,7 @@
   </style>
 </head>
 <body id="body-skin" class="<% if current_user %><%= current_user.web_style %><% else %>sidebar-mini wysihtml5-supported skin-blue<% end %>">
+<%= javascript_include_tag 'LTE_admin/lte_admin', 'data-turbolinks-track' => true %>
 <div class="wrapper">
   <header class="main-header">
     <!-- Logo -->
@@ -108,7 +109,6 @@
   </aside>
   <div class='control-sidebar-bg'></div>
 </div>
-<%= javascript_include_tag 'LTE_admin/lte_admin', 'data-turbolinks-track' => true %>
 <script type="text/javascript">
     $.widget.bridge('uibutton', $.ui.button);
     $(document).on('page:fetch',   function() { NProgress.start(); });

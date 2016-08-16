@@ -15,6 +15,7 @@
   </style>
 </head>
 <body class="sessions-new ">
+  <%= javascript_include_tag 'user_info', 'data-turbolinks-track' => true %>
   <div id="particles-js"></div>
   <section class="wrapper">
     <div class="card">
@@ -44,7 +45,6 @@
     <%= render :partial => 'layouts/footer_menu' %>
   </div>
 </body>
-<%= javascript_include_tag 'user_info', 'data-turbolinks-track' => true %>
 <script>
     $(document).on('page:fetch',   function() { NProgress.start(); });
     $(document).on('page:change',  function() { NProgress.done(); });
