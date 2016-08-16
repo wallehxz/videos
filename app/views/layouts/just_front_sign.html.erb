@@ -8,14 +8,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= csrf_meta_tags %>
   <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
+  <%= stylesheet_link_tag 'front_user', media: 'all', 'data-turbolinks-track' => true %>
   <style type='text/css' id='hot_style_patch'>
       .main-wechat{ padding-top: 45px !important}
       .done, .alert { position: static !important}
   </style>
 </head>
 <body class="sessions-new ">
-<%= stylesheet_link_tag 'front_user', media: 'all', 'data-turbolinks-track' => true %>
-<%= javascript_include_tag 'user_info', 'data-turbolinks-track' => true %>
   <div id="particles-js"></div>
   <section class="wrapper">
     <div class="card">
@@ -45,8 +44,9 @@
     <%= render :partial => 'layouts/footer_menu' %>
   </div>
 </body>
-</html>
+<%= javascript_include_tag 'user_info', 'data-turbolinks-track' => true %>
 <script>
     $(document).on('page:fetch',   function() { NProgress.start(); });
     $(document).on('page:change',  function() { NProgress.done(); });
 </script>
+</html>

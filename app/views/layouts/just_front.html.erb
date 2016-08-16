@@ -9,13 +9,12 @@
   <%= content_for?(:meta)? yield(:meta) :'' %>
   <%= csrf_meta_tags %>
   <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
+  <%= stylesheet_link_tag  'front', media: 'all', 'data-turbolinks-track' => true %>
 </head>
 <body>
 <!--[if lt IE 10]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
-<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-<%= stylesheet_link_tag  'front', media: 'all', 'data-turbolinks-track' => true %>
 <div class="nav-wrapper navbar-fixed-top">
   <nav class="navbar navbar-default" role="navigation">
     <div class="navbar-header">
@@ -88,8 +87,10 @@
   <%= render :partial => 'layouts/footer_menu' %>
 </div>
 </body>
-</html>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 <script>
     $(document).on('page:fetch',   function() { NProgress.start(); });
     $(document).on('page:change',  function() { NProgress.done(); });
 </script>
+</html>
+
