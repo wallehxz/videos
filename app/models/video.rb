@@ -107,10 +107,13 @@ class Video < ActiveRecord::Base
       end
       if ykh_com.length < 10
         yk_com = Video.code_to_youku_comment(self.tv_code,10 - ykh_com.length)
-        yk_com.each do |com|
-          Comment.create(user_id:User.all.map(&:id).sample(1)[0],video_id:self.id,vote:rand(99) + 1,content:com['content'])
+        if yk_com.length > 0
+          yk_com.each do |com|
+            Comment.create(user_id:User.all.map(&:id).sample(1)[0],video_id:self.id,vote:rand(99) + 1,content:com['content'])
+          end
         end
       end
+      puts "#{self.title}更新评论#{self.comments.count}条"
     end
   end
 
