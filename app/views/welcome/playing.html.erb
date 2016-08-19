@@ -39,11 +39,6 @@
                 <ul id="post-list" class="post-list" style="padding-left: 0px">
                   <!--本站用户评论-->
                   <%= render partial: 'shared/user_comments' %>
-                  <!--优酷用户最新十条评论-->
-                  <% if @video.video_type == 0%>
-                      <% hot_comment = Video.code_to_comment(@video.tv_code) %>
-                      <%= render partial: 'shared/youku_user_comments', locals: { comments: hot_comment } if hot_comment.present?%>
-                <% end %>
                 </ul>
               </div>
             </section>
@@ -55,7 +50,7 @@
 </div>
 <!--登录浮层-->
 <%= render partial: 'shared/user_login' %>
-<%= javascript_include_tag 'videojj', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'videojj' %>
 <script type="text/javascript" >
   var ivaInstance = new Iva('playerCnt', {
     appkey: '4JAun1rRl',

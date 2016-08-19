@@ -19,6 +19,8 @@ class Video < ActiveRecord::Base
   validates_uniqueness_of :title, :tv_code
   validates_presence_of :column_id, :title, :cover, :video_type, :duration, :tv_code
   belongs_to :column
+  has_many :comments
+  after_save :update_youku_comment
   scope :latest, -> {order(updated_at: :desc)}
   scope :recent, ->{order(created_at: :desc)}
   scope :hexie, ->{where('video_type != 3')}
@@ -33,21 +35,16 @@ class Video < ActiveRecord::Base
   end
 
   #根据 code 获取视频的热点评论 Video.code_to_hot_comment
-   def self.code_to_youku_hot_comment(code)
-     params = {client_id: Settings.youku_client_id, video_id:code, count:5}
+   def self.code_to_youku_hot_comment(code,count)
+     params = {client_id: Settings.youku_client_id, video_id:code, count:count}
      response = $youku_conn.get '/v2/comments/hot/by_video.json', params
      return JSON.parse(response.body)['comments']
    end
 
-  def self.code_to_youku_comment(code)
-    params = {client_id: Settings.youku_client_id, video_id:code, count:5}
+  def self.code_to_youku_comment(code,count)
+    params = {client_id: Settings.youku_client_id, video_id:code, count:count}
     response = $youku_conn.get '/v2/comments/by_video.json', params
     return JSON.parse(response.body)['comments']
-  end
-
-  def self.code_to_comment(code)
-    return code_to_youku_hot_comment(code) if code_to_youku_hot_comment(code).present?
-    return code_to_youku_comment(code) if code_to_youku_comment(code).present?
   end
 
   #截取特殊符号标题内容
@@ -87,10 +84,10 @@ class Video < ActiveRecord::Base
   #视频的code根据类型判断生成
   #Video.type_to_tv_code
   def self.type_url_to_code(type,url)
-    return youku_url_to_code(url)      if type.to_i == 0 && url.include?('.youku.com')
-    return tencent_url_to_code(url)  if type.to_i == 1 && url.include?('.qq.com')
-    return iqiyi_url_to_code(url)        if type.to_i == 2 && url.include?('.iqiyi.com')
-    return qiniu_url_to_code(url)       if type.to_i == 3 && url.include?('com')
+    return youku_url_to_code(url) if type.to_i == 0 && url.include?('.youku.com')
+    return tencent_url_to_code(url) if type.to_i == 1 && url.include?('.qq.com')
+    return iqiyi_url_to_code(url) if type.to_i == 2 && url.include?('.iqiyi.com')
+    return qiniu_url_to_code(url) if type.to_i == 3 && url.include?('com')
     return url
   end
 
@@ -98,6 +95,23 @@ class Video < ActiveRecord::Base
   def self.file_or_url_to_cover(file,url)
     return Cattle.cache_to_yun(file) if file.present?
     return url if file.nil?
+  end
+
+  def update_youku_comment
+    if self.video_type == 0 && self.comments.count < 10
+      ykh_com = Video.code_to_youku_hot_comment(self.tv_code,10)
+      if ykh_com.length > 0
+        ykh_com.each do |com|
+          Comment.create(user_id:User.all.map(&:id).sample(1)[0],video_id:self.id,vote:rand(99) + 1,content:com['content'])
+        end
+      end
+      if ykh_com.length < 10
+        yk_com = Video.code_to_youku_comment(self.tv_code,10 - ykh_com.length)
+        yk_com.each do |com|
+          Comment.create(user_id:User.all.map(&:id).sample(1)[0],video_id:self.id,vote:rand(99) + 1,content:com['content'])
+        end
+      end
+    end
   end
 
 end
