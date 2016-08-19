@@ -18,3 +18,6 @@
 //= require plugins
 //= require vendor
 //= require yepnope
+//= require cute.slider
+//= require cute.transitions.all
+//= require videojj
