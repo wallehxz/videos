@@ -32,6 +32,7 @@
               <th tabindex="0" aria-controls="example1" style="text-align: center">头图</th>
               <th tabindex="0" aria-controls="example1" style="text-align: center">昵称</th>
               <th tabindex="0" aria-controls="example1" style="text-align: center">信息</th>
+              <th tabindex="0" aria-controls="example1" style="text-align: center">勋章</th>
               <th tabindex="0" aria-controls="example1" style="text-align: center">操作</th>
             </tr>
             </thead>
@@ -73,6 +74,9 @@
                         <i class="fa fa-envelope"></i>
                         <%= user.email %>
                       </span>
+                    </td>
+                    <td style="text-align: center">
+                      <img src="<%= rank_picture(user) %>" style="width:100px;" title="积分：<%= user.sign_in_count %>">
                     </td>
                     <td>
                       <br>
