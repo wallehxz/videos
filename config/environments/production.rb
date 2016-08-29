@@ -47,17 +47,22 @@ Rails.application.configure do
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
-  # config.log_level = :warn
-  config.log_level = :warn
+  config.lograge.enabled = true
+  # add time to lograge
+  config.lograge.custom_options = lambda do |event|
+    {:time => event.time}
+  end
+  config.log_level = :debug
+
   # Prepend all log lines with the following tags.
-  # config.log_tags = [ :subdomain, :uuid ]
+  config.log_tags = [ :subdomain]
 
   # Use a different logger for distributed setups.
   #config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
-  config.cache_store = :memory_store
+  config.cache_store = :memory_store,{ size: 128.megabytes }
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
@@ -74,7 +79,7 @@ Rails.application.configure do
   config.active_support.deprecation = :notify
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
-  config.log_formatter = ::Logger::Formatter.new
+  # config.log_formatter = ::Logger::Formatter.new
 
   # Do not dump schema after migrations.
   config.action_mailer.smtp_settings = {
