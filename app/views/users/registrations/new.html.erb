@@ -25,9 +25,9 @@
     }
   });
   $('#password').change(function(){
-    if($('#password').val().length < 6){
+    if($('#password').val().length < 8){
       $('#password').val('');
-      $('#password').attr('placeholder','密码强度太弱了，不安全');
+      $('#password').attr('placeholder','请填写至少8位安全密码');
       return false;
     }
   });

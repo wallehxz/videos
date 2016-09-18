@@ -284,7 +284,7 @@ DEPENDENCIES
   jbuilder (= 2.3.2)
   jquery-rails (= 4.0.5)
   listen (= 3.0.8)
-  lograge
+  lograge (= 0.4.1)
   pg (= 0.18.4)
   pry-rails (= 0.3.4)
   puma (= 3.6.0)
