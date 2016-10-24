@@ -50,6 +50,14 @@ namespace :deploy do
     end
   end
 
+  desc '软链视频文件'
+  task :link_videos do
+    on roles(:web) do
+      execute "ln -nfs /var/lib/transmission-daemon/downloads #{release_path}/public/downloads"
+      puts '软链视频文件成功！'
+    end
+  end
+
   desc '将配置数据写入数据库'
   task :seed do
     on roles(fetch(:migration_role)) do
@@ -62,6 +70,7 @@ namespace :deploy do
   end
 
   after 'deploy:migrate', 'deploy:restart'
+  after 'deploy:symlink:linked_dirs', 'deploy:link_videos'
 
   # task :stop do
   #   run "cd #{deploy_to}/current && ./crmd.sh stop"
