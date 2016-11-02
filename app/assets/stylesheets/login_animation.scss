@@ -3,6 +3,16 @@
   margin: 0;
   padding: 0;
 }
+body{
+  font-family: "Alright Sans LP","Comic Sans MS","Helvetica","幼圆",sans-serif;
+  cursor: url('http://7u2lac.com1.z0.glb.clouddn.com/lol_cursor.cur'), default;
+  a:hover{
+    cursor: url('http://7u2lac.com1.z0.glb.clouddn.com/lol_link.cur'), default;
+  }
+}
+.cont{
+  cursor: url('http://7u2lac.com1.z0.glb.clouddn.com/lol_cursor.cur'), default;
+}
 a{
   text-decoration: none;
 }
@@ -151,6 +161,7 @@ input, button {
   animation: animatePath 2s 0.5s forwards;
 }
 .login__input {
+  font-family: "Alright Sans LP","Comic Sans MS","Helvetica","幼圆",sans-serif;
   display: inline-block;
   width: 22rem;
   height: 100%;
@@ -160,6 +171,7 @@ input, button {
   color: #FDFCFD;
 }
 .login__submit {
+  cursor: url('http://7u2lac.com1.z0.glb.clouddn.com/lol_cursor.cur'), default;
   position: relative;
   width: 100%;
   height: 4rem;

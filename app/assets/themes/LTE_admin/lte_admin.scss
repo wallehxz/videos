@@ -1,0 +1,30 @@
+/*LTE_admin
+ *=require nprogress
+ *=require ./css/bootstrap
+ *=require ./css/font-awesome
+ *=require ./css/admin_lte
+ *=require ./css/ionicons
+ *=require ./css/skins/all-skins
+ *=require ./plugins/iCheck/flat/all.scss
+ *=require ./plugins/iCheck/line/all.scss
+ *=require ./plugins/iCheck/minimal/all.scss
+ *=require ./plugins/iCheck/polaris/all.scss
+ *=require ./plugins/iCheck/square/all.scss
+ *=require ./plugins/iCheck/futurico/all.scss
+ *=require ./plugins/morris/morris.scss
+ *=require ./plugins/datepicker/datepicker3.scss
+ *=require ./plugins/daterangepicker/daterangepicker-bs3.scss
+ *=require ./plugins/colorpicker/bootstrap-colorpicker.scss
+ *=require ./plugins/timepicker/bootstrap-timepicker.scss
+ *=require ./plugins/datatables/dataTables.bootstrap.scss
+ *=require ./plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.scss
+ *=require ./plugins/jvectormap/jvectormap-2.0.3.css
+ */
+
+body{
+  font-family: "Alright Sans LP","Comic Sans MS","Helvetica","幼圆",sans-serif;
+  cursor: url('http://7u2lac.com1.z0.glb.clouddn.com/lol_cursor.cur'), default;
+  a:hover{
+    cursor: url('http://7u2lac.com1.z0.glb.clouddn.com/lol_link.cur'), default;
+  }
+}
