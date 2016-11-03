@@ -72,7 +72,4 @@ namespace :deploy do
   after 'deploy:migrate', 'deploy:restart'
   after 'deploy:symlink:linked_dirs', 'deploy:link_videos'
 
-  # task :stop do
-  #   run "cd #{deploy_to}/current && ./crmd.sh stop"
-  # end
 end
