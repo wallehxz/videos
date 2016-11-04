@@ -47,17 +47,17 @@
     }
     $('.load-more').attr('onclick',"load_index_more ("+ num +","+ local +")");
     $('.load-more').html("<h4>MORE「 "+ local + "」</h4>");
+    $('.load-menu').css('display','none');
+    $('.processbar').css('display','block');
+    var i = 0;
+    var timer = setInterval(function(){
+      $(".processbar").css("width", i + "%");
+      i++;
+      if (i > 100) {
+        clearInterval(timer);
+      }
+    },5);
     $.get('/videos/get_index_more',{page: page}, function(data){
-      $('.load-menu').css('display','none');
-      $('.processbar').css('display','block');
-      var i = 0;
-      var timer = setInterval(function(){
-        $(".processbar").css("width", i + "%");
-        i++;
-        if (i > 100) {
-          clearInterval(timer);
-        }
-      },5);
       setTimeout(function(){
         $('.load-menu').css('display','block');
         $('.processbar').css('display','none');
@@ -70,9 +70,9 @@
     })
   }
 
-  // $(window).scroll(function(){
-  //   if($(document).height() - $(window).scrollTop() == $(window).height()){
-  //     $('.load-more').click();
-  //   }
-  // });
+  $(window).scroll(function(){
+    if($(document).height() - $(window).scrollTop() == $(window).height()){
+      $('.load-more').click();
+    }
+  });
 </script>

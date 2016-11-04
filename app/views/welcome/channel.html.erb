@@ -50,17 +50,17 @@
     }
     $('.load-more').attr('onclick',"load_channel_more ("+ num +","+ channel +", "+ local +")");
     $('.load-more').html("<h4>MORE「 "+ local + "」</h4>");
+    $('.load-menu').css('display','none');
+    $('.processbar').css('display','block');
+    var i = 0;
+    var timer = setInterval(function(){
+      $(".processbar").css("width", i + "%");
+      i++;
+      if (i > 100) {
+        clearInterval(timer);
+      }
+    },5);
     $.get('/videos/get_channel_more',{page: page, column:channel}, function(data){
-      $('.load-menu').css('display','none');
-      $('.processbar').css('display','block');
-      var i = 0;
-      var timer = setInterval(function(){
-        $(".processbar").css("width", i + "%");
-        i++;
-        if (i > 100) {
-          clearInterval(timer);
-        }
-      },5);
       setTimeout(function(){
         $('.load-menu').css('display','block');
         $('.processbar').css('display','none');
