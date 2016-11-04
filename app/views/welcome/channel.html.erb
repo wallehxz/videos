@@ -30,11 +30,13 @@
       </ul>
     </div>
     <div class="more">
-      <a class="load-more" href="javascript:void(0)" onclick="load_channel_more(2,<%= @channel.id %>,<%= @videos.total_entries - 9%>)">
-        <h4>MORE 「 <%= @videos.total_entries - 9 > 0 ? @videos.total_entries - 9:'+ _ +'%> 」</h4>
-      </a>
+      <div class="load-menu">
+        <a class="load-more" href="javascript:void(0)" onclick="load_channel_more(2,<%= @channel.id %>,<%= @videos.total_entries - 9%>)">
+          <h4>MORE 「 <%= @videos.total_entries - 9 > 0 ? @videos.total_entries - 9:'+ _ +'%> 」</h4>
+        </a>
+      </div>
+      <div class='processbar'></div>
     </div>
-    <div class="load-more-menu"></div>
   </div>
 </div>
 <script>
@@ -46,18 +48,28 @@
     }else{
       var local = 0;
     }
+    $('.load-more').attr('onclick',"load_channel_more ("+ num +","+ channel +", "+ local +")");
+    $('.load-more').html("<h4>MORE「 "+ local + "」</h4>");
     $.get('/videos/get_channel_more',{page: page, column:channel}, function(data){
-      $('.load-more').html("<img src='http://7u2lac.com1.z0.glb.clouddn.com/loading.gif'>");
-      clearTimeout(timer); //清空定时器，防止页面CPU消耗
-      timer = setTimeout(function(){
-        if(data ==''){
-          $('.load-more').html('<h4>感谢您对我们视频的支持！(+ _ +) </h4>').removeAttr('onclick');
-        }else{
-          $('.load-more').attr('onclick',"load_channel_more ("+ num +","+ channel +", "+ local +")");
-          $('.load-more').html("<h4>MORE「 "+ local + "」</h4>");
-          $('.video-list').append(data);
+      $('.load-menu').css('display','none');
+      $('.processbar').css('display','block');
+      var i = 0;
+      var timer = setInterval(function(){
+        $(".processbar").css("width", i + "%");
+        i++;
+        if (i > 100) {
+          clearInterval(timer);
         }
-      },1500);
+      },5);
+      setTimeout(function(){
+        $('.load-menu').css('display','block');
+        $('.processbar').css('display','none');
+        if(data != ''){
+          $('.video-list').append(data);
+        }else{
+          $('.load-more').html('<h4>感谢您对我们视频的支持！(+ _ +) </h4>').removeAttr('onclick');
+        }
+      },700);
     })
   }
 

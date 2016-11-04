@@ -87,10 +87,25 @@
 <div class="footer-menu">
   <%= render :partial => 'layouts/footer_menu' %>
 </div>
+<div id="inBottom" class="inBottom">
+  <a href="javascript:scrollToTop();"><div></div></a>
+</div>
 </body>
 <script>
-    $(document).on('page:fetch',   function() { NProgress.start(); });
-    $(document).on('page:change',  function() { NProgress.done(); });
+  $(window).scroll(function() {
+    if(document.body.scrollTop > 10){
+      $('#inBottom').fadeIn(1500);
+    }else if(document.body.scrollTop < 10){
+      $('#inBottom').fadeOut('slow');
+    }
+  });
+
+  function scrollToTop(){
+    $.scrollTo(0, 1000, {queue:true});
+  }
+
+  $(document).on('page:fetch',   function() { NProgress.start(); });
+  $(document).on('page:change',  function() { NProgress.done(); });
 </script>
 </html>
 

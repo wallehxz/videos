@@ -21,3 +21,4 @@
 //= require cute.slider
 //= require cute.transitions.all
 //= require videojj
+//= require jquery.scroll

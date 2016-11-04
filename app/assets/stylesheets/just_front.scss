@@ -1755,11 +1755,70 @@ a:hover, a:focus {
     display: none;
   }
 
+  .more {
+    height:35px;
+    width: 98%;
+    background-color: #ebebeb;
+    color: #7a7c83;
+    margin: 15px 0px 15px 10px;
+    text-align: center;
+  }
+
+  .more .processbar {
+    display:none;
+    height:100%;
+    width:0%;
+    background-color: #dd3b5a;
+  }
+
+  .more .load-menu {
+    padding-top: 9px;
+  }
+
+  .more .load-menu a {
+    margin-top:10px;
+    color: #7a7c83;
+  }
+  .more .load-menu a:hover,.more .load-menu a:focus {
+    color: #dd3b5a;
+  }
+  .more .load-menu h4 {
+    line-height: 1em;
+    margin: 0 auto;
+    font-weight: normal;
+  }
+
+  .inBottom {
+    display:none;
+    position: fixed;
+    bottom: 60px;
+    right: 100px;
+    transition: bottom 1s;
+  }
+
+  .inBottom a div{
+    background-image:asset_url('rocket_white.png');
+    background-size:35px 60px;
+    background-repeat:no-repeat;
+    background-position:center;
+    width:60px;
+    height:60px;
+    border-color:red;
+  }
+
+  .inBottom a:hover div{
+    background-image:asset_url('rocket_black.png');
+    background-size:35px 60px;
+    background-repeat:no-repeat;
+    background-position:center;
+    width:60px;
+    height:60px;
+  }
+
 }
 
 //ipad浏览
-@media ( max-width: 969px) {
-  //隐藏顶部栏
+@media (max-width: 969px) {
   .nav-wrapper.navbar-fixed-top{
     display: none;
   }
@@ -1867,8 +1926,36 @@ a:hover, a:focus {
     display: none;
   }
 
-  .load-more-menu {
-    padding-bottom: 50px;
+  .more {
+    height:35px;
+    width: 96%;
+    background-color: #ebebeb;
+    color: #7a7c83;
+    margin: 15px 10px 65px 10px;
+    text-align: center;
+  }
+
+  .more .processbar {
+    display:none;
+    height:100%;
+    background-color: #dd3b5a;
+  }
+
+  .more .load-menu {
+    padding-top: 9px;
+  }
+
+  .more .load-menu a {
+    margin-top:10px;
+    color: #7a7c83;
+  }
+  .more .load-menu a:hover, .more a:focus {
+    color: #dd3b5a;
+  }
+  .more .load-menu h4 {
+    line-height: 1em;
+    margin: 0 auto;
+    font-weight: normal;
   }
 
   ul.video-list li.video-item {
@@ -2046,7 +2133,6 @@ a:hover, a:focus {
   }
 }
 
-
 .video {
   width: 100%;
   margin: 0 auto;
@@ -2102,30 +2188,6 @@ ul.video-list li.video-item .animated:hover .video-info {
   padding: 0 5px;
 }
 
-.more {
-  width: 100%;
-  background-color: #ebebeb;
-  color: #7a7c83;
-  margin: 20px auto;
-  padding: 10px 0 10px 0;
-  text-align: center;
-}
-.more a {
-  color: #7a7c83;
-}
-.more a:hover, .more a:focus {
-  color: #dd3b5a;
-}
-.more h4 {
-  line-height: 1em;
-  margin: 0 auto;
-  font-weight: normal;
-}
-.more img {
-  height: 30px;
-  margin-top: -10px;
-  margin-bottom: -5px;
-}
 
 .display {
   padding-top: 50px;
