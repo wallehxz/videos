@@ -1639,6 +1639,45 @@ a:hover, a:focus {
   color: #fff;
 }
 
+.next_page{
+  width:100%;
+  padding-left:10px;
+  padding-right:10px;
+}
+
+.more {
+  height:35px;
+  background-color: #ebebeb;
+  color: #7a7c83;
+  margin-top:15px;
+  margin-bottom:15px;
+  text-align: center;
+}
+
+.more .processbar {
+  display:none;
+  height:100%;
+  width:0%;
+  background-color: #dd3b5a;
+}
+
+.more .load-menu {
+  padding-top: 9px;
+}
+
+.more .load-menu a {
+  margin-top:10px;
+  color: #7a7c83;
+}
+.more .load-menu a:hover,.more .load-menu a:focus {
+  color: #dd3b5a;
+}
+.more .load-menu h4 {
+  line-height: 1em;
+  margin: 0 auto;
+  font-weight: normal;
+}
+
 //mac浏览
 @media (min-width: 970px) {
   .iphone_avatar{
@@ -1753,39 +1792,6 @@ a:hover, a:focus {
 
   .footer-menu{
     display: none;
-  }
-
-  .more {
-    height:35px;
-    width: 98%;
-    background-color: #ebebeb;
-    color: #7a7c83;
-    margin: 15px 0px 15px 10px;
-    text-align: center;
-  }
-
-  .more .processbar {
-    display:none;
-    height:100%;
-    width:0%;
-    background-color: #dd3b5a;
-  }
-
-  .more .load-menu {
-    padding-top: 9px;
-  }
-
-  .more .load-menu a {
-    margin-top:10px;
-    color: #7a7c83;
-  }
-  .more .load-menu a:hover,.more .load-menu a:focus {
-    color: #dd3b5a;
-  }
-  .more .load-menu h4 {
-    line-height: 1em;
-    margin: 0 auto;
-    font-weight: normal;
   }
 
   .inBottom {
@@ -1927,36 +1933,9 @@ a:hover, a:focus {
   }
 
   .more {
-    height:35px;
-    width: 96%;
-    background-color: #ebebeb;
-    color: #7a7c83;
-    margin: 15px 10px 65px 10px;
-    text-align: center;
+    margin-bottom:70px;
   }
 
-  .more .processbar {
-    display:none;
-    height:100%;
-    background-color: #dd3b5a;
-  }
-
-  .more .load-menu {
-    padding-top: 9px;
-  }
-
-  .more .load-menu a {
-    margin-top:10px;
-    color: #7a7c83;
-  }
-  .more .load-menu a:hover, .more a:focus {
-    color: #dd3b5a;
-  }
-  .more .load-menu h4 {
-    line-height: 1em;
-    margin: 0 auto;
-    font-weight: normal;
-  }
 
   ul.video-list li.video-item {
     list-style: none;

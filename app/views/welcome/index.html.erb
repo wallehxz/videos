@@ -26,13 +26,15 @@
         <% end %>
       </ul>
     </div>
-    <div class="more">
-      <div class="load-menu">
-        <a class="load-more" href="javascript:void(0)" onclick="load_index_more(2,<%= @videos.total_entries - 9%>)">
-          <h4>MORE 「 <%= @videos.total_entries - 9 > 0 ? @videos.total_entries - 9:'+ _ +'%> 」</h4>
-        </a>
+    <div class="next_page">
+      <div class="more">
+        <div class="load-menu">
+          <a class="load-more" href="javascript:void(0)" onclick="load_index_more(2,<%= @videos.total_entries - 9%>)">
+            <h4>MORE 「 <%= @videos.total_entries - 9 > 0 ? @videos.total_entries - 9:'+ _ +'%> 」</h4>
+          </a>
+        </div>
+        <div class='processbar'></div>
       </div>
-      <div class='processbar'></div>
     </div>
   </div>
 </div>
@@ -60,13 +62,13 @@
     $.get('/videos/get_index_more',{page: page}, function(data){
       setTimeout(function(){
         $('.load-menu').css('display','block');
-        $('.processbar').css('display','none');
+        $('.processbar').css({'display':'none','width':'0%'});
         if(data != ''){
           $('.video-list').append(data);
         }else{
           $('.load-more').html('<h4>感谢您对我们视频的支持！(+ _ +) </h4>').removeAttr('onclick');
         }
-      },700);
+      },300);
     })
   }
 
