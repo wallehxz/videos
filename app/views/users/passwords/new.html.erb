@@ -2,30 +2,28 @@
 <%=javascript_include_tag 'http://api.geetest.com/get.php' %>
 <div class="main">
   <div class="main-login">
-    <form accept-charset="UTF-8" action="/users/password" class="simple_form new_user" id="new_user" method="post" onkeydown="if(event.keyCode==13 || event.which ==13) return false;">
+    <form accept-charset="UTF-8" action="<%= forgot_password_path %>" class="simple_form new_user" id="new_user" method="post" onkeydown="if(event.keyCode==13 || event.which ==13) return false;">
       <div class="form-group">
         <input autofocus="autofocus" aria-required="true" autocomplete="off"  id="email" name="user[email]" placeholder="请键入登陆邮箱" required="required" type="text" />
         <div id="geetest" style="padding-left: 25px;padding-bottom: 10px"></div>
-        <input id="btn_sub" class="btn input-submit" name="commit" type="submit" value="给我发送认证邮件" />
+        <input id="btn_sub" class="btn input-submit" name="commit" type="submit" value="发送认证邮件" />
       </div>
     </form>
   </div>
 </div>
 <%= render 'users/shared/links' %>
 <script>
-    $('#email').change(function(){
-        var reg = /^([a-zA-Z0-9-._-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
-        if(!reg.test($.trim($('#email').val())))
-        {
-            $('#email').val('');
-            $('#email').attr('placeholder','请填写正确的邮箱');
-            return false;
-        }else{
-            alert('点击按钮即可获取验证邮件！');
-        }
-    });
-    window.embed_captcha = new window.Geetest({
-        gt: 'a92f1d66c86bf59349e17d722aefe043',
-        product: 'popup'
-    }).appendTo("#geetest").bindOn('#btn_sub');
+  $('#email').change(function(){
+    var reg = /^([a-zA-Z0-9-._-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+    if(!reg.test($.trim($('#email').val())))
+    {
+      $('#email').val('');
+      $('#email').attr('placeholder','请填写正确的邮箱');
+      return false;
+    }
+  });
+  window.embed_captcha = new window.Geetest({
+    gt: 'a92f1d66c86bf59349e17d722aefe043',
+    product: 'popup'
+  }).appendTo("#geetest").bindOn('#btn_sub');
 </script>

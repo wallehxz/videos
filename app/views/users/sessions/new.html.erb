@@ -19,7 +19,7 @@
     <div class="login">
       <div class="login__check"></div>
       <div class="login__form">
-        <form accept-charset="UTF-8" action="/sign_login"  method="post">
+        <form accept-charset="UTF-8" action="<%= sign_in_path %>"  method="post">
         <div class="login__row">
             <svg class="login__icon name svg-icon" viewBox="0 0 20 20">
               <path d="M0,20 a10,8 0 0,1 20,0z M10,0 a4,4 0 0,1 0,8 a4,4 0 0,1 0,-8"></path>
@@ -35,7 +35,7 @@
           <button id="submit" type="submit" class="login__submit">登 陆</button>
         </form>
         <p class="login__signup">Don't have an account? &nbsp;<a href="<%= sign_up_path %>">注 册</a></p>
-        <p class="login__signup">Forgot you password? &nbsp;<a href="<%= pass_forgot_path %>">忘 记</a></p>
+        <p class="login__signup">Forgot you password? &nbsp;<a href="<%= forgot_password_path %>">忘 记</a></p>
       </div>
     </div>
   </div>

@@ -39,16 +39,7 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
   # ActionMailer::Base.smtp_settings
-  config.action_mailer.smtp_settings = {
-      :address => 'smtp.126.com',
-      :port => 25,
-      :domain => '126.com',
-      :authentication => :login,
-      :user_name => Settings.noreply_email,
-      :password => Settings.password
-  }
+
   config.action_mailer.default_url_options = { host: Settings.development_host }
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.delivery_method = :smtp
 
 end

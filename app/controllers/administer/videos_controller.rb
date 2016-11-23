@@ -4,7 +4,6 @@ class Administer::VideosController < ApplicationController
   before_action :set_video, only: [:show, :edit, :update, :destroy]
   before_action :set_param, only: [:create, :update]
 
-
   def new
     @video = Video.new
   end

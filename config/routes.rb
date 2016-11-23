@@ -48,9 +48,12 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'sign_in', to: 'users/sessions#new'
     get 'sign_up', to: 'users/registrations#new'
+    post 'sign_in', to: 'users/sessions#create'
     get 'sign_out', to: 'users/sessions#destroy'
-    get 'pass_forgot', to: 'users/passwords#new'
-    post 'sign_login', to: 'users/sessions#create'
+    get 'forgot_password', to: 'users/passwords#new'
+    post 'forgot_password', to: 'users/passwords#create'
+    get 'reset_password', to: 'users/passwords#edit'
+    put 'reset_password', to: 'users/passwords#update'
   end
   root 'welcome#index'
 

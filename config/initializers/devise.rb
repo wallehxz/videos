@@ -1,26 +1,11 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
-  # The secret key used by Devise. Devise uses this key to generate
-  # random tokens. Changing this key will render invalid all existing
-  # confirmation, reset password and unlock tokens in the database.
-  # Devise will use the `secret_key_base` on Rails 4+ applications as its `secret_key`
-  # by default. You can change it below and use your own secret key.
-  # config.secret_key = '3be6cc7625e0057aeda8eac12f2d4726602d6fe3781b79bf8bde7c01a5df369d05da814afb3eada85d39603132656fc7e859d4074c0a19d7d6512d0ca12f74b4'
 
-  # ==> Mailer Configuration
-  # Configure the e-mail address which will be shown in Devise::Mailer,
-  # note that it will be overwritten if you use your own mailer class
-  # with default "from" parameter.
-  config.mailer_sender = Settings.noreply_email
+  config.secret_key = '3be6cc7625e0057aeda8eac12f2d4726602d6fe3781b79bf8bde7c01a5df369d05da814afb3eada85d39603132656fc7e859d4074c0a19d7d6512d0ca12f74b4'
 
-  # Configure the class responsible to send e-mails.
-  # config.mailer = 'Devise::Mailer'
+  config.mailer_sender = 'password@tsinova.com'
 
-  # ==> ORM configuration
-  # Load and configure the ORM. Supports :active_record (default) and
-  # :mongoid (bson_ext recommended) by default. Other ORMs may be
-  # available as additional gems.
   require 'devise/orm/active_record'
 
   # ==> Configuration for any authentication mechanism
@@ -208,7 +193,7 @@ Devise.setup do |config|
   # Turn scoped views on. Before rendering "sessions/new", it will first check for
   # "users/sessions/new". It's turned off by default because it's slower if you
   # are using only default views.
-  # config.scoped_views = false
+  config.scoped_views = true
 
   # Configure the default scope given to Warden. By default it's the first
   # devise role declared in your routes (usually :user).

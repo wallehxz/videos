@@ -7,5 +7,5 @@
 <% end -%>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-    <%= link_to '忘记密码', pass_forgot_path %><br />
+    <%= link_to '忘记密码', forgot_password_path %><br />
 <% end -%>
