@@ -1,5 +1,5 @@
-source 'https://gems.ruby-china.org'  #Ruby-China源
-#source 'https://rubygems.org/'  #官方源
+#source 'https://gems.ruby-china.org'  #Ruby-China源
+source 'https://rubygems.org/'  #官方源
 
 gem 'rails', '4.2.5'
 gem 'pg', '0.18.4'  # postgresql 数据连接
