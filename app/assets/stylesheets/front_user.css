@@ -5,13 +5,3 @@
  *= require footer_menu
  *= require LTE_admin/css/font-awesome
  */
-
-@media (min-width: 970px) {
-  body{
-    font-family: "Alright Sans LP","Comic Sans MS","Helvetica","幼圆",sans-serif;
-    cursor: url('http://7u2lac.com1.z0.glb.clouddn.com/lol_cursor.cur'), default;
-    a:hover{
-      cursor: url('http://7u2lac.com1.z0.glb.clouddn.com/lol_link.cur'), default;
-    }
-  }
-}
