@@ -117,4 +117,26 @@ class Video < ActiveRecord::Base
     end
   end
 
+  def export_viedeo_url
+    return "http://v.youku.com/v_show/id_#{self.tv_code}.html" if self.video_type == 0
+    return "http://v.qq.com/#{self.tv_code}.html" if self.video_type == 1
+    return "http://www.iqiyi.com/v_#{self.tv_code}.html" if self.video_type == 2
+    return "https://ogs7lfzqz.qnssl.com/vcd_#{self.tv_code}.mp4" if self.video_type == 3
+  end
+
+  def export_cover
+    self.cover.gsub('http://7u2lac.com1.z0.glb.clouddn.com/','')
+  end
+
+  def self.to_csv(videos)
+    CSV.generate do |csv|
+      num = 0
+      csv << ["\xEF\xBB\xBF序号",'类别','标题','链接','大图','时长'] #解决乱码
+      videos.each do |item|
+        num += 1
+        csv << [num,item.video_type,item.title,item.export_viedeo_url,item.export_cover,item.duration]
+      end
+    end
+  end
+
 end

@@ -2,7 +2,7 @@ require 'csv'
 class Administer::ColumnsController < ApplicationController
   layout 'just_admin'
   before_action :authenticate_admin!
-  before_action :set_column, only: [:show, :edit, :update, :destroy]
+  before_action :set_column, only: [:show, :export_video, :edit, :update, :destroy]
   before_action :set_param, only: [:create, :update]
 
   def index
@@ -63,6 +63,11 @@ class Administer::ColumnsController < ApplicationController
       data.save!
     end
     redirect_to channel_path(Column.find(params[:column_id]).english)
+  end
+
+  def export_video
+    @videos = Video.where(column_id:params[:id]).order('created_at')
+    send_data Video.to_csv(@videos), filename: "data-#{@column.english}.csv"
   end
 
   private

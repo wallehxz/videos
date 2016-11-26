@@ -14,8 +14,12 @@
 <section class="content">
   <div class="box box-primary">
     <div class="box-header">
-      <a href="<%= new_administer_column_video_path(@column) %>" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> 添加视频</a>
-      <a href="<%= import_column_video_path(@column.id) %>" class="btn btn-danger"><i class="glyphicon glyphicon-export"></i> 导入数据</a>
+      <div class="col-sm-6">
+        <a href="<%= new_administer_column_video_path(@column) %>" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> 添加视频</a>
+      </div>
+      <div class="col-sm-6">
+        <a href="<%= export_video_path(@column.id) %>" class="btn btn-danger"><i class="glyphicon glyphicon-export"></i> 导出视频数据</a>
+      </div>
     </div>
     <div class="box-body">
       <div class="row">
@@ -33,7 +37,7 @@
             <% cache [params[:english], @videos.map{|c| c.updated_at}.max] do %>
                 <% @videos.each do |video| %>
                     <tr style="text-align: center">
-                      <td style="width:300px">
+                      <td class="col-sm-3">
                         <a href="<%= video_playing_path(video.tv_code)%>" target="_blank">
                           <img src="<%= list_cover video.cover %>">
                         </a>

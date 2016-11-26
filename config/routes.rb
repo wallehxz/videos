@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   match '/update/profile',to: 'users/profile#update_profile', via: :post, as: :update_profile
   match '/video/comment', to: 'comments#create', via: :post
   match '/video/comment/vote', to: 'comments#vote', via: :get
+  match '/zhang/videos/:id/export', to: 'administer/columns#export_video', via: :get, as: :export_video
   namespace :administer, path:'/zhang' do
     resources :columns do
       resources :videos
